@@ -3,3 +3,77 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+
+.button {
+  width: 10%
+}
+
+.StaffRow {
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: flex-start;
+  background-color: gray;
+  margin-top: 50px;
+  height: 140px;
+  border: 1px solid rgb(41, 41, 41);
+}
+
+
+
+
+.Section {
+  /* width: 50%; */
+  /* height: 50px; */
+  background: wheat;
+  border-color: rgb(41, 41, 41);
+  border-width: 0 1px;
+  border-style: solid;
+  margin: 15px
+}
+
+.closeSection {
+  float: right;
+  cursor: pointer;
+  background-color: lightsalmon;
+  margin: 4px
+}
+
+.col-1 {
+  flex-basis: calc(100% - 32px)
+}
+.col-2 {
+  flex-basis: calc(50% - 32px)
+}
+.col-3 {
+  flex-basis: calc(33.333% - 32px)
+}
+.col-4 {
+  flex-basis: calc(25% - 32px)
+}
+.col-5 {
+  flex-basis: calc(20% - 32px)
+}
+.col-6 {
+  flex-basis: calc(16.666% - 32px)
+}
+.col-7 {
+  flex-basis: calc(14.286% - 32px)
+}
+.col-8 {
+  flex-basis: calc(12.5% - 32px)
+}
+
+
+/* #container div:first-child {
+  border-left: 0;
+  margin-left: 10px
+}
+
+#container div:last-child {
+  border-right: 0;
+  margin-right: 10px
+} */
+
+/* http://jsfiddle.net/QPrk3/ */
