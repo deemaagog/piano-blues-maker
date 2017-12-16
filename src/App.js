@@ -29,19 +29,19 @@ class App extends Component {
     sections: [
       { id: generateId(), name: 'intro', notes: [{ note: 'C4', duration: 2, time: 0 }] }],
     tempo: 70,
-    sectionsPerRow: 3,
+    sectionsPerRow: 6,
     key: 'C',
     swing: true,
     instrument: 'piano',
-    playing : false
+    playing: false
   };
 
   add = () => {
-    this.setState({ sections: [...this.state.sections, { id: generateId(),name: 'jazz', notes: [{ note: getRandomNote(), duration: 2, time: this.state.sections.length }] }] })
+    this.setState({ sections: [...this.state.sections, { id: generateId(), name: 'jazz', notes: [{ note: getRandomNote(), duration: 2, time: this.state.sections.length }] }] })
   }
 
   deleteAll = () => {
-    this.setState({sections:[]})
+    this.setState({ sections: [] })
   }
 
   play = () => {
@@ -72,7 +72,7 @@ class App extends Component {
 
   deleteSection = (id) => {
     let newSections = this.state.sections.filter(item => item.id !== id)
-    this.setState({sections: newSections});
+    this.setState({ sections: newSections });
   }
 
   sectionsPerRowOnChange = (e) => {
@@ -88,6 +88,7 @@ class App extends Component {
     });
 
     samplerLoader.load().then((sampler) => {
+      console.log('sampler loaded');
       this.instrument = new Instrument(sampler, ac, { gain: 3, release: 1 });
       this.setState({ loading: false });
     });
@@ -95,7 +96,9 @@ class App extends Component {
 
 
   render() {
+    console.log('app render');
     return (
+      
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -104,8 +107,17 @@ class App extends Component {
         <button className='button' onClick={this.deleteAll}> Очистить </button>
         <button className='button' onClick={this.play}> Play </button>
         <button className='button' onClick={this.add}> Добавить </button>
-        <input className='input' onChange={this.sectionsPerRowOnChange} value={this.state.sectionsPerRow} />
-        <Stave sections={this.state.sections} sectionsPerRow={this.state.sectionsPerRow} deleteSection={this.deleteSection}/>
+        <select value={this.state.sectionsPerRow} onChange={this.sectionsPerRowOnChange}>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='7'>7</option>
+          <option value='8'>8</option>
+        </select>
+        <Stave sections={this.state.sections} sectionsPerRow={this.state.sectionsPerRow} deleteSection={this.deleteSection} />
       </div>
     );
   }

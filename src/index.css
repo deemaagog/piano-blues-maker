@@ -12,68 +12,127 @@ body {
 
 .StaffRow {
   display: flex;
-  /* justify-content: space-between; */
   justify-content: flex-start;
-  background-color: gray;
+  /* background-color: rgb(184, 179, 179); */
   margin-top: 50px;
-  height: 140px;
-  border: 1px solid rgb(41, 41, 41);
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 220px;
+  /* border: 1px solid rgb(41, 41, 41); */
 }
 
 
 
 
 .Section {
+  display: flex
   /* width: 50%; */
   /* height: 50px; */
-  background: wheat;
-  border-color: rgb(41, 41, 41);
-  border-width: 0 1px;
-  border-style: solid;
-  margin: 15px
+  /* background: wheat; */
+  /* border-color: rgb(41, 41, 41); */
+  /* border-width: 0 1px; */
+  /* border-style: solid; */
+  /* margin: 15px */
 }
 
-.closeSection {
-  float: right;
+.Section-main:hover {
+  background-color: rgba(218, 199, 155,0.2);
+  /* opacity: 0.5 */
+}
+
+.Section-clef {
+  width: 35px;
+  flex: 0 0 35px;
+}
+.Section-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around
+}
+.Section-panel {
+  width: 35px;
+  flex: 0 0 35px;
+}
+
+.Section-panel-button {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer
+}
+
+.deleteSection {
   cursor: pointer;
-  background-color: lightsalmon;
-  margin: 4px
+  background-color: #913105;
+  margin: auto;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 20%;
+  margin-top: 5px;
+}
+
+.addSection {
+  cursor: pointer;
+  background-color: cadetblue;
+  margin: auto;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 20%;
+  margin-top: 5px;
 }
 
 .col-1 {
-  flex-basis: calc(100% - 32px)
+  flex-basis: calc(100%)
 }
 .col-2 {
-  flex-basis: calc(50% - 32px)
+  flex-basis: calc(50%)
 }
 .col-3 {
-  flex-basis: calc(33.333% - 32px)
+  flex-basis: calc(33.333%)
 }
 .col-4 {
-  flex-basis: calc(25% - 32px)
+  flex-basis: calc(25%)
 }
 .col-5 {
-  flex-basis: calc(20% - 32px)
+  flex-basis: calc(20%)
 }
 .col-6 {
-  flex-basis: calc(16.666% - 32px)
+  flex-basis: calc(16.666%)
 }
 .col-7 {
-  flex-basis: calc(14.286% - 32px)
+  flex-basis: calc(14.286%)
 }
 .col-8 {
-  flex-basis: calc(12.5% - 32px)
+  flex-basis: calc(12.5%)
 }
 
 
-/* #container div:first-child {
-  border-left: 0;
-  margin-left: 10px
+.handPattern {
+  background-color:  burlywood
 }
 
-#container div:last-child {
-  border-right: 0;
-  margin-right: 10px
+
+
+/* .Section:first-child >.Section-clef{
+  background-color: green
+}
+.Section:first-child >.Section-main{
+  background-color: red
+}
+.Section:first-child >.Section-panel{
+  background-color: yellow
+}
+
+.Section:last-child >.Section-clef{
+  background-color: fuchsia
+}
+.Section:last-child >.Section-main{
+  background-color: royalblue
+}
+.Section:last-child >.Section-panel{
+  background-color: chartreuse
 } */
 
 /* http://jsfiddle.net/QPrk3/ */

@@ -4,7 +4,7 @@ class RightHandSection extends Component {
     render() {
         return (
             <div>
-                
+               <input className='handPattern' type="text" placeholder='Right hand pattern'/> 
             </div>
         );
     }

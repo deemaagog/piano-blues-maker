@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React, {PureComponent } from 'react';
 import StaveRow from './StaveRow'
 
-class Stave extends Component {
+class Stave extends PureComponent {
     
     render() {
-
+        console.log('stave render');
         
         const clone = [...this.props.sections];
-
         const rows = [];
-
         
         let i = 1;
         while (clone.length) {
