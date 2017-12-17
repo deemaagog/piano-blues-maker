@@ -1,35 +1,158 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 import Stave from './Stave'
 import SamplerLoader from './lib/SamplerLoader';
 import Instrument from './lib/Instrument';
 
-
-
-
-function getRandomNote() {
-  const randomNotes = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4'];
-  const rand = Math.floor(Math.random() * (randomNotes.length - 0)) + 0
-  return randomNotes[rand];
-}
+// function getRandomNote() {
+//   const randomNotes = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4'];
+//   const rand = Math.floor(Math.random() * (randomNotes.length - 0)) + 0
+//   return randomNotes[rand];
+// }
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
-// function getRandomInt(min, max) {
-//   return Math.floor(Math.random() * (max - min)) + min;
-// }
+function getRandomSection() {
+  return {
+    id: generateId(),
+    presetId: '',
+    type: 'INTRO',
+    phrases: [
+      {
+        id: generateId(),
+        type: 'IIII',
+        bars: [
+          {
+            id: generateId(),
+            trebleVoices: [
+
+            ],
+            bassVoices: [
+              {
+                notesGroupes: [
+                  {
+                    duration: '8',
+                    beam: false,
+                    tuplet: false,
+                    notes: [
+                      ['C2'],
+                      ['C2']
+                    ]
+                  },
+                  {
+                    duration: '8',
+                    beam: false,
+                    tuplet: false,
+                    notes: [
+                      ['E2'],
+                      ['C2']
+                    ]
+                  },
+                  {
+                    duration: '8',
+                    beam: false,
+                    tuplet: false,
+                    notes: [
+                      ['G2'],
+                      ['C2']
+                    ]
+                  },
+                  {
+                    duration: '8',
+                    beam: false,
+                    tuplet: false,
+                    notes: [
+                      ['A2'],
+                      ['G2']
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }]
+  }
+}
 
 class App extends Component {
+
+  // structure = {
+  //   sections:[
+  //     {
+  //       id : '',
+  //       presetId: '',
+  //       type: 'INTRO',
+  //       bars: [
+  //         {
+  //           id : '',
+  //           trebleVoices:[
+  //             {
+  //               notesGroupes: [
+  //                 {
+  //                   duration: 'q',
+  //                   beam: false,
+  //                   tuplet: false,
+  //                   stem: 'up', 
+  //                   notes: [
+  //                     // single note
+  //                     ['C4'],
+  //                     //chord
+  //                     ['D4','F4']
+  //                   ]
+  //                 }
+  //               ]
+  //             }
+  //           ],
+  //           bassVoices:[
+
+  //           ]
+  //         }
+  //       ]
+  //     },
+  //     // verse 1
+  //     {
+  //       id : '',
+  //       type: 'VERSE',
+  //       phrases:[
+  //         //phrase 1
+  //         {
+  //           id : '',
+  //           type: 'IIII',
+  //           bars: [
+  //             {
+  //               id : '',
+
+  //             }
+  //           ]
+  //         },
+
+  //       ]
+  //     },
+  //     // verse 2
+  //     {
+  //       type: 'VERSE',
+  //       phrases:[
+
+  //       ]
+  //     },
+  //     {
+  //       type: 'ENDING'
+  //     }
+  //   ]
+  // }
+
 
   state = {
     loading: true,
     sections: [
-      { id: generateId(), name: 'intro', notes: [{ note: 'C4', duration: 2, time: 0 }] }],
+      getRandomSection()
+    ],
     tempo: 70,
-    sectionsPerRow: 6,
+    barsPerRow: 4,
     key: 'C',
     swing: true,
     instrument: 'piano',
@@ -37,7 +160,7 @@ class App extends Component {
   };
 
   add = () => {
-    this.setState({ sections: [...this.state.sections, { id: generateId(), name: 'jazz', notes: [{ note: getRandomNote(), duration: 2, time: this.state.sections.length }] }] })
+    this.setState({ sections: [...this.state.sections, getRandomSection()] })
   }
 
   deleteAll = () => {
@@ -45,29 +168,13 @@ class App extends Component {
   }
 
   play = () => {
-    const schedule = [];
-    this.state.sections.forEach((section) => {
-      schedule.push(...section.notes);
-    });
-    //this.instrument.start('A#2')
+    const schedule = [{ note: 'C4', duration: 2, time: 0 }];
+    // this.state.sections.forEach((section) => {
+    //   schedule.push(...section.notes);
+    // });
 
+    //TODO: generate schedule
     this.instrument.schedule(0, schedule);
-
-
-    // this.instrument.on('start', function(time, note) {
-    //   console.log(time, note)
-    // })
-
-    // this.instrument.on(function (eventName, when, obj, opts){
-    //   console.log(eventName)
-    // })
-
-    // this.instrument.on('started', function (when, name) {
-    //   console.log('start', name)
-    // })
-    // this.instrument.on('ended', function (when, name) {
-    //   console.log('ended', name)
-    // })
   }
 
   deleteSection = (id) => {
@@ -75,8 +182,8 @@ class App extends Component {
     this.setState({ sections: newSections });
   }
 
-  sectionsPerRowOnChange = (e) => {
-    this.setState({ sectionsPerRow: e.target.value });
+  barsPerRowOnChange = (e) => {
+    this.setState({ barsPerRow: e.target.value });
   }
 
   componentWillMount() {
@@ -98,16 +205,16 @@ class App extends Component {
   render() {
     console.log('app render');
     return (
-      
+
       <div className="App">
-        <header className="App-header">
+        {/* <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
-        </header>
+        </header> */}
         <button className='button' onClick={this.deleteAll}> Очистить </button>
         <button className='button' onClick={this.play}> Play </button>
         <button className='button' onClick={this.add}> Добавить </button>
-        <select value={this.state.sectionsPerRow} onChange={this.sectionsPerRowOnChange}>
+        <select value={this.state.barsPerRow} onChange={this.barsPerRowOnChange}>
           <option value='1'>1</option>
           <option value='2'>2</option>
           <option value='3'>3</option>
@@ -117,7 +224,7 @@ class App extends Component {
           <option value='7'>7</option>
           <option value='8'>8</option>
         </select>
-        <Stave sections={this.state.sections} sectionsPerRow={this.state.sectionsPerRow} deleteSection={this.deleteSection} />
+        <Stave sections={this.state.sections} barsPerRow={this.state.barsPerRow} deleteSection={this.deleteSection} />
       </div>
     );
   }
