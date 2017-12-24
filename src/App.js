@@ -15,144 +15,158 @@ function generateId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
+const durations = {
+  '32': 0.125,
+  '16': 0.25,
+  '8': 0.5,
+  'q': 1,
+  'h': 2,
+  'w': 4
+};
+
 function getRandomSection() {
   return {
     id: generateId(),
     presetId: '',
-    type: 'INTRO',
+    type: 'PROGRESSION',
     phrases: [
       {
         id: generateId(),
-        type: 'IIII',
+        type: 'I-I-I-I',
         bars: [
           {
             id: generateId(),
             trebleVoices: [
-
+              {
+                notes: [
+                  { keys: ['E/4'], duration: '8', id: '', stem: 'up' },
+                  { keys: ['Bb/4', 'C/5'], duration: '8' },
+                  { keys: ['C/5'], duration: 'q', id: '', type: 'REST' },
+                  { keys: ['C/5'], duration: 'h', id: '', type: 'REST' },
+                ],
+                tuplets: [],
+                ties: []
+              }
             ],
             bassVoices: [
               {
-                notesGroupes: [
-                  {
-                    duration: '8',
-                    beam: false,
-                    tuplet: false,
-                    notes: [
-                      ['C2'],
-                      ['C2']
-                    ]
-                  },
-                  {
-                    duration: '8',
-                    beam: false,
-                    tuplet: false,
-                    notes: [
-                      ['E2'],
-                      ['C2']
-                    ]
-                  },
-                  {
-                    duration: '8',
-                    beam: false,
-                    tuplet: false,
-                    notes: [
-                      ['G2'],
-                      ['C2']
-                    ]
-                  },
-                  {
-                    duration: '8',
-                    beam: false,
-                    tuplet: false,
-                    notes: [
-                      ['A2'],
-                      ['G2']
-                    ]
-                  }
+                notes: [
+                  { keys: ['C/2'], duration: 'q', id: '', clef: 'bass', stem: 'up' },
+                  { keys: ['G/2'], duration: '8', id: '', clef: 'bass' },
+                  { keys: ['E/2'], duration: '8', id: '', clef: 'bass' },
+                  { keys: ['G/2'], duration: 'q', id: '', clef: 'bass' },
+                  { keys: ['E/2'], duration: '8', id: '', clef: 'bass' },
+                  { keys: ['G/2'], duration: '8', id: '', clef: 'bass' }
                 ]
               }
             ]
           }
         ]
-      }]
+      }
+    ]
   }
 }
 
+function getRandomBlues() {
+  return [
+    {
+      id: generateId(),
+      presetId: '',
+      type: 'PROGRESSION',
+      phrases: [
+        {
+          id: generateId(),
+          type: 'I-I-I-I',
+          bars: [
+            {
+              id: generateId(),
+              trebleVoices: [
+                {
+                  notes: [
+                    { keys: ['b/4'], duration: 'q', id: '', type: 'REST' },
+                    { keys: ['E/4', 'G/4'], duration: '8' },
+                    { keys: ['C/5'], duration: '8' },
+                    { keys: ['E/4', 'G/4'], duration: '8' },
+                    { keys: ['Eb/4', 'Gb/4'], duration: '8' },
+                    { keys: ['C/5'], duration: '8' },
+                    { keys: ['Eb/4', 'Gb/4'], duration: '8' },
+                    { keys: ['d/4', 'f/4'], duration: '8' },
+                    { keys: ['C/5'], duration: '8' },
+                    { keys: ['d/4', 'f/4'], duration: '8' },
+                  ],
+                  beams: [
+                    {from: 1, to: 4},
+                    {from: 4, to: 7},
+                    {from: 7, to: 10}
+                  ],
+                  tuplets: [
+                    {from: 1, to: 4},
+                    {from: 4, to: 7},
+                    {from: 7, to: 10}
+                  ],
+                  ties: []
+                }
+              ],
+              bassVoices: [
+                {
+                  notes: [
+                    { keys: ['d/3'], duration: 'q', id: '', clef: 'bass', type: 'REST' },
+                    { keys: ['Bb/3'], duration: 'q', id: '', clef: 'bass' },
+                    { keys: ['A/3'], duration: 'q', id: '', clef: 'bass' },
+                    { keys: ['Ab/3'], duration: 'q', id: '', clef: 'bass' }
+                  ]
+                }
+              ]
+            } ,
+            {
+              id: generateId(),
+              trebleVoices: [
+                {
+                  notes: [
+                    { keys: ['C/4', 'E/4'], duration: '8' },
+                    { keys: ['C/5'], duration: '8' },
+                    { keys: ['C/4', 'E/4'], duration: '8' },
+                    { keys: ['C/4', 'Eb/4'], duration: '8' },
+                    { keys: ['C/5'], duration: '8' },
+                    { keys: ['C/4', 'Eb/4'], duration: '8' },
+                    { keys: ['b/3', 'd/4'], duration: 'h' }
+                  ],
+                  tuplets: [
+                    {from: 0, to: 3},
+                    {from: 3, to: 6},
+                  ],
+                  beams: [
+                    {from: 0, to: 3},
+                    {from: 3, to: 6},
+                  ],
+                  ties: []
+                }
+              ],
+              bassVoices: [
+                {
+                  notes: [
+                    { keys: ['g/3'], duration: 'q', id: '', clef: 'bass' },
+                    { keys: ['gb/3'], duration: 'q', id: '', clef: 'bass' },
+                    { keys: ['g/2','f/3'], duration: 'h', id: '', clef: 'bass' }
+                  ]
+                }
+              ]
+            } 
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
 class App extends Component {
-
-  // structure = {
-  //   sections:[
-  //     {
-  //       id : '',
-  //       presetId: '',
-  //       type: 'INTRO',
-  //       bars: [
-  //         {
-  //           id : '',
-  //           trebleVoices:[
-  //             {
-  //               notesGroupes: [
-  //                 {
-  //                   duration: 'q',
-  //                   beam: false,
-  //                   tuplet: false,
-  //                   stem: 'up', 
-  //                   notes: [
-  //                     // single note
-  //                     ['C4'],
-  //                     //chord
-  //                     ['D4','F4']
-  //                   ]
-  //                 }
-  //               ]
-  //             }
-  //           ],
-  //           bassVoices:[
-
-  //           ]
-  //         }
-  //       ]
-  //     },
-  //     // verse 1
-  //     {
-  //       id : '',
-  //       type: 'VERSE',
-  //       phrases:[
-  //         //phrase 1
-  //         {
-  //           id : '',
-  //           type: 'IIII',
-  //           bars: [
-  //             {
-  //               id : '',
-
-  //             }
-  //           ]
-  //         },
-
-  //       ]
-  //     },
-  //     // verse 2
-  //     {
-  //       type: 'VERSE',
-  //       phrases:[
-
-  //       ]
-  //     },
-  //     {
-  //       type: 'ENDING'
-  //     }
-  //   ]
-  // }
-
 
   state = {
     loading: true,
-    sections: [
-      getRandomSection()
-    ],
-    tempo: 70,
-    barsPerRow: 4,
+    sections: getRandomBlues(),
+    tempo: 60,
+    barsPerRow: 3,
     key: 'C',
     swing: true,
     instrument: 'piano',
@@ -168,10 +182,48 @@ class App extends Component {
   }
 
   play = () => {
-    const schedule = [{ note: 'C4', duration: 2, time: 0 }];
-    // this.state.sections.forEach((section) => {
-    //   schedule.push(...section.notes);
-    // });
+    // todo
+    // ties, ties between bars
+    // grace notes
+    // tuplets 
+    // swing feel
+
+    // q = 1 = 60bpm
+    // bar = 4
+    const schedule = [];
+    let currentTime = 0;
+    const timeDenominator = 60 / this.state.tempo;
+    const nBeats = 4;
+
+    function parceVoice(voice) {
+      let offset = 0;
+      voice.notes.forEach((note) => {
+        const duration = durations[note.duration] * timeDenominator;
+        note.keys.forEach((key) => {
+          if (note.type !== 'REST') {
+            schedule.push({ note: key.replace('/', ''), duration: duration, time: currentTime + offset });
+          }
+        });
+        offset = offset + duration;
+        console.log(this);
+      });
+    };
+
+    this.state.sections.forEach((section) => {
+      section.phrases.forEach((phrase) => {
+        phrase.bars.forEach((bar) => {
+
+          bar.trebleVoices.forEach((voice) => {
+            parceVoice(voice);
+          });
+
+          bar.bassVoices.forEach((voice) => {
+            parceVoice(voice);
+          });
+          currentTime = currentTime + nBeats * timeDenominator;
+        });
+      });
+    });
 
     //TODO: generate schedule
     this.instrument.schedule(0, schedule);
@@ -184,6 +236,14 @@ class App extends Component {
 
   barsPerRowOnChange = (e) => {
     this.setState({ barsPerRow: e.target.value });
+  }
+
+  tempoOnChange = (e) => {
+    this.setState({ tempo: e.target.value });
+  }
+
+  swingOnChange = () => {
+    this.setState({ swing: !this.state.swing });
   }
 
   componentWillMount() {
@@ -207,10 +267,6 @@ class App extends Component {
     return (
 
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header> */}
         <button className='button' onClick={this.deleteAll}> Очистить </button>
         <button className='button' onClick={this.play}> Play </button>
         <button className='button' onClick={this.add}> Добавить </button>
@@ -224,6 +280,17 @@ class App extends Component {
           <option value='7'>7</option>
           <option value='8'>8</option>
         </select>
+        <select value={this.state.tempo} onChange={this.tempoOnChange}>
+          <option value='50'>50</option>
+          <option value='60'>60</option>
+          <option value='70'>70</option>
+          <option value='80'>80</option>
+          <option value='90'>90</option>
+          <option value='100'>100</option>
+          <option value='110'>110</option>
+          <option value='120'>120</option>
+        </select>
+        <label> <input type="checkbox" checked={this.state.swing} onChange={this.swingOnChange} /> Swing</label>
         <Stave sections={this.state.sections} barsPerRow={this.state.barsPerRow} deleteSection={this.deleteSection} />
       </div>
     );
