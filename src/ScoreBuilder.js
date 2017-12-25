@@ -2,18 +2,18 @@ import Vex from 'vexflow'
 
 export default function buildScore(div, props) {
 
-    function buildNote(note) {
-        const noteObject = {
-            keys: note.keys,
-            duration: `${note.duration}${note.type === 'REST' ? 'r' : ''}`
-        }
+    // function buildNote(note) {
+    //     const noteObject = {
+    //         keys: note.keys,
+    //         duration: `${note.duration}${note.type === 'REST' ? 'r' : ''}`
+    //     }
 
-        if (note.clef !== undefined) {
-            noteObject.clef = note.clef;
-        }
-        return noteObject
+    //     if (note.clef !== undefined) {
+    //         noteObject.clef = note.clef;
+    //     }
+    //     return noteObject
 
-    }
+    // }
 
     function buildVoice(voice) {
 
@@ -26,7 +26,13 @@ export default function buildScore(div, props) {
 
 
         const vexNotes = voice.notes.map(note => {
-            const staveNote =  new VF.StaveNote(buildNote(note));
+            const staveNote = new VF.StaveNote(note);
+
+            if (note.id) {
+            //if (note.type !== 'REST') {
+                staveNote.setAttribute('id', note.id);
+            //}
+            }
 
             note.keys.forEach(function (key, i) {
                 const keyValue = key.split("/")[0];
@@ -72,7 +78,7 @@ export default function buildScore(div, props) {
         return vexVoices;
     }
 
-    const { index, data } = props;
+    const { index, data, id } = props;
     const VF = Vex.Flow;
 
     const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -103,13 +109,14 @@ export default function buildScore(div, props) {
     lineRight.setContext(context).draw();
 
 
+    //let notesIds = 100000;
     const voicesBeams = [];
     const voicesTuplets = [];
     const trebleStaveVoices = buildVoices(data.trebleVoices);
 
     const bassStaveVoices = buildVoices(data.bassVoices);
 
-    console.log(trebleStaveVoices);
+    //console.log(trebleStaveVoices);
 
 
     // Format and justify the notes to 500 pixels
@@ -121,7 +128,11 @@ export default function buildScore(div, props) {
     // the treble and bass are joined independently but formatted together
     formatter.joinVoices(trebleStaveVoices);
     formatter.joinVoices(bassStaveVoices);
+    console.log(formatter.preCalculateMinTotalWidth(trebleStaveVoices.concat(bassStaveVoices)));
+    //console.log(formatter.getMinTotalWidth());
     formatter.format(trebleStaveVoices.concat(bassStaveVoices), div.offsetWidth - (startX - 0));
+
+    console.log(formatter.getMinTotalWidth());
 
 
     // Render voices

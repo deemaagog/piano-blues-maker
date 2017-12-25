@@ -39,10 +39,65 @@ function getRandomSection() {
             trebleVoices: [
               {
                 notes: [
-                  { keys: ['E/4'], duration: '8', id: '', stem: 'up' },
-                  { keys: ['Bb/4', 'C/5'], duration: '8' },
-                  { keys: ['C/5'], duration: 'q', id: '', type: 'REST' },
-                  { keys: ['C/5'], duration: 'h', id: '', type: 'REST' },
+                  { keys: ['E/4'], duration: '8', id: generateId(), stem: 'up' },
+                  { keys: ['Bb/4', 'C/5'], duration: '8', id: generateId() },
+                  { keys: ['C/5'], duration: 'qr', id: generateId() },
+                  { keys: ['C/5'], duration: 'hr', id: generateId() },
+                ],
+                tuplets: [],
+                ties: []
+              }
+            ],
+            bassVoices: [
+              {
+                notes: [
+                  { keys: ['C/2'], duration: 'q', id: generateId(), clef: 'bass', stem: 'up' },
+                  { keys: ['G/2'], duration: '8', id: generateId(), clef: 'bass' },
+                  { keys: ['E/2'], duration: '8', id: generateId(), clef: 'bass' },
+                  { keys: ['G/2'], duration: 'q', id: generateId(), clef: 'bass' },
+                  { keys: ['E/2'], duration: '8', id: generateId(), clef: 'bass' },
+                  { keys: ['G/2'], duration: '8', id: generateId(), clef: 'bass' }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+function getRandomSectionTest() {
+  return {
+    id: generateId(),
+    presetId: '',
+    type: 'PROGRESSION',
+    phrases: [
+      {
+        id: generateId(),
+        type: 'I-I-I-I',
+        bars: [
+          {
+            id: generateId(),
+            trebleVoices: [
+              {
+                notes: [
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
+                  { keys: ['E/4'], duration: '16', id: '', stem: 'up' },
                 ],
                 tuplets: [],
                 ties: []
@@ -83,26 +138,26 @@ function getRandomBlues() {
               trebleVoices: [
                 {
                   notes: [
-                    { keys: ['b/4'], duration: 'q', id: '', type: 'REST' },
-                    { keys: ['E/4', 'G/4'], duration: '8' },
-                    { keys: ['C/5'], duration: '8' },
-                    { keys: ['E/4', 'G/4'], duration: '8' },
-                    { keys: ['Eb/4', 'Gb/4'], duration: '8' },
-                    { keys: ['C/5'], duration: '8' },
-                    { keys: ['Eb/4', 'Gb/4'], duration: '8' },
-                    { keys: ['d/4', 'f/4'], duration: '8' },
-                    { keys: ['C/5'], duration: '8' },
-                    { keys: ['d/4', 'f/4'], duration: '8' },
+                    { keys: ['b/4'], duration: 'qr', id: generateId() },
+                    { keys: ['E/4', 'G/4'], duration: '8', id: generateId() },
+                    { keys: ['C/5'], duration: '8', id: generateId() },
+                    { keys: ['E/4', 'G/4'], duration: '8', id: generateId() },
+                    { keys: ['Eb/4', 'Gb/4'], duration: '8', id: generateId() },
+                    { keys: ['C/5'], duration: '8', id: generateId() },
+                    { keys: ['Eb/4', 'Gb/4'], duration: '8', id: generateId() },
+                    { keys: ['d/4', 'f/4'], duration: '8', id: generateId() },
+                    { keys: ['C/5'], duration: '8', id: generateId() },
+                    { keys: ['d/4', 'f/4'], duration: '8', id : generateId() },
                   ],
                   beams: [
-                    {from: 1, to: 4},
-                    {from: 4, to: 7},
-                    {from: 7, to: 10}
+                    { from: 1, to: 4 },
+                    { from: 4, to: 7 },
+                    { from: 7, to: 10 }
                   ],
                   tuplets: [
-                    {from: 1, to: 4},
-                    {from: 4, to: 7},
-                    {from: 7, to: 10}
+                    { from: 1, to: 4 },
+                    { from: 4, to: 7 },
+                    { from: 7, to: 10 }
                   ],
                   ties: []
                 }
@@ -110,34 +165,34 @@ function getRandomBlues() {
               bassVoices: [
                 {
                   notes: [
-                    { keys: ['d/3'], duration: 'q', id: '', clef: 'bass', type: 'REST' },
-                    { keys: ['Bb/3'], duration: 'q', id: '', clef: 'bass' },
-                    { keys: ['A/3'], duration: 'q', id: '', clef: 'bass' },
-                    { keys: ['Ab/3'], duration: 'q', id: '', clef: 'bass' }
+                    { keys: ['d/3'], duration: 'qr', id: generateId(), clef: 'bass' },
+                    { keys: ['Bb/3'], duration: 'q', id: generateId(), clef: 'bass' },
+                    { keys: ['A/3'], duration: 'q', id: generateId(), clef: 'bass' },
+                    { keys: ['Ab/3'], duration: 'q', id: generateId(), clef: 'bass' }
                   ]
                 }
               ]
-            } ,
+            },
             {
               id: generateId(),
               trebleVoices: [
                 {
                   notes: [
-                    { keys: ['C/4', 'E/4'], duration: '8' },
-                    { keys: ['C/5'], duration: '8' },
-                    { keys: ['C/4', 'E/4'], duration: '8' },
-                    { keys: ['C/4', 'Eb/4'], duration: '8' },
-                    { keys: ['C/5'], duration: '8' },
-                    { keys: ['C/4', 'Eb/4'], duration: '8' },
-                    { keys: ['b/3', 'd/4'], duration: 'h' }
+                    { keys: ['C/4', 'E/4'], duration: '8', id: generateId() },
+                    { keys: ['C/5'], duration: '8' , id: generateId()},
+                    { keys: ['C/4', 'E/4'], duration: '8', id : generateId() },
+                    { keys: ['C/4', 'Eb/4'], duration: '8', id :generateId() },
+                    { keys: ['C/5'], duration: '8' , id: generateId()},
+                    { keys: ['C/4', 'Eb/4'], duration: '8', id: generateId() },
+                    { keys: ['b/3', 'd/4'], duration: 'h', id: generateId() }
                   ],
                   tuplets: [
-                    {from: 0, to: 3},
-                    {from: 3, to: 6},
+                    { from: 0, to: 3 },
+                    { from: 3, to: 6 },
                   ],
                   beams: [
-                    {from: 0, to: 3},
-                    {from: 3, to: 6},
+                    { from: 0, to: 3 },
+                    { from: 3, to: 6 },
                   ],
                   ties: []
                 }
@@ -145,13 +200,13 @@ function getRandomBlues() {
               bassVoices: [
                 {
                   notes: [
-                    { keys: ['g/3'], duration: 'q', id: '', clef: 'bass' },
-                    { keys: ['gb/3'], duration: 'q', id: '', clef: 'bass' },
-                    { keys: ['g/2','f/3'], duration: 'h', id: '', clef: 'bass' }
+                    { keys: ['g/3'], duration: 'q', id: generateId(), clef: 'bass' },
+                    { keys: ['ab/2', 'gb/3'], duration: 'q', id: generateId(), clef: 'bass' },
+                    { keys: ['g/2', 'f/3'], duration: 'h', id: generateId(), clef: 'bass' }
                   ]
                 }
               ]
-            } 
+            }
           ]
         }
       ]
@@ -195,24 +250,60 @@ class App extends Component {
     const timeDenominator = 60 / this.state.tempo;
     const nBeats = 4;
 
+
     function parceVoice(voice) {
+      const notesDurationDenominators = {};
       let offset = 0;
-      voice.notes.forEach((note) => {
-        const duration = durations[note.duration] * timeDenominator;
-        note.keys.forEach((key) => {
-          if (note.type !== 'REST') {
-            schedule.push({ note: key.replace('/', ''), duration: duration, time: currentTime + offset });
+
+      if (voice.tuplets) {
+        voice.tuplets.forEach(tuplet => {
+          const { from, to } = tuplet;
+          for (var x = from; x < to; x++) {
+            notesDurationDenominators[x] = 2 / (to - from);
           }
-        });
+
+        })
+      }
+
+      voice.notes.forEach((note, index) => {
+
+        const vexDuration = note.duration.toLowerCase();
+        const isRest = vexDuration.indexOf('r') !== -1;
+
+        
+
+        let duration = durations[isRest ? vexDuration.replace('r','') : vexDuration] * timeDenominator;
+        if (notesDurationDenominators[index]) {
+          duration = duration * notesDurationDenominators[index]
+        }
+        if (!isRest) {
+          note.keys.forEach((key) => {
+            schedule.push({ note: key.replace('/', ''), duration: duration, time: currentTime + offset, id: note.id });
+
+            if (note.id) {
+              (function (noteId) {
+                setTimeout(() => {
+                  const el = document.getElementById(noteId);
+                  //
+                  if (el !== null) {
+                    el.classList.add("currentNote");
+                    setTimeout(() => {
+                      el.classList.remove("currentNote");
+                    }, duration * 1000);
+                  }
+                }, (currentTime + offset) * 1000)
+              })(`vf-${note.id}`);
+            }
+          });
+        }
         offset = offset + duration;
-        console.log(this);
       });
     };
 
     this.state.sections.forEach((section) => {
       section.phrases.forEach((phrase) => {
         phrase.bars.forEach((bar) => {
-
+          //let notesIds = 100000;
           bar.trebleVoices.forEach((voice) => {
             parceVoice(voice);
           });
@@ -227,6 +318,14 @@ class App extends Component {
 
     //TODO: generate schedule
     this.instrument.schedule(0, schedule);
+
+
+
+
+
+    //this.instrument.on(function (eventName, when, obj, opts) {
+      //console.log('ended', eventName,when,obj,opts)
+    //})
   }
 
   deleteSection = (id) => {
@@ -236,6 +335,10 @@ class App extends Component {
 
   barsPerRowOnChange = (e) => {
     this.setState({ barsPerRow: e.target.value });
+  }
+
+  keyOnChange = (e) => {
+    this.setState({ key: e.target.value });
   }
 
   tempoOnChange = (e) => {
@@ -291,9 +394,40 @@ class App extends Component {
           <option value='120'>120</option>
         </select>
         <label> <input type="checkbox" checked={this.state.swing} onChange={this.swingOnChange} /> Swing</label>
+        <select value={this.state.key} onChange={this.keyOnChange}>
+          <option value='C'>C</option>
+          <option value='Db'>D♭</option>
+          <option value='D'>D</option>
+          <option value='Eb'>E♭</option>
+          <option value='E'>E</option>
+          <option value='F'>F</option>
+          <option value='Gb'>G♭</option>
+          <option value='G'>G</option>
+          <option value='Ab'>A♭</option>
+          <option value='A'>A</option>
+          <option value='Bb'>B♭</option>
+          <option value='B'>B</option>
+        </select>
         <Stave sections={this.state.sections} barsPerRow={this.state.barsPerRow} deleteSection={this.deleteSection} />
       </div>
     );
+  }
+}
+
+
+function t() {
+  // [1,2,3,4,5].forEach(x=>{
+  //   setTimeout(() => {
+  //     console.log(x)
+  //   }, 1000);
+  // })
+
+  for (var s = 0; s < 6; s++) {
+    (function () {
+      setTimeout(() => {
+        console.log(s)
+      }, 1000);
+    })()
   }
 }
 

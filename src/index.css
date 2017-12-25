@@ -113,7 +113,15 @@ body {
   background-color:  burlywood
 }
 
+.currentNote *  {
+  fill: rgba(36, 143, 107, 0.925);
+  /* stroke: red; */
+}
 
+/* .vf-stem  {
+  fill: black;
+  stroke: black;
+} */
 
 /* .Section:first-child >.Section-clef{
   background-color: green
