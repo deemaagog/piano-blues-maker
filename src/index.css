@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 body {
   margin: 0;
   padding: 0;
@@ -5,10 +7,42 @@ body {
 }
 
 
-
-.button {
-  width: 10%
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
 }
+
+.header {
+  background: #093255;
+  padding: 0 50px;
+  height: 64px;
+  line-height: 64px;
+  flex: 0 0 auto;
+}
+
+.main {
+  flex-direction: row;
+  display: flex;
+  flex: auto;
+}
+
+.structure {
+   min-height: calc(100vh - 64px);
+   width: 350px;
+   border-right: 1px solid #b1bac2;
+   background: #f6f6f6;
+   padding: 15px;
+}
+
+.sheet{
+  /* overflow-x: hidden; */
+  /* width: 80%; */
+}
+  
 
 .StaffRow {
   display: flex;
@@ -35,53 +69,6 @@ body {
   /* margin: 15px */
 }
 
-.Section-main:hover {
-  background-color: rgba(218, 199, 155,0.2);
-  /* opacity: 0.5 */
-}
-
-.Section-clef {
-  width: 35px;
-  flex: 0 0 35px;
-}
-.Section-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around
-}
-.Section-panel {
-  width: 35px;
-  flex: 0 0 35px;
-}
-
-.Section-panel-button {
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer
-}
-
-.deleteSection {
-  cursor: pointer;
-  background-color: #913105;
-  margin: auto;
-  color: white;
-  width: 25px;
-  height: 25px;
-  border-radius: 20%;
-  margin-top: 5px;
-}
-
-.addSection {
-  cursor: pointer;
-  background-color: cadetblue;
-  margin: auto;
-  color: white;
-  width: 25px;
-  height: 25px;
-  border-radius: 20%;
-  margin-top: 5px;
-}
 
 .col-1 {
   flex-basis: calc(100%)
@@ -109,8 +96,8 @@ body {
 }
 
 
-.handPattern {
-  background-color:  burlywood
+.button {
+  width: 10%
 }
 
 .currentNote *  {
