@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 // import './App.css';
-import Stave from './Stave'
 import SamplerLoader from './lib/SamplerLoader';
 import Instrument from './lib/Instrument';
 import Header from './Header'
 import Scheme from './Scheme'
 import Sheet from './Sheet'
+import Settings from './Settings'
 import sectionCollection from './randomSections'
 
-
+function generateId() {
+  return Math.random().toString(36).substr(2, 9);
+}
 
 // function getRandomNote() {
 //   const randomNotes = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4'];
@@ -38,12 +40,15 @@ class App extends Component {
     loading: true,
     sections: [sectionCollection[0]],
     tempo: 60,
-    barsPerRow: 3,
     key: 'C',
+    scale: 1,
     swing: true,
     instrument: 'piano',
     playing: false,
-    width: window.innerWidth
+    width: window.innerWidth,
+    intro: true,
+    ending: false,
+    showSettings: false
   };
 
   add = () => {
@@ -151,10 +156,10 @@ class App extends Component {
     this.setState({ sections: newSections });
   }
 
-  barsPerRowOnChange = (e) => {
-    this.setState({ barsPerRow: e.target.value });
+  toggleSettings = () => {
+    this.setState({showSettings: !this.state.showSettings});
   }
-
+ 
   keyOnChange = (value) => {
     this.setState({ key: value });
   }
@@ -201,16 +206,20 @@ class App extends Component {
   render() {
     console.log('app render');
 
+    // в Sheet всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал компонент
+    // https://stackoverflow.com/questions/21749798/how-can-i-reset-a-react-component-including-all-transitively-reachable-state
     return (
 
       <div className='app'>
-        <Header play={this.play}  swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange}  />
-        <div id = 'qwe' className='main'>
-          <Scheme deleteAll={this.deleteAll} add={this.add} sections={this.state.sections} keyOnChange={this.keyOnChange} signature={this.state.key} />
-          {/* <div className='sheet'>
-            <Stave sections={this.state.sections} barsPerRow={this.state.barsPerRow} deleteSection={this.deleteSection} />
-          </div> */}
-          <Sheet width = {this.state.width} sections={this.state.sections} signature={this.state.key} /> 
+        <Header play={this.play} toggleSettings={this.toggleSettings}/>
+        <div className='main'>
+          <Scheme deleteAll={this.deleteAll} add={this.add} sections={this.state.sections}  />
+          <Sheet width = {this.state.width} sections={this.state.sections} signature={this.state.key}  key = {generateId()} /> 
+          {/* {this.state.showSettings && <Settings toggleSettings={this.toggleSettings} 
+          keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} /> } */}
+        
+          <Settings visible = {this.state.showSettings} toggleSettings={this.toggleSettings} 
+          keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} />        
         </div>
       </div>
 

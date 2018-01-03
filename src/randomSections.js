@@ -176,6 +176,45 @@ randomSections.push(
   {
     id: generateId(),
     presetId: '',
+    type: 'ENDING',
+    phrases: [
+      {
+        id: generateId(),
+        type: 'I-I-I-I',
+        bars: [
+          {
+            id: generateId(),
+            trebleVoices: [
+              {
+                notes: [
+                  { keys: ['f/4','B/4','Eb/5'], duration: 'q', id: generateId(), stem: 'up' },
+                  { keys: ['E/4','Bb/4','D/5'], duration: 'h', id: generateId(), stem: 'up' },
+                  { keys: ['B/4'], duration: 'qr', id: generateId(), stem: 'up' }
+                ],
+                tuplets: [],
+                ties: []
+              }
+            ],
+            bassVoices: [
+              {
+                notes: [
+                  { keys: ['Db/2','Db/3'], duration: 'q', id: generateId(), clef: 'bass', stem: 'up' },
+                  { keys: ['C/2','C/3'], duration: 'h', id: generateId(), clef: 'bass', stem: 'up' },
+                  { keys: ['D/3'], duration: 'qr', id: generateId(), clef: 'bass', stem: 'up' }
+
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  });
+
+randomSections.push(
+  {
+    id: generateId(),
+    presetId: '',
     type: 'PROGRESSION',
     phrases: [
       {

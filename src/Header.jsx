@@ -1,36 +1,60 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
-import Button from 'antd/lib/button';  
-import Checkbox  from 'antd/lib/checkbox';
-import Slider from 'antd/lib/slider';
 
-const componentName = props => {
-    
+import play from './play.svg'
+import settings from './settings5.svg'
+
+const styles = {
+    backgroundColor: 'transparent',
+    backgroundImage: `url(${play})`,
+    backgroundSize: '100% 100%',
+    border: 0,
+    // padding: '8px 15px',
+    // color: 'white',
+    cursor: 'pointer'
+
+}
+
+const stylesSettings = {
+    backgroundColor: 'transparent',
+    backgroundImage: `url(${settings})`,
+    backgroundSize: '100% 100%',
+    border: 0,
+    // padding: '8px 15px',
+    // color: 'white',
+    cursor: 'pointer'
+
+}
+
+const Header = props => {
+
     const play = () => {
         props.play();
     }
 
-    const tempoOnChange = (value) => {
-        props.tempoOnChange(value);
+    const toggleSettings = () => {
+        props.toggleSettings();
     }
 
-    const swingOnChange = () => {
-        props.swingOnChange();
-    }
-    
     return (
         <div className='header'>
-          <Button onClick={play} icon="play-circle-o" type="primary" shape="circle" size='large'/>
-          
-          <Checkbox  checked={props.swing} onChange={swingOnChange}>Swing</Checkbox>
-          {/* <Slider  min={50} max={120} onChange={tempoOnChange} /> */}
+            <div className='logo-wrapper'>
+                <div className='logo'>
+
+                </div>
+            </div>
+            <div className='header-panel'>
+                <button style={styles} className='button-header' onClick={play} />
+
+                <button style={stylesSettings} className='button-header' onClick={toggleSettings} />
+            </div>
         </div>
     );
 };
 
-componentName.propTypes = {
-    
-};
+// Header.propTypes = {
 
-export default componentName;
+// };
+
+export default Header;

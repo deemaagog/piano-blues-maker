@@ -18,31 +18,92 @@ body {
 
 .header {
   background: #093255;
-  padding: 0 50px;
+  /* padding: 0 50px; */
   height: 64px;
   line-height: 64px;
-  flex: 0 0 auto;
+  /* flex: 0 0 auto; */
+  display: flex;
+  align-items: center;
+  z-index: 300;
+}
+
+.header-panel {
+  display: flex;
+  align-items: center;
+  z-index: 300;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 50px;
 }
 
 .main {
   flex-direction: row;
   display: flex;
-  flex: auto;
+  /* flex: auto; */
 }
 
 .structure {
    min-height: calc(100vh - 64px);
-   width: 350px;
+   /* width: 350px; */
+   flex: 0 0 350px;
    border-right: 1px solid #b1bac2;
    background: #f6f6f6;
    padding: 15px;
 }
 
+.logo-wrapper {
+  flex: 0 0 350px;
+  height: 100%;
+  padding: 0 50px;
+}
+
+.logo {
+  background: transparent url(./logo.png) no-repeat center center;
+  background-size: 100% auto;
+  height: 100%;
+}
+
 .sheet{
   /* overflow-x: hidden; */
-  /* width: 80%; */
 }
   
+#settings{
+  position: fixed;
+  right: 0;
+  z-index: 100;
+  width: 350px;
+  overflow: auto;
+  background: #093255;
+  color: #F2EFF6;
+  top: 0;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform 400ms ease-in;
+}
+
+#settings.slideOut {
+  transform: translateX(350px);
+}
+#settings.slideIn {
+  transform: translateX(0);
+}
+
+.button-header {
+  height: 32px;
+  width: 32px;
+}
+
+button:focus {outline:0;}
+
+.settings-header {
+  padding: 20px 20px;
+  background: #568ab4;
+  color: #fff;
+  position: relative;
+  margin-top: 64px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 .StaffRow {
   display: flex;
