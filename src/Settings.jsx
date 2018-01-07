@@ -62,7 +62,8 @@ class Settings extends Component {
 }
 
 Settings.propTypes = {
-
+    signature: PropTypes.string,
+    swing: PropTypes.bool
 };
 
 export default Settings;

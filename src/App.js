@@ -7,6 +7,7 @@ import Scheme from './Scheme'
 import Sheet from './Sheet'
 import Settings from './Settings'
 import sectionCollection from './randomSections'
+import presets from './presets.json'
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9);
@@ -23,6 +24,25 @@ function getRandomSection() {
   return sectionCollection[rand];
 }
 
+function createNewSection() {
+  const {phrases:lhPhrases, ...leftHand} = presets.leftHandPatterns[0];
+  const {phrases:rhPhrases, ...rightHand} = presets.rightHandPatterns[0];
+
+  lhPhrases.forEach((lhPhrase, phraseIndex) => {
+    lhPhrase.bars.forEach((bar, barIndex) => {
+      bar.trebleVoices = rhPhrases[phraseIndex].bars[barIndex].trebleVoices;
+    })
+  })
+
+  return {
+    id: generateId(),
+    type: 'PROGRESSION',
+    leftHand,
+    rightHand,
+    phrases: lhPhrases
+  }
+}
+
 const durations = {
   '32': 0.125,
   '16': 0.25,
@@ -34,11 +54,9 @@ const durations = {
 
 class App extends Component {
 
-
-
   state = {
     loading: true,
-    sections: [sectionCollection[0]],
+    sections: [],
     tempo: 60,
     key: 'C',
     scale: 1,
@@ -46,13 +64,13 @@ class App extends Component {
     instrument: 'piano',
     playing: false,
     width: window.innerWidth,
-    intro: true,
-    ending: false,
+    intro: presets.intros[0],
+    ending: undefined,
     showSettings: false
   };
 
   add = () => {
-    this.setState({ sections: [...this.state.sections, getRandomSection()] })
+    this.setState({ sections: [...this.state.sections, createNewSection()] })
   }
 
   deleteAll = () => {
@@ -176,6 +194,16 @@ class App extends Component {
     this.setState({ width: window.innerWidth});
   }
 
+  introOnChange = (id) => {
+    const newIntro = (id === null ? undefined : presets.intros.find((intro) => { return intro.id === id }));
+    this.setState({ intro: newIntro});
+  }
+
+  endingOnChange = (id) => {
+    const newEnding = (id === null ? undefined : presets.endings.find((ending) => { return ending.id === id }));
+    this.setState({ ending: newEnding});
+  }
+
   componentWillMount() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const ac = new AudioContext();
@@ -206,6 +234,8 @@ class App extends Component {
   render() {
     console.log('app render');
 
+    const blues = [this.state.intro,...this.state.sections,this.state.ending];
+
     // в Sheet всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал компонент
     // https://stackoverflow.com/questions/21749798/how-can-i-reset-a-react-component-including-all-transitively-reachable-state
     return (
@@ -213,8 +243,16 @@ class App extends Component {
       <div className='app'>
         <Header play={this.play} toggleSettings={this.toggleSettings}/>
         <div className='main'>
-          <Scheme deleteAll={this.deleteAll} add={this.add} sections={this.state.sections}  />
-          <Sheet width = {this.state.width} sections={this.state.sections} signature={this.state.key}  key = {generateId()} /> 
+          <Scheme 
+           deleteAll={this.deleteAll}
+           add={this.add} 
+           sections={this.state.sections}
+           intro = {this.state.intro === undefined ? undefined :{value: this.state.intro.id, label: this.state.intro.description}}
+           introOnChange = {this.introOnChange}
+           ending = {this.state.ending === undefined ? undefined :{value: this.state.ending.id, label: this.state.ending.description}}
+           endingOnChange = {this.endingOnChange} 
+          />
+          <Sheet width = {this.state.width} sections={blues} signature={this.state.key}  key = {generateId()} /> 
           {/* {this.state.showSettings && <Settings toggleSettings={this.toggleSettings} 
           keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} /> } */}
         

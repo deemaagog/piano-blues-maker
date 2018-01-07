@@ -1,0 +1,1202 @@
+{
+  "intros": [
+    {
+      "id": 0,
+      "description": "Descending diminished chords",
+      "phrases": [
+        {
+          "id": "",
+          "type": "",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["b/4"], "duration": "qr" },
+                    { "keys": ["E/4", "G/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["E/4", "G/4"], "duration": "8" },
+                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["d/4", "f/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["d/4", "f/4"], "duration": "8" }
+                  ],
+                  "beams": [
+                    { "from": 1, "to": 4 },
+                    { "from": 4, "to": 7 },
+                    { "from": 7, "to": 10 }
+                  ],
+                  "tuplets": [
+                    { "from": 1, "to": 4 },
+                    { "from": 4, "to": 7 },
+                    { "from": 7, "to": 10 }
+                  ],
+                  "ties": []
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["d/3"], "duration": "qr", "clef": "bass" },
+                    { "keys": ["Bb/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["A/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["Ab/3"], "duration": "q", "clef": "bass" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/4", "E/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["C/4", "E/4"], "duration": "8" },
+                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
+                    { "keys": ["b/3", "d/4"], "duration": "h" }
+                  ],
+                  "tuplets": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 }
+                  ],
+                  "beams": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 }
+                  ],
+                  "ties": []
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["g/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["ab/2", "gb/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["g/2", "f/3"], "duration": "h", "clef": "bass" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "description": "Another intro (test)",
+      "phrases": [
+        {
+          "id": "",
+          "type": "",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["b/4"], "duration": "qr" },
+                    { "keys": ["E/4", "G/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["E/4", "G/4"], "duration": "8" },
+                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["d/4", "f/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["d/4", "f/4"], "duration": "8" }
+                  ],
+                  "beams": [
+                    { "from": 1, "to": 4 },
+                    { "from": 4, "to": 7 },
+                    { "from": 7, "to": 10 }
+                  ],
+                  "tuplets": [
+                    { "from": 1, "to": 4 },
+                    { "from": 4, "to": 7 },
+                    { "from": 7, "to": 10 }
+                  ],
+                  "ties": []
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["d/3"], "duration": "qr", "clef": "bass" },
+                    { "keys": ["Bb/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["A/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["Ab/3"], "duration": "q", "clef": "bass" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/4", "E/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["C/4", "E/4"], "duration": "8" },
+                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
+                    { "keys": ["C/5"], "duration": "8" },
+                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
+                    { "keys": ["b/3", "d/4"], "duration": "h" }
+                  ],
+                  "tuplets": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 }
+                  ],
+                  "beams": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 }
+                  ],
+                  "ties": []
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["g/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["ab/2", "gb/3"], "duration": "q", "clef": "bass" },
+                    { "keys": ["g/2", "f/3"], "duration": "h", "clef": "bass" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": 100,
+      "description": "Descending dominant ninth chords",
+      "phrases": [
+        {
+          "id": "",
+          "type": "",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["f/4","B/4","Eb/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["E/4","Bb/4","D/5"], "duration": "h", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["Db/2","Db/3"], "duration": "q", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2","C/3"], "duration": "h", "clef": "bass", "stem": "up" },
+                    { "keys": ["D/3"], "duration": "qr", "clef": "bass", "stem": "up" }
+  
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }  
+  ],
+  "leftHandPatterns": [
+    {
+      "id": 200,
+      "description": "Blank",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["D/3"], "duration": "wr", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 201,
+      "description": "Basic (5th & 6th intervals)",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","A/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "description": "Chicago",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2","C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3","G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rightHandPatterns": [
+    {
+      "id": 300,
+      "description": "Blank",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "wr"}
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        }
+      ]  
+    },
+    {
+      "id": 301,
+      "description": "Boogie style (chords)",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["eb/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["eb/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["eb/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["eb/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["f/4","a/4","b/4","d/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4","a/4","b/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["f/4","a/4","b/4","d/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4","a/4","b/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "tuplets": [],
+                  "ties": []
+                }
+              ]
+            }
+          ]
+        }
+      ]  
+    }
+  ]
+}

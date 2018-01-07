@@ -3,7 +3,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: "Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 
@@ -42,13 +45,18 @@ body {
   /* flex: auto; */
 }
 
-.structure {
+.scheme-wrapper {
    min-height: calc(100vh - 64px);
    /* width: 350px; */
    flex: 0 0 350px;
    border-right: 1px solid #b1bac2;
    background: #f6f6f6;
    padding: 15px;
+   
+}
+
+.scheme {
+  margin-top: 15px
 }
 
 .logo-wrapper {
@@ -78,7 +86,8 @@ body {
   top: 0;
   height: 100%;
   transform: translateX(0);
-  transition: transform 400ms ease-in;
+  /* transition: transform 400ms ease-in; */
+  transition: transform 300ms linear;
 }
 
 #settings.slideOut {
@@ -105,60 +114,52 @@ button:focus {outline:0;}
   letter-spacing: 1px;
 }
 
-.StaffRow {
-  display: flex;
-  justify-content: flex-start;
-  /* background-color: rgb(184, 179, 179); */
-  margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50px;
-  height: 220px;
-  /* border: 1px solid rgb(41, 41, 41); */
+.section {
+  /* display: flex; */
+  background-color: #fafafa;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  /* border-bottom: 0; */
+  line-height: 22px;
+  /* padding: 12px 0 12px 20px; */
+  color: rgba(0, 0, 0, 0.85);
+  /* cursor: pointer; */
 }
 
-
-
-
-.Section {
-  display: flex
-  /* width: 50%; */
-  /* height: 50px; */
-  /* background: wheat; */
-  /* border-color: rgb(41, 41, 41); */
-  /* border-width: 0 1px; */
-  /* border-style: solid; */
-  /* margin: 15px */
+.section-type {
+  padding: 12px 0 12px 20px;
+  cursor: pointer;
+}
+.section-details {
+  /* display: flex; */
+  background-color: #ffffff;
+  /* border-radius: 4px; */
+  /* border: 1px solid #d9d9d9; */
+  /* border-bottom: 0; */
+  border-top: 1px solid #d9d9d9;
+  line-height: 22px;
+  padding: 12px 20px 12px 20px;
+  color: rgba(0, 0, 0, 0.85);
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  /* cursor: pointer; */
 }
 
-
-.col-1 {
-  flex-basis: calc(100%)
-}
-.col-2 {
-  flex-basis: calc(50%)
-}
-.col-3 {
-  flex-basis: calc(33.333%)
-}
-.col-4 {
-  flex-basis: calc(25%)
-}
-.col-5 {
-  flex-basis: calc(20%)
-}
-.col-6 {
-  flex-basis: calc(16.666%)
-}
-.col-7 {
-  flex-basis: calc(14.286%)
-}
-.col-8 {
-  flex-basis: calc(12.5%)
+i.section-opened:before {
+  font-family: FontAwesome;
+  content: "\f0d7";
+  display: inline-block;
+  padding-right: 12px;
+  font-style: normal
 }
 
-
-.button {
-  width: 10%
+i.section-closed:before {
+  font-family: FontAwesome;
+  content: "\f0da";
+  display: inline-block;
+  padding-right: 15px;
+  /* vertical-align: middle; */
+  font-style: normal
 }
 
 .currentNote *  {
@@ -166,29 +167,27 @@ button:focus {outline:0;}
   /* stroke: red; */
 }
 
-/* .vf-stem  {
-  fill: black;
-  stroke: black;
+.select-intro .Select-placeholder {
+  padding-left: 20px;
+  top: 5px;
+}
+
+/* .select-intro .Select--single > .Select-control .Select-value {
+  padding-left: 20px;
+  top: 5px;
 } */
-
-/* .Section:first-child >.Section-clef{
-  background-color: green
-}
-.Section:first-child >.Section-main{
-  background-color: red
-}
-.Section:first-child >.Section-panel{
-  background-color: yellow
+.select-intro  > .Select-control .Select-value {
+  padding-left: 20px;
+  top: 5px;
 }
 
-.Section:last-child >.Section-clef{
-  background-color: fuchsia
+.select-intro .Select-control {
+  height: 46px;
 }
-.Section:last-child >.Section-main{
-  background-color: royalblue
-}
-.Section:last-child >.Section-panel{
+
+
+/* .Section:last-child >.Section-panel{
   background-color: chartreuse
-} */
+}  */
 
 /* http://jsfiddle.net/QPrk3/ */

@@ -125,10 +125,10 @@ class Sheet extends PureComponent {
         trebleStave.setNoteStartX(startX);
         bassStave.setNoteStartX(startX);
 
-        b.formatter.format(b.trebleStaveVoices.concat(b.bassStaveVoices), barWidth 
-         + (index === 0 ? FIRST_BAR_ADDITIONAL_WIDTH / 3 : 0)  // ??? временно, переделать
-         - (startX - 0)  
-         - EXTRA_SPACE
+        b.formatter.format(b.trebleStaveVoices.concat(b.bassStaveVoices), barWidth
+          + (index === 0 ? FIRST_BAR_ADDITIONAL_WIDTH / 3 : 0)  // ??? временно, переделать
+          - (startX - 0)
+          - EXTRA_SPACE
         );
 
         // Render voices
@@ -163,56 +163,58 @@ class Sheet extends PureComponent {
     // let sheetHeight = 0;
 
     sections.forEach((section) => {
-      section.phrases.forEach((phrase) => {
-        phrase.bars.forEach((bar) => {
+      if (section !== undefined) {
+        section.phrases.forEach((phrase) => {
+          phrase.bars.forEach((bar) => {
 
-          const trebleStaveVoices = buildVoices(bar.trebleVoices);
+            const trebleStaveVoices = buildVoices(bar.trebleVoices);
 
-          const bassStaveVoices = buildVoices(bar.bassVoices);
+            const bassStaveVoices = buildVoices(bar.bassVoices);
 
-          const formatter = new VF.Formatter();
+            const formatter = new VF.Formatter();
 
-          formatter.joinVoices(trebleStaveVoices);
-          formatter.joinVoices(bassStaveVoices);
+            formatter.joinVoices(trebleStaveVoices);
+            formatter.joinVoices(bassStaveVoices);
 
-          const allVoicesTogether = trebleStaveVoices.concat(bassStaveVoices);
-          const minTotalWidth = Math.ceil(formatter.preCalculateMinTotalWidth(allVoicesTogether) * COEFFICIENT);
-          const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH) + EXTRA_SPACE+ (currentRowBars.length !== 0 ? 0 : FIRST_BAR_ADDITIONAL_WIDTH);
-
-
+            const allVoicesTogether = trebleStaveVoices.concat(bassStaveVoices);
+            const minTotalWidth = Math.ceil(formatter.preCalculateMinTotalWidth(allVoicesTogether) * COEFFICIENT);
+            const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH) + EXTRA_SPACE + (currentRowBars.length !== 0 ? 0 : FIRST_BAR_ADDITIONAL_WIDTH);
 
 
-          if (currentWidth + barWidth < sheetWidth) {
-            console.log(barWidth);
-            currentWidth += barWidth;
-            currentRowBars.push({
-              bar,
-              barWidth,
-              formatter,
-              trebleStaveVoices,
-              bassStaveVoices
-            });
-            widthArray.push(barWidth);
-          } else {
-            // new stave row
-            // draw current row and begin new row 
-            const widthRest = sheetWidth - currentWidth;
-            drawGrandStaveRow(currentRowBars, widthArray, rowsCounter, widthRest);
-            rowsCounter++;
-            currentWidth = barWidth + FIRST_BAR_ADDITIONAL_WIDTH;
-            currentRowBars.length = 0;
-            widthArray.length = 0;
-            widthArray.push(barWidth + FIRST_BAR_ADDITIONAL_WIDTH);
-            currentRowBars.push({
-              bar,
-              barWidth: barWidth + FIRST_BAR_ADDITIONAL_WIDTH,
-              formatter,
-              trebleStaveVoices,
-              bassStaveVoices
-            });
-          }
+
+
+            if (currentWidth + barWidth < sheetWidth) {
+              console.log(barWidth);
+              currentWidth += barWidth;
+              currentRowBars.push({
+                bar,
+                barWidth,
+                formatter,
+                trebleStaveVoices,
+                bassStaveVoices
+              });
+              widthArray.push(barWidth);
+            } else {
+              // new stave row
+              // draw current row and begin new row 
+              const widthRest = sheetWidth - currentWidth;
+              drawGrandStaveRow(currentRowBars, widthArray, rowsCounter, widthRest);
+              rowsCounter++;
+              currentWidth = barWidth + FIRST_BAR_ADDITIONAL_WIDTH;
+              currentRowBars.length = 0;
+              widthArray.length = 0;
+              widthArray.push(barWidth + FIRST_BAR_ADDITIONAL_WIDTH);
+              currentRowBars.push({
+                bar,
+                barWidth: barWidth + FIRST_BAR_ADDITIONAL_WIDTH,
+                formatter,
+                trebleStaveVoices,
+                bassStaveVoices
+              });
+            }
+          });
         });
-      });
+      };
     });
     drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
 

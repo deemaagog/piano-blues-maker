@@ -1,75 +1,41 @@
 import React, { Component } from 'react';
-import clef from './clef.jpeg'
-import middle from './middle.jpeg'
-import end from './end.jpeg'
 
 import LeftHandSection from './LeftHandSection'
 import RightHandSection from './RightHandSection'
 
-// const bgStyle = {
-//     backgroundImage: 'url(' + clef + '), url('+ middle + ')',
-//     backgroundRepeat: 'no-repeat, repeat',
-//     backgroundSize: '35px 100%'
-// }
-
-const bgStyleMain = {
-  backgroundImage: `url(${middle})`,
-  backgroundRepeat: 'repeat'
-}
-
-const bgStylePanel = {
-  backgroundImage: `url(${end})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: '35px'
-}
 
 class Section extends Component {
 
-  getBgStyleClef = () => {
-    return ({
-      backgroundImage: `url(${this.props.index === 0 ? clef : middle})`,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: '35px'
-    })
+  state = {
+    isOpened: false
   }
 
   delete = () => {
     this.props.deleteSection(this.props.id);
   }
 
-  add = () =>{
+  add = () => {
 
   }
 
-  componentDidMount() {
-    console.log(`did mount ${this.props.id}`);
-  }
-
-  componentDidUpdate() {
-    console.log(`did update ${this.props.id}`);
+  open = () => {
+    this.setState({isOpened: !this.state.isOpened});
   }
 
   render() {
-    console.log(`render ${this.props.id}`);
-    const classNames = `Section col-${this.props.sectionsPerRow}`;
+    //console.log(`render ${this.props.id}`);
     return (
-      <div className={classNames}>
-        <div style={this.getBgStyleClef()} className='Section-clef'> </div>
-        <div style={bgStyleMain} className='Section-main'>
-          <RightHandSection />
-          <LeftHandSection />
-        </div>
-        <div style={bgStylePanel} className='Section-panel'>
-          <div className='deleteSection' onClick={this.delete}>
-            <span className='Section-panel-button fa fa-close' />
+      <div className='section' >
+        <div className='section-type' onClick={this.open}>
+         <i className={this.state.isOpened?'section-opened':'section-closed'} /> 
+         {this.props.children}
+        </div> 
+        {this.state.isOpened && 
+          <div className='section-details'>
+            <RightHandSection />
+            <LeftHandSection />
           </div>
-          <div className='addSection' onClick={this.add}>
-            <span className='Section-panel-button fa fa-arrow-right' />
-          </div>
-          <div className='addSection' onClick={this.add}>
-            <span className='Section-panel-button fa fa-arrow-left' />
-          </div>
-        </div>
+        }
       </div>
     );
   }
