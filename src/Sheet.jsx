@@ -12,6 +12,10 @@ const PADDING_LEFT = 50;
 const EXTRA_SPACE = 20;
 const COEFFICIENT = 1;
 
+function generateId() {
+  return Math.random().toString(36).substr(2, 9);
+}
+
 function disributeValue(arr, value, precision) {
   const sum = arr.reduce((sum, value) => sum + value, 0);
 
@@ -108,7 +112,7 @@ class Sheet extends PureComponent {
         if (index === 0) {
           trebleStave.addClef("treble").addTimeSignature("4/4").addKeySignature(signature);
           bassStave.addClef("bass").addTimeSignature("4/4").addKeySignature(signature);
-          // trebleStave.setMeasure(5);
+          //trebleStave.setMeasure(5);
         }
 
         const lineLeft = new VF.StaveConnector(trebleStave, bassStave).setType(1);
@@ -140,10 +144,15 @@ class Sheet extends PureComponent {
 
     }
 
+
+
     const { width, signature, sections } = this.props;
+
+    const bluesSections = [this.props.intro,...this.props.sections,this.props.ending];
+
     const svgWidth = width - SCHEME_WIDTH;
     const sheetWidth = svgWidth - PADDING_LEFT * 2;
-    console.log(sheetWidth);
+    // console.log(sheetWidth);
 
     const VF = Vex.Flow;
     const renderer = new VF.Renderer(this.sheetContainer, VF.Renderer.Backends.SVG);
@@ -162,7 +171,7 @@ class Sheet extends PureComponent {
     const widthArray = [];
     // let sheetHeight = 0;
 
-    sections.forEach((section) => {
+    bluesSections.forEach((section) => {
       if (section !== undefined) {
         section.phrases.forEach((phrase) => {
           phrase.bars.forEach((bar) => {
@@ -184,7 +193,7 @@ class Sheet extends PureComponent {
 
 
             if (currentWidth + barWidth < sheetWidth) {
-              console.log(barWidth);
+              // console.log(barWidth);
               currentWidth += barWidth;
               currentRowBars.push({
                 bar,
@@ -232,17 +241,19 @@ class Sheet extends PureComponent {
   }
 
   componentDidMount() {
+    console.log('sheet did mount');
     this.drawSheet();
   }
 
   componentDidUpdate() {
-    // console.log('sheet did update');
+    console.log('sheet did update');
     this.drawSheet();
   }
 
   render() {
+    console.log('sheet render');
     return (
-      <div className='sheet' ref={(x) => this.sheetContainer = x} />
+      <div className='sheet' ref={(x) => this.sheetContainer = x} key = {generateId()} />
     );
   }
 }

@@ -22,6 +22,10 @@ class Section extends Component {
     this.setState({isOpened: !this.state.isOpened});
   }
 
+  HandPatternOnChange = (patternId, hand) => {
+    this.props.HandPatternOnChange(this.props.section.id, patternId, hand);
+  }
+
   render() {
     //console.log(`render ${this.props.id}`);
     return (
@@ -32,8 +36,8 @@ class Section extends Component {
         </div> 
         {this.state.isOpened && 
           <div className='section-details'>
-            <RightHandSection />
-            <LeftHandSection />
+            <RightHandSection pattern={this.props.section.rightHand} patternOnChange={this.HandPatternOnChange}/>
+            <LeftHandSection pattern={this.props.section.leftHand} patternOnChange={this.HandPatternOnChange}/>
           </div>
         }
       </div>

@@ -7,7 +7,7 @@ import Scheme from './Scheme'
 import Sheet from './Sheet'
 import Settings from './Settings'
 import sectionCollection from './randomSections'
-import presets from './presets.json'
+import presets ,{intros, endings, leftHandPatterns , rightHandPatterns} from './presets.json'
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9);
@@ -25,8 +25,8 @@ function getRandomSection() {
 }
 
 function createNewSection() {
-  const {phrases:lhPhrases, ...leftHand} = presets.leftHandPatterns[0];
-  const {phrases:rhPhrases, ...rightHand} = presets.rightHandPatterns[0];
+  const {phrases:lhPhrases, ...leftHand} = leftHandPatterns[0];
+  const {phrases:rhPhrases, ...rightHand} = rightHandPatterns[0];
 
   lhPhrases.forEach((lhPhrase, phraseIndex) => {
     lhPhrase.bars.forEach((bar, barIndex) => {
@@ -64,7 +64,7 @@ class App extends Component {
     instrument: 'piano',
     playing: false,
     width: window.innerWidth,
-    intro: presets.intros[0],
+    intro: intros[0],
     ending: undefined,
     showSettings: false
   };
@@ -119,7 +119,7 @@ class App extends Component {
         }
         if (!isRest) {
           note.keys.forEach((key) => {
-            schedule.push({ note: key.replace('/', ''), duration: duration, time: currentTime + offset, id: note.id });
+            schedule.push({ note: key.replace('/', '').replace('n', ''), duration: duration, time: currentTime + offset, id: note.id });
 
             if (note.id) {
               (function (noteId) {
@@ -195,14 +195,36 @@ class App extends Component {
   }
 
   introOnChange = (id) => {
-    const newIntro = (id === null ? undefined : presets.intros.find((intro) => { return intro.id === id }));
+    const newIntro = (id === null ? undefined : intros.find((intro) => { return intro.id === id }));
     this.setState({ intro: newIntro});
   }
 
   endingOnChange = (id) => {
-    const newEnding = (id === null ? undefined : presets.endings.find((ending) => { return ending.id === id }));
+    const newEnding = (id === null ? undefined : endings.find((ending) => { return ending.id === id }));
     this.setState({ ending: newEnding});
   }
+
+  HandPatternOnChange = (sectionId,patternId, hand) => {
+    // иммутабельно меняем массив секций
+
+    const voicesObjectName = (hand === 'left' ? 'bassVoices' : 'trebleVoices');
+
+    const {phrases, ...patternObject} = presets[`${hand}HandPatterns`].find((pattern) => {return pattern.id === patternId });
+    const newSections = this.state.sections.map(section => {
+         if (section.id === sectionId ) {
+            const newPhrases = section.phrases.map((phrase, phraseIndex) => {
+               const newBars = phrase.bars.map((bar, barIndex) => {
+                //return {...bar, ...{bassVoices:phrases[phraseIndex].bars[barIndex].bassVoices}}
+                return {...bar, ...{[voicesObjectName]:phrases[phraseIndex].bars[barIndex][voicesObjectName]}}
+               })
+               return {...phrase, ...{bars:newBars}} 
+            })
+            return {...section, ...{[`${hand}Hand`]:patternObject} , ...{phrases: newPhrases}}  
+         }
+         return section;
+    });
+    this.setState({sections: newSections});
+  } 
 
   componentWillMount() {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -234,7 +256,7 @@ class App extends Component {
   render() {
     console.log('app render');
 
-    const blues = [this.state.intro,...this.state.sections,this.state.ending];
+    // const blues = [this.state.intro,...this.state.sections,this.state.ending];
 
     // в Sheet всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал компонент
     // https://stackoverflow.com/questions/21749798/how-can-i-reset-a-react-component-including-all-transitively-reachable-state
@@ -251,8 +273,10 @@ class App extends Component {
            introOnChange = {this.introOnChange}
            ending = {this.state.ending === undefined ? undefined :{value: this.state.ending.id, label: this.state.ending.description}}
            endingOnChange = {this.endingOnChange} 
+           HandPatternOnChange = {this.HandPatternOnChange}
           />
-          <Sheet width = {this.state.width} sections={blues} signature={this.state.key}  key = {generateId()} /> 
+          {/* <Sheet width = {this.state.width} sections={blues} signature={this.state.key}   />  */}
+          <Sheet width = {this.state.width} intro = {this.state.intro} sections={this.state.sections} ending={this.state.ending} signature={this.state.key}   />
           {/* {this.state.showSettings && <Settings toggleSettings={this.toggleSettings} 
           keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} /> } */}
         

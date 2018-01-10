@@ -29,6 +29,7 @@ function endingRenderer(option) {
   return `ENDING: ${option.label}`
 }
 
+
 // const Panel = Collapse.Panel;
 // const Option = Select.Option;
 
@@ -51,6 +52,10 @@ class Scheme extends Component {
   endingOnChange = (option) => {
     this.props.endingOnChange(option === null ? null : option.value);
   }
+
+  // leftHandPatternOnChange = (sectionId,patternId) => {
+  //   this.props.leftHandPatternOnChange(sectionId,patternId);
+  // }
 
   render() {
 
@@ -85,7 +90,7 @@ class Scheme extends Component {
 
           {this.props.sections.map((s, index) => {
             return (
-              <Section key={index}>
+              <Section key={index} section = {s} HandPatternOnChange = {this.props.HandPatternOnChange}>
                 {s.type}
               </Section>
             )

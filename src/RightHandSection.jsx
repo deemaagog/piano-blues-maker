@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+import {rightHandPatterns} from './presets.json'
 
-class RightHandSection extends Component {
+const patterns = rightHandPatterns.map(preset => {
+    return { value: preset.id, label: preset.description }
+})
+
+class RightHandsection extends Component {
+
+    handleChange = (pattern) => {
+        this.props.patternOnChange(pattern.value,'right');
+    }
+
     render() {
+        const { id, description } = this.props.pattern;
+
         return (
-            <div>
-               <input className='handPattern' type="text" placeholder='Right hand pattern'/> 
-            </div>
+            <Select
+                placeholder = 'Right hand pattern'
+                name="rh"
+                value={{value: id, label: description}}
+                onChange={this.handleChange}
+                options={patterns}
+                clearable = {false}
+            />
         );
     }
 }
 
-export default RightHandSection;
+export default RightHandsection;

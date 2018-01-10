@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-// import 'react-select/dist/react-select.css';
+import {leftHandPatterns} from './presets.json'
+
+const patterns = leftHandPatterns.map(preset => {
+    return { value: preset.id, label: preset.description }
+})
 
 class LeftHandsection extends Component {
 
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption });
-        console.log(`Selected: ${selectedOption.label}`);
+    handleChange = (pattern) => {
+        this.props.patternOnChange(pattern.value,'left');
     }
 
     render() {
-        const { id } = this.props;
+        const { id, description } = this.props.pattern;
 
         return (
             <Select
                 placeholder = 'Left hand pattern'
                 name="lh"
-                value={id}
+                value={{value: id, label: description}}
                 onChange={this.handleChange}
-                options={[
-                    { value: '123', label: 'Classic' },
-                    { value: '234', label: 'Chicago shuffle' },
-                ]}
+                options={patterns}
+                clearable = {false}
             />
         );
     }

@@ -28,6 +28,8 @@ body {
   display: flex;
   align-items: center;
   z-index: 300;
+  position: fixed;
+  width: 100%;
 }
 
 .header-panel {
@@ -43,6 +45,7 @@ body {
   flex-direction: row;
   display: flex;
   /* flex: auto; */
+  margin-top: 64px
 }
 
 .scheme-wrapper {
@@ -129,6 +132,8 @@ button:focus {outline:0;}
 .section-type {
   padding: 12px 0 12px 20px;
   cursor: pointer;
+  user-select: none;
+
 }
 .section-details {
   /* display: flex; */
