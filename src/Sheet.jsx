@@ -146,7 +146,7 @@ class Sheet extends PureComponent {
 
 
 
-    const { width, signature, sections } = this.props;
+    const { width, signature } = this.props;
 
     const bluesSections = [this.props.intro,...this.props.sections,this.props.ending];
 

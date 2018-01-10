@@ -6,27 +6,15 @@ import Header from './Header'
 import Scheme from './Scheme'
 import Sheet from './Sheet'
 import Settings from './Settings'
-import sectionCollection from './randomSections'
-import presets ,{intros, endings, leftHandPatterns , rightHandPatterns} from './presets.json'
+import presets ,{intros, endings} from './presets.json'
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
-// function getRandomNote() {
-//   const randomNotes = ['C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4'];
-//   const rand = Math.floor(Math.random() * (randomNotes.length - 0)) + 0
-//   return randomNotes[rand];
-// }
-
-function getRandomSection() {
-  const rand = Math.floor(Math.random() * (sectionCollection.length - 0)) + 0
-  return sectionCollection[rand];
-}
-
 function createNewSection() {
-  const {phrases:lhPhrases, ...leftHand} = leftHandPatterns[0];
-  const {phrases:rhPhrases, ...rightHand} = rightHandPatterns[0];
+  const {phrases:lhPhrases, ...leftHand} = presets.leftHandPatterns[0];
+  const {phrases:rhPhrases, ...rightHand} = presets.rightHandPatterns[0];
 
   lhPhrases.forEach((lhPhrase, phraseIndex) => {
     lhPhrase.bars.forEach((bar, barIndex) => {
@@ -160,10 +148,6 @@ class App extends Component {
     //TODO: generate schedule
     this.instrument.schedule(0, schedule);
 
-
-
-
-
     //this.instrument.on(function (eventName, when, obj, opts) {
     //console.log('ended', eventName,when,obj,opts)
     //})
@@ -206,15 +190,12 @@ class App extends Component {
 
   HandPatternOnChange = (sectionId,patternId, hand) => {
     // иммутабельно меняем массив секций
-
     const voicesObjectName = (hand === 'left' ? 'bassVoices' : 'trebleVoices');
-
     const {phrases, ...patternObject} = presets[`${hand}HandPatterns`].find((pattern) => {return pattern.id === patternId });
     const newSections = this.state.sections.map(section => {
          if (section.id === sectionId ) {
             const newPhrases = section.phrases.map((phrase, phraseIndex) => {
                const newBars = phrase.bars.map((bar, barIndex) => {
-                //return {...bar, ...{bassVoices:phrases[phraseIndex].bars[barIndex].bassVoices}}
                 return {...bar, ...{[voicesObjectName]:phrases[phraseIndex].bars[barIndex][voicesObjectName]}}
                })
                return {...phrase, ...{bars:newBars}} 
@@ -256,7 +237,6 @@ class App extends Component {
   render() {
     console.log('app render');
 
-    // const blues = [this.state.intro,...this.state.sections,this.state.ending];
 
     // в Sheet всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал компонент
     // https://stackoverflow.com/questions/21749798/how-can-i-reset-a-react-component-including-all-transitively-reachable-state
@@ -275,13 +255,17 @@ class App extends Component {
            endingOnChange = {this.endingOnChange} 
            HandPatternOnChange = {this.HandPatternOnChange}
           />
-          {/* <Sheet width = {this.state.width} sections={blues} signature={this.state.key}   />  */}
           <Sheet width = {this.state.width} intro = {this.state.intro} sections={this.state.sections} ending={this.state.ending} signature={this.state.key}   />
-          {/* {this.state.showSettings && <Settings toggleSettings={this.toggleSettings} 
-          keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} /> } */}
-        
-          <Settings visible = {this.state.showSettings} toggleSettings={this.toggleSettings} 
-          keyOnChange={this.keyOnChange} signature={this.state.key} swingOnChange={this.swingOnChange} swing={this.state.swing} tempoOnChange={this.tempoOnChange} />        
+          <Settings 
+            visible = {this.state.showSettings}
+            toggleSettings={this.toggleSettings} 
+            keyOnChange={this.keyOnChange} 
+            signature={this.state.key} 
+            swingOnChange={this.swingOnChange} 
+            swing={this.state.swing} 
+            tempoOnChange={this.tempoOnChange}
+            tempo={this.state.tempo}
+          />        
         </div>
       </div>
 
