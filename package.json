@@ -8,9 +8,11 @@
     "rc-slider": "^8.5.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.17",
     "react-select": "^1.1.0",
     "react-switch": "^2.3.0",
+    "redux": "^3.7.2",
     "sample-player": "^0.5.5",
     "vexflow": "^1.2.84"
   },

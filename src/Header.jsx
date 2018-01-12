@@ -3,15 +3,13 @@ import React from 'react';
 
 
 import play from './play.svg'
-import settings from './settings5.svg'
+import settings from './settings.svg'
 
 const styles = {
     backgroundColor: 'transparent',
     backgroundImage: `url(${play})`,
     backgroundSize: '100% 100%',
     border: 0,
-    // padding: '8px 15px',
-    // color: 'white',
     cursor: 'pointer'
 
 }
@@ -21,8 +19,6 @@ const stylesSettings = {
     backgroundImage: `url(${settings})`,
     backgroundSize: '100% 100%',
     border: 0,
-    // padding: '8px 15px',
-    // color: 'white',
     cursor: 'pointer'
 
 }
