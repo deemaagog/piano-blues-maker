@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 import Section from './Section'
 
 import Button from 'antd/lib/button';
-// import Collapse from 'antd/lib/collapse';
 
 import presets from './presets.json'
 
 import Select from 'react-select';
 // import 'react-select/dist/react-select.css';
-// import Slider from 'antd/lib/slider';
-// import Select  from 'antd/lib/select';
 
 const intros = presets.intros.map(preset => {
   return { value: preset.id, label: preset.description }
@@ -29,9 +26,6 @@ function endingRenderer(option) {
   return `ENDING: ${option.label}`
 }
 
-
-// const Panel = Collapse.Panel;
-// const Option = Select.Option;
 
 class Scheme extends Component {
 
@@ -53,24 +47,13 @@ class Scheme extends Component {
     this.props.endingOnChange(option === null ? null : option.value);
   }
 
-  // leftHandPatternOnChange = (sectionId,patternId) => {
-  //   this.props.leftHandPatternOnChange(sectionId,patternId);
-  // }
 
   render() {
-
-
 
     return (
       <div className='scheme-wrapper'>
         <Button type='default' onClick={this.deleteAll}> Очистить </Button>
         <Button type='default' onClick={this.add}> Добавить </Button>
-
-        {/* <Collapse key={234}>
-                    <Panel header='james carol booker' key={345}>
-                        <p>type: classic</p>
-                    </Panel>
-                </Collapse> */}
 
         <div className='scheme'>
           <Select

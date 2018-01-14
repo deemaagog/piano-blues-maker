@@ -811,6 +811,234 @@
           ]
         }
       ]
+    },
+    {
+      "id": 203,
+      "description": "Ray Charles style",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Db/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["F/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["D/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Db/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Gb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["D/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Gb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["F/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["E/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Eb/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["D/3"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/3"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["B/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Bb/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2"], "duration": "8", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2"], "duration": "8", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "rightHandPatterns": [

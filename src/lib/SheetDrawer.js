@@ -106,6 +106,7 @@ class SheetDrawer {
 
       if (note.id) {
         staveNote.setAttribute('id', note.id);
+        // staveNote.addClass('deemaagog');
       }
 
       note.keys.forEach(function (key, i) {
@@ -113,7 +114,7 @@ class SheetDrawer {
         const accidental = keyValue.slice(1, (keyValue.length + 1) || 9e9);
 
         if (accidental.length > 0) {
-          staveNote.addAccidental(i, new Vex.Flow.Accidental(accidental));
+          staveNote.addAccidental(i, new VF.Accidental(accidental));
         }
       });
 

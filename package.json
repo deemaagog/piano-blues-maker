@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.0.3",
+    "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
     "rc-slider": "^8.5.0",
     "react": "^16.2.0",

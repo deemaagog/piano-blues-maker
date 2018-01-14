@@ -1,12 +1,13 @@
-// todo
+// TODO:
 // ties, ties between bars
 // grace notes
-// tuplets 
+// dots
 // swing feel
+
+
 
 // q = 1 = 60bpm
 // bar = 4
-
 const durations = {
   '32': 0.125,
   '16': 0.25,
@@ -19,11 +20,14 @@ const durations = {
 class Player {
   constructor(insrument, sections, { tempo, swing }) {
     this.instrument = insrument;
-    this.blues = [];
+    this.events = [];
     this.timeDenominator = 60 / tempo;
     this.swing = swing;
     this.currentTime = 0;
     this.nBeats = 4;
+
+
+    this.curEventIndex = 0;
 
     sections.forEach((section) => {
       if (section !== undefined) {
@@ -42,12 +46,19 @@ class Player {
       }
     });
 
+    this.events.sort(function (a, b) {
+      return a.time - b.time
+    })
+
   }
 
   parceVoice(voice) {
     const notesDurationDenominators = {};
     let offset = 0;
 
+    // ограничения по мультиолям
+    // поддерживаются только с основанием 2
+    // вложенность не поддерживается
     if (voice.tuplets) {
       voice.tuplets.forEach(tuplet => {
         const { from, to } = tuplet;
@@ -67,24 +78,33 @@ class Player {
       if (notesDurationDenominators[index]) {
         duration = duration * notesDurationDenominators[index]
       }
+
+      // swing feel
+      if (this.swing) {
+
+      }
+
       if (!isRest) {
         note.keys.forEach((key) => {
-          this.blues.push({ note: key.replace('/', '').replace('n', ''), duration: duration, time: this.currentTime + offset, id: note.id });
+          this.events.push(
+            {
+              type: 'noteStart',
+              id: note.id,
+              note: key.replace('/', '').replace('n', ''),
+              time: (this.currentTime + offset),
+              duration
+            }
+          )
 
-          // if (note.id) {
-          //   (function (noteId) {
-          //     setTimeout(() => {
-          //       const el = document.getElementById(noteId);
-          //       //
-          //       if (el !== null) {
-          //         el.classList.add("currentNote");
-          //         setTimeout(() => {
-          //           el.classList.remove("currentNote");
-          //         }, duration * 1000);
-          //       }
-          //     }, (currentTime + offset) * 1000)
-          //   })(`vf-${note.id}`);
-          // }
+          // this.events.push(
+          //   {
+          //     type: 'noteStop',
+          //     id: note.id,
+          //     note: key.replace('/', '').replace('n', ''),
+          //     time: (this.currentTime + offset+ duration) * 1000,
+          //     duration
+          //   }
+          // )
         });
       }
       offset = offset + duration;
@@ -92,11 +112,53 @@ class Player {
   };
 
   play() {
-    this.instrument.schedule(0, this.blues);
+    const curEvent = this.events[this.curEventIndex];
+    this.instrument.start(curEvent.note, curEvent.time, curEvent);
+
+    if (curEvent.id) {
+          const el = document.getElementById(`vf-${curEvent.id}`);
+          if (el !== null) {
+            // window.scrollBy({ 
+            //   top: x,
+            //   left: 0, 
+            //   behavior: 'smooth' 
+            // });
+            el.classList.add("currentNote");
+            setTimeout(() => {
+              el.classList.remove("currentNote");
+            }, curEvent.duration * 1000);
+          }
+    }
+
+    if (this.curEventIndex === this.events.length - 1) {
+      return this.onFinishPlayingCallback();
+    }
+
+    const timeUntilNextEvent = this.events[this.curEventIndex + 1].time - curEvent.time;
+
+    this.curEventIndex++;
+    this.timerId = setTimeout(() => { this.play() }, timeUntilNextEvent * 1000);
+  }
+
+  start() {
+    this.onStartPlayingCallback();
+    this.play();
   }
 
   stop() {
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+      this.timerId = null;
+      this.curEventIndex = 0;
+    }
+  }
 
+  onFinishPlaying(callback) {
+    this.onFinishPlayingCallback = callback;
+  }
+
+  onStartPlaying(callback) {
+    this.onStartPlayingCallback = callback;
   }
 }
 
