@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
-import {leftHandPatterns} from './presets.json'
+import {rightHandPatterns} from '../presets.json'
 
-const patterns = leftHandPatterns.map(preset => {
+const patterns = rightHandPatterns.map(preset => {
     return { value: preset.id, label: preset.description }
 })
 
-class LeftHandsection extends Component {
+class RightHandsection extends Component {
 
     handleChange = (pattern) => {
-        this.props.patternOnChange(pattern.value,'left');
+        this.props.patternOnChange(pattern.value,'right');
     }
 
     render() {
@@ -17,8 +17,8 @@ class LeftHandsection extends Component {
 
         return (
             <Select
-                placeholder = 'Left hand pattern'
-                name="lh"
+                placeholder = 'Right hand pattern'
+                name="rh"
                 value={{value: id, label: description}}
                 onChange={this.handleChange}
                 options={patterns}
@@ -28,4 +28,4 @@ class LeftHandsection extends Component {
     }
 }
 
-export default LeftHandsection;
+export default RightHandsection;

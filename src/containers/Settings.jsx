@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+
+import { toggleSwing, setKey, setTempo } from '../actions/settings'
+
 import Switch from "react-switch";
-import 'rc-slider/assets/index.css';
-//import 'rc-tooltip/assets/bootstrap.css';
 import Slider from 'rc-slider';
-// import Slider from 'antd/lib/slider';
-// import Select from 'antd/lib/select';
-//import Checkbox  from 'antd/lib/checkbox';
 import Select from 'react-select';
-
-// const Option = Select.Option;
-
-// const customStyle = {
-//     background: '#f7f7f7',
-//     borderRadius: 0,
-//     backgroundColor: '#eeeeee'
-//   };
 
 const keys = [
     { value: 'C', label: 'C' },
@@ -33,12 +24,9 @@ const keys = [
 ]
 
 class Settings extends Component {
+
     keyOnChange = (option) => {
         this.props.keyOnChange(option.value);
-    }
-
-    swingOnChange = () => {
-        this.props.swingOnChange();
     }
 
     tempoOnChange = (value) => {
@@ -51,16 +39,13 @@ class Settings extends Component {
                 <div className='settings-header'>
                     Настройки
                 </div>
-
-
-
                 <div className='setting-item'>
                     <div className='setting-label'>
                         Swing 8th notes
                     </div>
                     <div className='setting-value'>
                         <Switch
-                            onChange={this.swingOnChange}
+                            onChange={this.props.toggleSwing}
                             checked={this.props.swing}
                             id="swing"
                             className='swing-feel'
@@ -100,7 +85,7 @@ class Settings extends Component {
                         Key (transposition)
                     </div>
                     <Select
-                        value={keys.find(key => { return key.value === this.props.signature} ) } 
+                        value={keys.find(key => { return key.value === this.props.signature })}
                         onChange={this.keyOnChange}
                         className='select-key'
                         name="key"
@@ -110,12 +95,35 @@ class Settings extends Component {
                         onBlurResetsInput={false}
                         onSelectResetsInput={false}
                         options={keys}
-                        style = {{width: 60, backgroundColor: '#e8e8e8'}}
+                        style={{ width: 60, backgroundColor: '#e8e8e8' }}
                     />
-                    
+
                 </div>
             </div>
         );
+    }
+}
+
+const mapStateToProps = (state) => {
+    const {key, tempo, swing} = state.settings; 
+    return {
+        signature: key,
+        tempo: tempo,
+        swing: swing
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        tempoOnChange: (value) => {
+            dispatch(setTempo(value))
+        },
+        keyOnChange: (value) => {
+            dispatch(setKey(value))
+        },
+        toggleSwing: () => {
+            dispatch(toggleSwing())
+        }
     }
 }
 
@@ -124,4 +132,4 @@ Settings.propTypes = {
     swing: PropTypes.bool
 };
 
-export default Settings;
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

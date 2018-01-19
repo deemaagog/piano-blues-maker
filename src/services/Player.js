@@ -18,37 +18,17 @@ const durations = {
 };
 
 class Player {
-  constructor(insrument, sections, { tempo, swing }) {
+  constructor(insrument) {
     this.instrument = insrument;
     this.events = [];
-    this.timeDenominator = 60 / tempo;
-    this.swing = swing;
+    
     this.currentTime = 0;
     this.nBeats = 4;
 
 
     this.curEventIndex = 0;
 
-    sections.forEach((section) => {
-      if (section !== undefined) {
-        section.phrases.forEach((phrase) => {
-          phrase.bars.forEach((bar) => {
-            bar.trebleVoices.forEach((voice) => {
-              this.parceVoice(voice);
-            });
-
-            bar.bassVoices.forEach((voice) => {
-              this.parceVoice(voice);
-            });
-            this.currentTime += this.nBeats * this.timeDenominator;
-          });
-        });
-      }
-    });
-
-    this.events.sort(function (a, b) {
-      return a.time - b.time
-    })
+    
 
   }
 
@@ -112,6 +92,7 @@ class Player {
   };
 
   play() {
+    
     const curEvent = this.events[this.curEventIndex];
     this.instrument.start(curEvent.note, curEvent.time, curEvent);
 
@@ -140,8 +121,33 @@ class Player {
     this.timerId = setTimeout(() => { this.play() }, timeUntilNextEvent * 1000);
   }
 
-  start() {
+  start(sections, { tempo, swing }) {
     this.onStartPlayingCallback();
+
+    this.timeDenominator = 60 / tempo;
+    this.swing = swing;
+    sections.forEach((section) => {
+      if (section !== null) {
+        section.phrases.forEach((phrase) => {
+          phrase.bars.forEach((bar) => {
+            bar.trebleVoices.forEach((voice) => {
+              this.parceVoice(voice);
+            });
+
+            bar.bassVoices.forEach((voice) => {
+              this.parceVoice(voice);
+            });
+            this.currentTime += this.nBeats * this.timeDenominator;
+          });
+        });
+      }
+    });
+
+    this.events.sort(function (a, b) {
+      return a.time - b.time
+    })
+
+
     this.play();
   }
 

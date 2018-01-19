@@ -1,5 +1,7 @@
 @import '~antd/dist/antd.css';
 @import '~react-select/dist/react-select.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~rc-slider/assets/index.css';
 
 body {
   margin: 0;
@@ -24,7 +26,7 @@ body {
   background: #093255;
   /* padding: 0 50px; */
   height: 64px;
-  line-height: 64px;
+  /* line-height: 64px; */ 
   /* flex: 0 0 auto; */
   display: flex;
   align-items: center;
@@ -70,10 +72,11 @@ body {
 }
 
 .logo {
-  background: transparent url(./logo.png) no-repeat center center;
+  background: transparent url(./images/logo.svg) no-repeat center center;
   background-size: 100% auto;
   height: 100%;
 }
+
 
 .sheet{
   /* overflow-x: hidden; */
@@ -104,6 +107,18 @@ body {
 .button-header {
   height: 32px;
   width: 32px;
+  background-size: 100% 100%;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.button-play {
+    background-Image: url(./images/play.svg);
+}
+
+.button-settings {
+  background-Image: url(./images/settings.svg);
 }
 
 button:focus {outline:0;}

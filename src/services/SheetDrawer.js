@@ -106,7 +106,10 @@ class SheetDrawer {
 
       if (note.id) {
         staveNote.setAttribute('id', note.id);
-        // staveNote.addClass('deemaagog');
+        // staveNote.setAttribute('data-test', 'wer');
+        // staveNote.attrs.classes['test'] = true; 
+        // staveNote.attrs['data-test'] = 'wer';
+        // staveNote.addClass("deemaagog");
       }
 
       note.keys.forEach(function (key, i) {
@@ -158,7 +161,7 @@ class SheetDrawer {
     const widthArray = [];
 
     this.blues.forEach((section) => {
-      if (section !== undefined) {
+      if (section !== null) {
         section.phrases.forEach((phrase) => {
           phrase.bars.forEach((bar) => {
 

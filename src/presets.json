@@ -1271,7 +1271,7 @@
               "trebleVoices": [
                 {
                   "notes": [
-                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["e/4","Bb/4","eb/5"], "duration": "q", "stem": "up" },
                     { "keys": ["B/4"], "duration": "qr", "stem": "up" },
                     { "keys": ["B/4"], "duration": "8r", "stem": "up" },
                     { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
@@ -1344,7 +1344,7 @@
                     { "keys": ["e/4","g/4","a/4","c/5"], "duration": "q", "stem": "up" },
                     { "keys": ["B/4"], "duration": "qr", "stem": "up" },
                     { "keys": ["B/4"], "duration": "8r", "stem": "up" },
-                    { "keys": ["e/4","g/4","a/4","c/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["e/4","gb/4","bb/4","db/5"], "duration": "8", "stem": "up" },
                     { "keys": ["B/4"], "duration": "qr", "stem": "up" }
                   ],
                   "tuplets": [],

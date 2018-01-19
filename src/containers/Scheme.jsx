@@ -5,10 +5,9 @@ import Section from './Section'
 
 import Button from 'antd/lib/button';
 
-import presets from './presets.json'
+import presets from '../presets.json'
 
 import Select from 'react-select';
-// import 'react-select/dist/react-select.css';
 
 const intros = presets.intros.map(preset => {
   return { value: preset.id, label: preset.description }
