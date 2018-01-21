@@ -1,6 +1,6 @@
-export const intro = (id) => {
+export const setIntro = (id) => {
     return {
-        type: 'SET',
+        type: 'SET_INTRO',
         id
     }
 }

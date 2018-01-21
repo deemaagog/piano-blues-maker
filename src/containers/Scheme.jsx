@@ -1,97 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+
+import { setIntro } from '../actions/intro'
+import { setEnding } from '../actions/ending'
+import { setPattern, addSection, removeAll } from '../actions/sections'
+
+import Accordion from './Accordion'
+import Intro from './Intro'
+import Ending from './Ending'
 
 import Section from './Section'
 
-import Button from 'antd/lib/button';
-
-import presets from '../presets.json'
-
-import Select from 'react-select';
-
-const intros = presets.intros.map(preset => {
-  return { value: preset.id, label: preset.description }
-})
-
-const endings = presets.endings.map(preset => {
-  return { value: preset.id, label: preset.description }
-})
-
-function introRenderer(option) {
-  return `INTRO: ${option.label}`
-}
-
-function endingRenderer(option) {
-  return `ENDING: ${option.label}`
-}
-
 
 class Scheme extends Component {
-
-  state = {};
-
-  add = () => {
-    this.props.add();
-  }
-
-  deleteAll = () => {
-    this.props.deleteAll();
-  }
-
-  introOnChange = (option) => {
-    this.props.introOnChange(option === null ? null : option.value);
-  }
-
-  endingOnChange = (option) => {
-    this.props.endingOnChange(option === null ? null : option.value);
-  }
-
 
   render() {
 
     return (
       <div className='scheme-wrapper'>
-        <Button type='default' onClick={this.deleteAll}> Очистить </Button>
-        <Button type='default' onClick={this.add}> Добавить </Button>
+        <button className='scheme-button' onClick={this.props.removeAll}> Очистить </button>
+        <button className='scheme-button' onClick={this.props.addSection}> Добавить </button>
 
         <div className='scheme'>
-          <Select
-            placeholder='Select INTRO...'
-            className='select-intro'
-            name="intro"
-            searchable={false}
-            multi={false}
-            value={this.props.intro}
-            valueRenderer={introRenderer}
-            onChange={this.introOnChange}
-            onBlurResetsInput={false}
-            onSelectResetsInput={false}
-            options={intros}
-          />
-
+          <Accordion type='INTRO'>
+            <Intro intro={this.props.intro} setIntro={this.props.setIntro} />
+          </Accordion>
 
           {this.props.sections.map((s, index) => {
             return (
-              <Section key={index} section = {s} HandPatternOnChange = {this.props.HandPatternOnChange}>
-                {s.type}
-              </Section>
+              <Accordion key={index} type = 'PROGRESSION' handPatternOnChange={this.props.setPattern}>
+                <Section section = {s} setPattern={this.props.setPattern}/>
+              </Accordion>
             )
           }
           )}
 
-          <Select
-            placeholder='Select ENDING...'
-            className='select-intro'
-            name="ending"
-            searchable={false}
-            multi={false}
-            value={this.props.ending}
-            valueRenderer={endingRenderer}
-            onChange={this.endingOnChange}
-            onBlurResetsInput={false}
-            onSelectResetsInput={false}
-            options={endings}
-          />
+          <Accordion type='ENDING'>
+            <Ending ending={this.props.ending} setEnding={this.props.setEnding} />
+          </Accordion>
+
         </div>
       </div>
     );
@@ -99,9 +47,26 @@ class Scheme extends Component {
 }
 
 Scheme.propTypes = {
-  sections: PropTypes.array,
-  add: PropTypes.func,
-  deleteAll: PropTypes.func,
+  sections: PropTypes.array
 };
 
-export default Scheme;
+const mapStateToProps = (state) => {
+  return {
+    intro: state.intro,
+    sections: state.sections,
+    ending: state.ending,
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setIntro: (id) => dispatch(setIntro(id)),
+    setEnding: (id) => dispatch(setEnding(id)),
+    setPattern: (sectionId, patternId, hand) => dispatch(setPattern(sectionId, patternId, hand)),
+    addSection: () => { dispatch(addSection()) },
+    removeAll: () => { dispatch(removeAll()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Scheme);

@@ -160,6 +160,8 @@ class SheetDrawer {
     const currentRowBars = [];
     const widthArray = [];
 
+    // let  calcTime = 0;
+
     this.blues.forEach((section) => {
       if (section !== null) {
         section.phrases.forEach((phrase) => {
@@ -179,7 +181,13 @@ class SheetDrawer {
             formatter.joinVoices(bassStaveVoices);
 
             const allVoicesTogether = trebleStaveVoices.concat(bassStaveVoices);
+
+            // let t0 = performance.now(); //!!!!!!
             const minTotalWidth = Math.ceil(formatter.preCalculateMinTotalWidth(allVoicesTogether) * COEFFICIENT);
+            // let t1 = performance.now();//!!!!!!!
+            //console.log("Calculating min width: " + (t1 - t0) + " milliseconds.")
+            // calcTime =+ (t1 - t0);
+
             const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH) + EXTRA_SPACE + (currentRowBars.length !== 0 ? 0 : FIRST_BAR_ADDITIONAL_WIDTH);
 
 
@@ -231,6 +239,9 @@ class SheetDrawer {
     this.voicesTuplets.forEach(function (tuplet) {
       tuplet.setContext(this.context).draw();
     }.bind(this));
+
+
+    // console.log("Calculating min width: " + (calcTime) + " milliseconds.")
 
   }
 

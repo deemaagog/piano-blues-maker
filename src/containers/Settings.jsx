@@ -37,7 +37,7 @@ class Settings extends Component {
         return (
             <div id='settings' className={this.props.visible ? 'slideIn' : 'slideOut'}>
                 <div className='settings-header'>
-                    Настройки
+                    Settings
                 </div>
                 <div className='setting-item'>
                     <div className='setting-label'>

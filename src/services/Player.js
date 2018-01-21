@@ -1,3 +1,5 @@
+import SoundFont from 'soundfont-player'
+
 // TODO:
 // ties, ties between bars
 // grace notes
@@ -18,19 +20,36 @@ const durations = {
 };
 
 class Player {
-  constructor(insrument) {
-    this.instrument = insrument;
-    this.events = [];
-    
-    this.currentTime = 0;
+  constructor() {
     this.nBeats = 4;
+  }
 
+  loadSamples() {
 
-    this.curEventIndex = 0;
+    function localUrl(name) {
+      return 'instruments/' + name + '.js'
+    }
 
-    
+    const AudioContext = window.AudioContext || window.webkitAudioContext || false;
+    if (!AudioContext) {
+      alert(`Sorry, but the Web Audio API is not supported by your browser.
+             Please, consider upgrading to the latest version or downloading 
+             Google Chrome or Mozilla Firefox`);
+    }
+    const ac = new AudioContext();
+
+    SoundFont.instrument(ac, 'piano', {
+      nameToUrl: localUrl,
+      gain: 3,
+      release: 1
+    }).then((instrument) => {
+      this.instrument = instrument;
+    }).catch(function (err) {
+      console.log('err', err)
+    })
 
   }
+
 
   parceVoice(voice) {
     const notesDurationDenominators = {};
@@ -92,23 +111,23 @@ class Player {
   };
 
   play() {
-    
+
     const curEvent = this.events[this.curEventIndex];
-    this.instrument.start(curEvent.note, curEvent.time, curEvent);
+    this.instrument.play(curEvent.note, curEvent.time, curEvent);
 
     if (curEvent.id) {
-          const el = document.getElementById(`vf-${curEvent.id}`);
-          if (el !== null) {
-            // window.scrollBy({ 
-            //   top: x,
-            //   left: 0, 
-            //   behavior: 'smooth' 
-            // });
-            el.classList.add("currentNote");
-            setTimeout(() => {
-              el.classList.remove("currentNote");
-            }, curEvent.duration * 1000);
-          }
+      const el = document.getElementById(`vf-${curEvent.id}`);
+      if (el !== null) {
+        // window.scrollBy({ 
+        //   top: x,
+        //   left: 0, 
+        //   behavior: 'smooth' 
+        // });
+        el.classList.add("currentNote");
+        setTimeout(() => {
+          el.classList.remove("currentNote");
+        }, curEvent.duration * 1000);
+      }
     }
 
     if (this.curEventIndex === this.events.length - 1) {
@@ -122,10 +141,16 @@ class Player {
   }
 
   start(sections, { tempo, swing }) {
-    this.onStartPlayingCallback();
+    if (this.onStartPlayingCallback) {
+      this.onStartPlayingCallback();
+    }
 
     this.timeDenominator = 60 / tempo;
     this.swing = swing;
+    this.events = [];
+    this.currentTime = 0;
+
+    this.curEventIndex = 0;
     sections.forEach((section) => {
       if (section !== null) {
         section.phrases.forEach((phrase) => {
@@ -147,15 +172,18 @@ class Player {
       return a.time - b.time
     })
 
-
-    this.play();
+    if (this.events) {
+      this.play();
+    }
   }
 
   stop() {
     if (this.timerId) {
+      //this.instrument.stop();
       clearTimeout(this.timerId);
       this.timerId = null;
       this.curEventIndex = 0;
+      //this.events.length = 0;
     }
   }
 

@@ -9,7 +9,7 @@ const patterns = leftHandPatterns.map(preset => {
 class LeftHandsection extends Component {
 
     handleChange = (pattern) => {
-        this.props.patternOnChange(pattern.value,'left');
+        this.props.setPattern(pattern.value,'left');
     }
 
     render() {

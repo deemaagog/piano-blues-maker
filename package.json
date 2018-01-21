@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.0.3",
     "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
     "rc-slider": "^8.5.0",
@@ -14,7 +13,8 @@
     "react-select": "^1.1.0",
     "react-switch": "^2.3.0",
     "redux": "^3.7.2",
-    "sample-player": "^0.5.5",
+    "redux-devtools-extension": "^2.13.2",
+    "soundfont-player": "^0.10.6",
     "vexflow": "^1.2.84"
   },
   "scripts": {

@@ -1,4 +1,9 @@
-export default function header (state = {isPlaying: false}, action) {
+const initialState = {
+    isPlaying: false,
+    isLoading: true
+}
+
+export default function player (state = initialState, action) {
     switch (action.type) {
         case 'PLAY':
             return {...state, ...{isPlaying: true}}

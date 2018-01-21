@@ -12,7 +12,7 @@ class Sheet extends PureComponent {
   state = {windowWidth: window.innerWidth};
 
   drawSheet = () => {
-    console.log('drawing');
+    // console.log('drawing');
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending],
@@ -21,14 +21,14 @@ class Sheet extends PureComponent {
   }  
 
   componentDidMount() {
-    console.log('sheet did mount');
+    // console.log('sheet did mount');
     
     this.drawSheet();
     window.addEventListener("resize", this.updateDimensions);
   }
 
   componentDidUpdate() {
-    console.log('sheet did update');
+    // console.log('sheet did update');
     this.drawSheet();
   }
 
@@ -41,8 +41,8 @@ class Sheet extends PureComponent {
   }
 
   render() {
-    console.log('sheet render');
-    // всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал компонент
+    // console.log('sheet render');
+    // всегда передаем разный key, чтобы реакт каждый раз полностью пересоздавал
     // https://stackoverflow.com/questions/21749798/how-can-i-reset-a-react-component-including-all-transitively-reachable-state
     return (
       <div className='sheet' ref={(x) => this.sheetContainer = x} key = {generateId()} />
