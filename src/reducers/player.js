@@ -8,7 +8,11 @@ export default function player (state = initialState, action) {
         case 'PLAY':
             return {...state, ...{isPlaying: true}}
         case 'STOP':
-            return {...state, ...{isPlaying: false}}    
+            return {...state, ...{isPlaying: false}}
+        case 'PLAY_ENDED':
+            return {...state, ...{isPlaying: false}}
+        case 'SAMPLES_LOADED':
+            return {...state, ...{isLoading: false}}            
         default:
             return state
   }

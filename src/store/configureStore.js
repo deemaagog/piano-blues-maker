@@ -4,7 +4,6 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import Player from '../services/Player';
 const player = new Player();
-player.loadSamples();
 
 
 function playerMiddleware () {
@@ -13,7 +12,7 @@ function playerMiddleware () {
       const {intro, sections, ending, settings } = store.getState();
       player.start([intro, ...sections, ending],{ tempo: settings.tempo, swing: settings.swing});
       player.onFinishPlaying(() => {
-        store.dispatch({type:'STOP'})
+        store.dispatch({type:'PLAY_ENDED'})
       })
     } else if (action.type === 'STOP') {  
       player.stop();
@@ -23,5 +22,9 @@ function playerMiddleware () {
 }
 
 export default function configureStore(initialState) {
-  return createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(playerMiddleware())))
+  const store =  createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(playerMiddleware())))
+
+  player.loadSamples(() => store.dispatch({type:'SAMPLES_LOADED'}));
+
+  return store;
 }

@@ -72,9 +72,9 @@ body {
   border-radius: 4px;
   height: 32px;
   background-color: #fff;
-  border-color: #d9d9d9;
+  border-color: #093255;
   touch-action: manipulation;
-  /* border: 1px solid transparent; */
+  border: 1px solid;
   white-space: nowrap;
   user-select: none;
 }
@@ -134,7 +134,11 @@ body {
 }
 
 .button-play {
-    background-Image: url(./images/spinner.svg);
+    background-Image: url(./images/play.svg);
+}
+
+.button-loading {
+  background-Image: url(./images/spinner5.svg);
 }
 
 .button-stop {

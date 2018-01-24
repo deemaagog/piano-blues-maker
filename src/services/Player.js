@@ -19,12 +19,14 @@ const durations = {
   'w': 4
 };
 
+//const swingRatio =
+
 class Player {
   constructor() {
     this.nBeats = 4;
   }
 
-  loadSamples() {
+  loadSamples(callback) {
 
     function localUrl(name) {
       return 'instruments/' + name + '.js'
@@ -44,6 +46,10 @@ class Player {
       release: 1
     }).then((instrument) => {
       this.instrument = instrument;
+      //setTimeout(() => {
+      callback();
+      //}, 2000)
+
     }).catch(function (err) {
       console.log('err', err)
     })
@@ -54,6 +60,8 @@ class Player {
   parceVoice(voice) {
     const notesDurationDenominators = {};
     let offset = 0;
+    this.beatCounter = 0;
+    const notesToSwing = [];
 
     // ограничения по мультиолям
     // поддерживаются только с основанием 2
@@ -64,7 +72,6 @@ class Player {
         for (var x = from; x < to; x++) {
           notesDurationDenominators[x] = 2 / (to - from);
         }
-
       })
     }
 
@@ -73,47 +80,67 @@ class Player {
       const vexDuration = note.duration.toLowerCase();
       const isRest = vexDuration.indexOf('r') !== -1;
 
-      let duration = durations[isRest ? vexDuration.replace('r', '') : vexDuration] * this.timeDenominator;
+      let normalDuration = durations[isRest ? vexDuration.replace('r', '') : vexDuration];
+      
+      let duration = normalDuration * this.timeDenominator;
       if (notesDurationDenominators[index]) {
         duration = duration * notesDurationDenominators[index]
       }
 
       // swing feel
-      if (this.swing) {
-
+      if (this.swing && normalDuration === 0.5 && notesDurationDenominators[index] === undefined) {
+        const beat = Math.floor(this.beatCounter)
+        if (!notesToSwing[beat]) {
+          notesToSwing[beat] = [];
+        }
+        notesToSwing[beat].push({ id: note.id })
       }
 
-      if (!isRest) {
-        note.keys.forEach((key) => {
-          this.events.push(
-            {
-              type: 'noteStart',
-              id: note.id,
-              note: key.replace('/', '').replace('n', ''),
-              time: (this.currentTime + offset),
-              duration
-            }
-          )
+      this.beatCounter = this.beatCounter + normalDuration;
+      
 
-          // this.events.push(
-          //   {
-          //     type: 'noteStop',
-          //     id: note.id,
-          //     note: key.replace('/', '').replace('n', ''),
-          //     time: (this.currentTime + offset+ duration) * 1000,
-          //     duration
-          //   }
-          // )
-        });
-      }
+      //if (!isRest) {
+      note.keys.forEach((key) => {
+        this.events.push(
+          {
+            type: 'noteStart',
+            id: note.id,
+            note: key.replace('/', '').replace('n', ''),
+            time: (this.currentTime + offset),
+            duration,
+            isRest
+          }
+        )
+      });
+      //}
       offset = offset + duration;
     });
+
+    if (this.swing) {
+      notesToSwing.forEach((notePair)=> {
+        if (notePair.length === 2) {
+          let firstNoteId = notePair[0].id;
+          let secondNoteId = notePair[1].id;
+          this.events.forEach((ev) => {
+            if (ev.id === firstNoteId) {
+              ev.duration = ev.duration + this.swingExtraDutation; 
+            } else if (ev.id === secondNoteId) {
+              ev.duration = ev.duration - this.swingExtraDutation; 
+              ev.time = ev.time + this.swingExtraDutation;
+            }
+          })
+        }
+      })
+    } 
+
   };
 
   play() {
 
     const curEvent = this.events[this.curEventIndex];
-    this.instrument.play(curEvent.note, curEvent.time, curEvent);
+    if (!curEvent.isRest) {
+      this.instrument.play(curEvent.note, curEvent.time, curEvent);
+    }
 
     if (curEvent.id) {
       const el = document.getElementById(`vf-${curEvent.id}`);
@@ -145,12 +172,17 @@ class Player {
       this.onStartPlayingCallback();
     }
 
-    this.timeDenominator = 60 / tempo;
-    this.swing = swing;
+    
     this.events = [];
-    this.currentTime = 0;
-
     this.curEventIndex = 0;
+    this.currentTime = 0;
+    this.timeDenominator = 60 / tempo;
+
+    // swing feel implementation
+    this.swing = swing;
+    this.swingExtraDutation = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
+
+    
     sections.forEach((section) => {
       if (section !== null) {
         section.phrases.forEach((phrase) => {

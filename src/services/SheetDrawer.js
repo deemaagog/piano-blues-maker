@@ -230,7 +230,8 @@ class SheetDrawer {
 
 
 
-    renderer.resize(this.svgWidth, PADDING_TOP + (50 * 2 + SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
+    //renderer.resize(this.svgWidth, PADDING_TOP + (50 * 2 + SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
+    renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
 
     this.voicesBeams.forEach(function (b) {
       b.setContext(this.context).draw()

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Settings from '../containers/Settings'
 import {play, stop} from '../actions/player'
 import {connect} from 'react-redux'
+import PlayButton from '../components/PlayButton'
 
 class Header extends Component {
 
@@ -18,8 +19,7 @@ class Header extends Component {
           <div className='logo' />
         </div>
         <div className='header-panel'>
-          {this.props.isPlaying? <button className='button-header button-stop' onClick={this.props.stop}/>: <button className='button-header button-play' onClick={this.props.play} /> }
-          {/* <button className='button-header button-stop' onClick={this.props.stop}/> */}
+          <PlayButton {...this.props} />           
           <button className='button-header button-settings' onClick={this.toggleSettings} />
         </div>
         <Settings visible={this.state.showSettings} />
