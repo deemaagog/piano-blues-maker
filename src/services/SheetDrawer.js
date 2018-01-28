@@ -5,7 +5,8 @@ const SCHEME_WIDTH = 350;
 const SPACE_BETWEEN_STAVES = 120;
 const SPACE_BETWEEN_GRAND_STAVES = 260;
 const BAR_MIN_WIDTH = 100;
-const FIRST_BAR_ADDITIONAL_WIDTH = 100;
+const ROW_FIRST_BAR_ADDITIONAL_WIDTH = 100;
+const LAST_BAR_ADDITIONAL_WIDTH = 15;
 const PADDING_TOP = 50;
 const PADDING_LEFT = 50;
 const EXTRA_SPACE = 20;
@@ -25,9 +26,9 @@ function disributeValue(arr, value, precision) {
 }
 
 class SheetDrawer {
-  constructor(container, blues, { width, signature }) {
+  constructor(container, sections, { width, signature }) {
     this.sheetContainer = container;
-    this.blues = blues;
+    this.sections = sections;
     this.svgWidth = width - SCHEME_WIDTH
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
     this.voicesBeams = [];
@@ -64,7 +65,7 @@ class SheetDrawer {
       }
 
       const lineLeft = new VF.StaveConnector(trebleStave, bassStave).setType(1);
-      const lineRight = new VF.StaveConnector(trebleStave, bassStave).setType(0);
+      const lineRight = new VF.StaveConnector(trebleStave, bassStave).setType(b.isLastBar ? 6 : 0);
 
       trebleStave.setContext(this.context).draw();
       bassStave.setContext(this.context).draw();
@@ -78,9 +79,10 @@ class SheetDrawer {
       bassStave.setNoteStartX(startX);
 
       b.formatter.format(b.trebleStaveVoices.concat(b.bassStaveVoices), barWidth
-        + (index === 0 ? FIRST_BAR_ADDITIONAL_WIDTH / 3 : 0)  // ??? временно, переделать
+        + (index === 0 ? ROW_FIRST_BAR_ADDITIONAL_WIDTH / 3 : 0)  // ??? временно, переделать
         - (startX - 0)
         - EXTRA_SPACE
+        // - (b.isLastBar ? LAST_BAR_ADDITIONAL_WIDTH:0)
       );
 
       // Render voices
@@ -161,12 +163,16 @@ class SheetDrawer {
     const widthArray = [];
 
     // let  calcTime = 0;
-
-    this.blues.forEach((section) => {
-      if (section !== null) {
-        section.phrases.forEach((phrase) => {
-          phrase.bars.forEach((bar) => {
-
+    const sectionsLength = this.sections.length;
+    this.sections.forEach((section, index) => {
+      const isLastSection = index === sectionsLength - 1;
+      const phrasesLength = section.phrases.length;
+      //if (section !== null) {
+        section.phrases.forEach((phrase, index) => {
+          const isLastPhrase = index === phrasesLength - 1;
+          const barsLength = phrase.bars.length;
+          phrase.bars.forEach((bar,index) => {
+            const isLastBar = (index === barsLength - 1) && isLastPhrase && isLastSection;
             const trebleStaveVoices = bar.trebleVoices.map(voice => {
               return this.buildVoice(voice);
             });
@@ -188,7 +194,10 @@ class SheetDrawer {
             //console.log("Calculating min width: " + (t1 - t0) + " milliseconds.")
             // calcTime =+ (t1 - t0);
 
-            const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH) + EXTRA_SPACE + (currentRowBars.length !== 0 ? 0 : FIRST_BAR_ADDITIONAL_WIDTH);
+            const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH) 
+            + EXTRA_SPACE 
+            + (currentRowBars.length !== 0 ? 0 : ROW_FIRST_BAR_ADDITIONAL_WIDTH)
+            + (isLastBar ? LAST_BAR_ADDITIONAL_WIDTH : 0);
 
 
 
@@ -201,7 +210,8 @@ class SheetDrawer {
                 barWidth,
                 formatter,
                 trebleStaveVoices,
-                bassStaveVoices
+                bassStaveVoices,
+                isLastBar
               });
               widthArray.push(barWidth);
             } else {
@@ -210,36 +220,34 @@ class SheetDrawer {
               const widthRest = this.sheetWidth - currentWidth;
               this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter, widthRest);
               rowsCounter++;
-              currentWidth = barWidth + FIRST_BAR_ADDITIONAL_WIDTH;
+              currentWidth = barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH;
               currentRowBars.length = 0;
               widthArray.length = 0;
-              widthArray.push(barWidth + FIRST_BAR_ADDITIONAL_WIDTH);
+              widthArray.push(barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH);
               currentRowBars.push({
                 bar,
-                barWidth: barWidth + FIRST_BAR_ADDITIONAL_WIDTH,
+                barWidth: barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH,
                 formatter,
                 trebleStaveVoices,
-                bassStaveVoices
+                bassStaveVoices,
+                isLastBar
               });
             }
           });
         });
-      };
+      //};
     });
     this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
 
-
-
-    //renderer.resize(this.svgWidth, PADDING_TOP + (50 * 2 + SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
     renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
 
-    this.voicesBeams.forEach(function (b) {
+    this.voicesBeams.forEach( (b) => {
       b.setContext(this.context).draw()
-    }.bind(this));
+    });
 
-    this.voicesTuplets.forEach(function (tuplet) {
+    this.voicesTuplets.forEach((tuplet) => {
       tuplet.setContext(this.context).draw();
-    }.bind(this));
+    });
 
 
     // console.log("Calculating min width: " + (calcTime) + " milliseconds.")

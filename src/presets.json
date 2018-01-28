@@ -103,10 +103,10 @@
                     { "keys": ["E/4", "G/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
                     { "keys": ["E/4", "G/4"], "duration": "8" },
-                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["D#/4", "F#/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
                     { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
-                    { "keys": ["d/4", "f/4"], "duration": "8" },
+                    { "keys": ["Ebb/4", "f/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
                     { "keys": ["d/4", "f/4"], "duration": "8" }
                   ],

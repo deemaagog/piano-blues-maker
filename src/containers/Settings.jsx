@@ -68,7 +68,7 @@ class Settings extends Component {
                         <Slider
                             value={this.props.tempo}
                             min={50}
-                            max={120}
+                            max={130}
                             onChange={this.tempoOnChange}
                             trackStyle={{ backgroundColor: '#b2b0b0' }}
                             handleStyle={{

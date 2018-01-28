@@ -1,15 +1,12 @@
 import SoundFont from 'soundfont-player'
+import {midi} from 'note-parser'
 
 // TODO:
-// ties, ties between bars
+// ties, ties across bars
 // grace notes
 // dots
 // swing feel
 
-
-
-// q = 1 = 60bpm
-// bar = 4
 const durations = {
   '32': 0.125,
   '16': 0.25,
@@ -19,10 +16,26 @@ const durations = {
   'w': 4
 };
 
-//const swingRatio =
+const keysOffset = {
+  'C': 0,
+  'Db': 1,
+  'D': 2,
+  'Eb': 3,
+  'E': 4,
+  'F': -7,
+  'Gb': -6,
+  'G': -5,
+  'Ab': -4,
+  'A': -3,
+  'Bb': -2,
+  'B': -1
+}
+
 
 class Player {
   constructor() {
+    // q = 1 = 60bpm
+    // bar = 4
     this.nBeats = 4;
   }
 
@@ -81,7 +94,7 @@ class Player {
       const isRest = vexDuration.indexOf('r') !== -1;
 
       let normalDuration = durations[isRest ? vexDuration.replace('r', '') : vexDuration];
-      
+
       let duration = normalDuration * this.timeDenominator;
       if (notesDurationDenominators[index]) {
         duration = duration * notesDurationDenominators[index]
@@ -97,7 +110,7 @@ class Player {
       }
 
       this.beatCounter = this.beatCounter + normalDuration;
-      
+
 
       //if (!isRest) {
       note.keys.forEach((key) => {
@@ -105,7 +118,7 @@ class Player {
           {
             type: 'noteStart',
             id: note.id,
-            note: key.replace('/', '').replace('n', ''),
+            note: midi(key.replace('/', '').replace('n', ''))+ this.keyOffset,
             time: (this.currentTime + offset),
             duration,
             isRest
@@ -117,21 +130,21 @@ class Player {
     });
 
     if (this.swing) {
-      notesToSwing.forEach((notePair)=> {
+      notesToSwing.forEach((notePair) => {
         if (notePair.length === 2) {
           let firstNoteId = notePair[0].id;
           let secondNoteId = notePair[1].id;
           this.events.forEach((ev) => {
             if (ev.id === firstNoteId) {
-              ev.duration = ev.duration + this.swingExtraDutation; 
+              ev.duration = ev.duration + this.swingExtraDuration;
             } else if (ev.id === secondNoteId) {
-              ev.duration = ev.duration - this.swingExtraDutation; 
-              ev.time = ev.time + this.swingExtraDutation;
+              ev.duration = ev.duration - this.swingExtraDuration;
+              ev.time = ev.time + this.swingExtraDuration;
             }
           })
         }
       })
-    } 
+    }
 
   };
 
@@ -167,12 +180,13 @@ class Player {
     this.timerId = setTimeout(() => { this.play() }, timeUntilNextEvent * 1000);
   }
 
-  start(sections, { tempo, swing }) {
+  start(sections, { tempo, swing, key }) {
     if (this.onStartPlayingCallback) {
       this.onStartPlayingCallback();
     }
 
-    
+    this.keyOffset = keysOffset[key];
+
     this.events = [];
     this.curEventIndex = 0;
     this.currentTime = 0;
@@ -180,9 +194,9 @@ class Player {
 
     // swing feel implementation
     this.swing = swing;
-    this.swingExtraDutation = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
+    this.swingExtraDuration = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
 
-    
+
     sections.forEach((section) => {
       if (section !== null) {
         section.phrases.forEach((phrase) => {

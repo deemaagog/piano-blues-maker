@@ -192,11 +192,21 @@ button:focus {outline:0;}
 }
 
 .section-type {
-  padding: 12px 0 12px 20px;
+  
   cursor: pointer;
   user-select: none;
-
 }
+
+.section-header {
+  display: flex;
+  padding: 12px 20px 12px 20px;
+  justify-content: space-between
+}
+
+.section-buttons {
+  cursor: pointer;
+}
+
 .section-details {
   /* display: flex; */
   background-color: #ffffff;

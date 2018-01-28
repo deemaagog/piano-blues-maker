@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { setIntro } from '../actions/intro'
 import { setEnding } from '../actions/ending'
-import { setPattern, addSection, removeAll } from '../actions/sections'
+import { setPattern, addSection, removeAll , removeSection} from '../actions/sections'
 
 import Accordion from './Accordion'
 import Intro from './Intro'
@@ -29,7 +29,7 @@ class Scheme extends Component {
 
           {this.props.sections.map((s, index) => {
             return (
-              <Accordion key={index} type = 'PROGRESSION' handPatternOnChange={this.props.setPattern}>
+              <Accordion key={index} type = 'PROGRESSION' removeSection = {()=>this.props.removeSection(s.id)}>
                 <Section section = {s} setPattern={this.props.setPattern}/>
               </Accordion>
             )
@@ -65,7 +65,8 @@ const mapDispatchToProps = (dispatch) => {
     setEnding: (id) => dispatch(setEnding(id)),
     setPattern: (sectionId, patternId, hand) => dispatch(setPattern(sectionId, patternId, hand)),
     addSection: () => { dispatch(addSection()) },
-    removeAll: () => { dispatch(removeAll()) }
+    removeAll: () => { dispatch(removeAll()) },
+    removeSection: (id) => { dispatch(removeSection(id)) }
   }
 }
 

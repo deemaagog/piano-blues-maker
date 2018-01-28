@@ -12,10 +12,10 @@ class Sheet extends PureComponent {
   state = {windowWidth: window.innerWidth};
 
   drawSheet = () => {
-    // console.log('drawing');
+    console.log('drawing');
     new SheetDrawer(
       this.sheetContainer,
-      [this.props.intro,...this.props.sections,this.props.ending],
+      [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
       {width: this.state.windowWidth, signature:this.props.signature}   
     ).draw();
   }  

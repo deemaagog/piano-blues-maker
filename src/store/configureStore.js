@@ -10,7 +10,7 @@ function playerMiddleware () {
   return store => next => action => {
     if (action.type === 'PLAY') {
       const {intro, sections, ending, settings } = store.getState();
-      player.start([intro, ...sections, ending],{ tempo: settings.tempo, swing: settings.swing});
+      player.start([intro, ...sections, ending],{ tempo: settings.tempo, swing: settings.swing, key:settings.key});
       player.onFinishPlaying(() => {
         store.dispatch({type:'PLAY_ENDED'})
       })
