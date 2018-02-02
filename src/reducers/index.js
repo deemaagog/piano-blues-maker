@@ -3,6 +3,7 @@ import settings from './settings'
 import intro from './intro'
 import ending from './ending'
 import sections from './sections'
+import sheet from './sheet'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
     settings,
     intro,
     ending,
-    sections
+    sections,
+    sheet
 })
 
 export default rootReducer

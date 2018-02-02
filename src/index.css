@@ -244,7 +244,7 @@ i.section-closed:before {
   /* stroke: red; */
 }
 
-.select-intro .Select-placeholder {
+/* .select-intro .Select-placeholder {
   padding-left: 20px;
   top: 5px;
 }
@@ -254,12 +254,34 @@ i.section-closed:before {
 }
 .select-intro .Select-control {
   height: 46px;
-}
+} */
 
 
 .swing-feel {
   vertical-align: middle;
   /* margin-left: 4px; */
+}
+
+.blur{
+  filter: blur(9px);
+}
+
+.btn-update {
+  position: absolute;
+  /* top: 500px; */
+  /* left: 500px; */
+  z-index: 100;
+  top:calc(50% - 30px);
+  left:calc(50% - 80px + 350px/2);
+  height:60px;
+  width:160px;
+  color: #ffffff;
+  background-color: #093255;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  border-color: #093255;
+  border: 0px solid;
 }
 
 /* .select-key .Select-placeholder {

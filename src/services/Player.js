@@ -31,6 +31,20 @@ const keysOffset = {
   'B': -1
 }
 
+const keysAccidentals = {
+  'C': [],
+  'Db': ['Bb','Eb','Ab','Db','Gb'],
+  'D': ['F#','C#'],
+  'Eb': ['Bb','Eb','Ab'],
+  'E': ['F#','C#','G#','D#'],
+  'F': ['Bb','Eb','Ab','Db','Gb'],
+  'Gb': ['Bb','Eb','Ab','Db','Gb','Cb'],
+  'G': ['F#'],
+  'Ab': ['Bb','Eb','Ab','Db','Gb'],
+  'A': ['F#','C#','G#'],
+  'Bb': ['Bb','Eb'],
+  'B': ['F#','C#','G#','D#','A#']  
+}
 
 class Player {
   constructor() {
@@ -155,7 +169,7 @@ class Player {
       this.instrument.play(curEvent.note, curEvent.time, curEvent);
     }
 
-    if (curEvent.id) {
+    if (this.follow && curEvent.id) {
       const el = document.getElementById(`vf-${curEvent.id}`);
       if (el !== null) {
         // window.scrollBy({ 
@@ -180,10 +194,12 @@ class Player {
     this.timerId = setTimeout(() => { this.play() }, timeUntilNextEvent * 1000);
   }
 
-  start(sections, { tempo, swing, key }) {
+  start(sections, { tempo, swing, key, follow }) {
     if (this.onStartPlayingCallback) {
       this.onStartPlayingCallback();
     }
+
+    this.follow = follow;
 
     this.keyOffset = keysOffset[key];
 

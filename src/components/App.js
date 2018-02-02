@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../containers/Header'
 import Scheme from '../containers/Scheme'
-import Sheet from '../containers/Sheet'
+import SheetContainer from '../containers/SheetContainer'
 
 const App = () => {
     return (
@@ -9,7 +9,7 @@ const App = () => {
         <Header/>
         <div className='main'>
           <Scheme/>
-          <Sheet/>
+          <SheetContainer/>
         </div>
       </div>
     );

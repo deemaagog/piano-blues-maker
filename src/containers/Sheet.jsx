@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SheetDrawer from '../services/SheetDrawer';
 import { connect } from 'react-redux'
@@ -7,12 +7,12 @@ function generateId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
-class Sheet extends PureComponent {
+class Sheet extends Component {
 
   state = {windowWidth: window.innerWidth};
 
   drawSheet = () => {
-    console.log('drawing');
+    // console.log('drawing');
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
@@ -38,6 +38,11 @@ class Sheet extends PureComponent {
 
   updateDimensions = () => {
     this.setState({windowWidth:window.innerWidth});
+  }
+
+
+  shouldComponentUpdate(nextProps) {
+    return !nextProps.shouldUpdate
   }
 
   render() {

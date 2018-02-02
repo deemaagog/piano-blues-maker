@@ -33,6 +33,7 @@ class SheetDrawer {
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
     this.voicesBeams = [];
     this.voicesTuplets = [];
+    this.voicesTies = [];
     this.width = width;
     this.signature = signature;
     // this.rowsCounter = 0;
@@ -143,6 +144,13 @@ class SheetDrawer {
       })
     }
 
+    if (voice.ties) {
+      voice.ties.forEach(tie => {
+        const { from, to, ...options } = tie;
+        this.voicesTies.push(new VF.StaveTie({first_note: vexNotes[from], last_note: vexNotes[to], ...options}));
+      })
+    }
+
     vexVoice.addTickables(vexNotes);
     return vexVoice
   }
@@ -181,6 +189,8 @@ class SheetDrawer {
               return this.buildVoice(voice);
             });
 
+            // const hasTies = (bar.trebleVoices.ties || bar.bassVoices.ties); 
+
             const formatter = new VF.Formatter();
 
             formatter.joinVoices(trebleStaveVoices);
@@ -198,6 +208,7 @@ class SheetDrawer {
             + EXTRA_SPACE 
             + (currentRowBars.length !== 0 ? 0 : ROW_FIRST_BAR_ADDITIONAL_WIDTH)
             + (isLastBar ? LAST_BAR_ADDITIONAL_WIDTH : 0);
+            // + (40);
 
 
 
@@ -247,6 +258,10 @@ class SheetDrawer {
 
     this.voicesTuplets.forEach((tuplet) => {
       tuplet.setContext(this.context).draw();
+    });
+
+    this.voicesTies.forEach((tie) => {
+      tie.setContext(this.context).draw();
     });
 
 
