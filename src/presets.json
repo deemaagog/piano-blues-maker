@@ -85,8 +85,8 @@
       ]
     },
     {
-      "id": 1,
-      "description": "Another intro (test)",
+      "id": 100,
+      "description": "Test",
       "phrases": [
         {
           "id": "",
@@ -97,16 +97,16 @@
               "trebleVoices": [
                 {
                   "notes": [
-                    { "keys": ["b/4"], "duration": "qr" },
-                    { "keys": ["E/4", "G/4"], "duration": "8" },
-                    { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["E/4", "G/4"], "duration": "8" },
-                    { "keys": ["D#/4", "F#/4"], "duration": "8" },
-                    { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
-                    { "keys": ["Ebb/4", "f/4"], "duration": "8" },
-                    { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["d/4", "f/4"], "duration": "8" }
+                    { "keys": [{"name": "B", "oct": 4, "acc":""}], "duration": "qr" },
+                    { "keys": [{"name": "E", "oct": 4, "acc":""}, {"name": "G", "oct": 4, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "E", "oct": 4, "acc":""}, {"name": "G", "oct": 4, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "E", "oct": 4, "acc":"b"}, {"name": "G", "oct": 4, "acc":"b"}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "E", "oct": 4, "acc":"b"}, {"name": "G", "oct": 4, "acc":"b"}], "duration": "8" },
+                    { "keys": [{"name": "D", "oct": 4, "acc":""}, {"name": "F", "oct": 4, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "D", "oct": 4, "acc":""}, {"name": "F", "oct": 4, "acc":""}], "duration": "8" }
                   ],
                   "beams": [
                     { "from": 1, "to": 4 },
@@ -123,10 +123,10 @@
               "bassVoices": [
                 {
                   "notes": [
-                    { "keys": ["d/3"], "duration": "qr", "clef": "bass" },
-                    { "keys": ["Bb/3"], "duration": "q", "clef": "bass" },
-                    { "keys": ["A/3"], "duration": "q", "clef": "bass" },
-                    { "keys": ["Ab/3"], "duration": "q", "clef": "bass" }
+                    { "keys": [{"name": "D", "oct": 3, "acc":""}], "duration": "qr", "clef": "bass" },
+                    { "keys": [{"name": "B", "oct": 3, "acc":"b"}], "duration": "q", "clef": "bass" },
+                    { "keys": [{"name": "A", "oct": 3, "acc":""}], "duration": "q", "clef": "bass" },
+                    { "keys": [{"name": "A", "oct": 3, "acc":"b"}], "duration": "q", "clef": "bass" }
                   ]
                 }
               ]
@@ -136,13 +136,13 @@
               "trebleVoices": [
                 {
                   "notes": [
-                    { "keys": ["C/4", "E/4"], "duration": "8" },
-                    { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["C/4", "E/4"], "duration": "8" },
-                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
-                    { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
-                    { "keys": ["b/3", "d/4"], "duration": "h" }
+                    { "keys": [{"name": "C", "oct": 4, "acc":""}, {"name": "E", "oct": 4, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 4, "acc":""}, {"name": "E", "oct": 4, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 4, "acc":""}, {"name": "E", "oct": 4, "acc":"b"}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { "keys": [{"name": "C", "oct": 4, "acc":""}, {"name": "E", "oct": 4, "acc":"b"}], "duration": "8" },
+                    { "keys": [{"name": "B", "oct": 3, "acc":""}, {"name": "D", "oct": 4, "acc":""}], "duration": "h" }
                   ],
                   "tuplets": [
                     { "from": 0, "to": 3 },
@@ -157,9 +157,9 @@
               "bassVoices": [
                 {
                   "notes": [
-                    { "keys": ["g/3"], "duration": "q", "clef": "bass" },
-                    { "keys": ["ab/2", "gb/3"], "duration": "q", "clef": "bass" },
-                    { "keys": ["g/2", "f/3"], "duration": "h", "clef": "bass" }
+                    { "keys": [{"name": "G", "oct": 3, "acc":""}], "duration": "q", "clef": "bass" },
+                    { "keys": [{"name": "A", "oct": 2, "acc":"b"}, {"name": "G", "oct": 3, "acc":"b"}], "duration": "q", "clef": "bass" },
+                    { "keys": [{"name": "G", "oct": 2, "acc":""}, {"name": "F", "oct": 3, "acc":""}], "duration": "h", "clef": "bass" }
                   ]
                 }
               ]
