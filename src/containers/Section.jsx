@@ -11,8 +11,8 @@ class Section extends Component {
   render() {
     return (
       <div>
-        <RightHandSection pattern={this.props.section.rightHand} setPattern={this.setPattern} />
-        <LeftHandSection pattern={this.props.section.leftHand} setPattern={this.setPattern} />
+        <span>R. hand:</span><RightHandSection pattern={this.props.section.rightHand} setPattern={this.setPattern} />
+        <span>L. hand:</span><LeftHandSection pattern={this.props.section.leftHand} setPattern={this.setPattern} />
       </div>
     );
   }

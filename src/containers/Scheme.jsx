@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { setIntro } from '../actions/intro'
 import { setEnding } from '../actions/ending'
-import { setPattern, addSection, removeAll , removeSection} from '../actions/sections'
+import { setPattern, addSection, removeAll, removeSection, cloneSection, moveSection} from '../actions/sections'
 
 import Accordion from './Accordion'
 import Intro from './Intro'
@@ -19,8 +19,10 @@ class Scheme extends Component {
 
     return (
       <div className='scheme-wrapper'>
-        <button className='scheme-button' onClick={this.props.removeAll}> Очистить </button>
-        <button className='scheme-button' onClick={this.props.addSection}> Добавить </button>
+        <div className='scheme-btn-group'>
+          <button className='scheme-button' onClick={this.props.removeAll}> Clear all </button>
+          <button className='scheme-button' onClick={this.props.addSection}> Add progression </button>
+        </div>
 
         <div className='scheme'>
           <Accordion type='INTRO'>
@@ -29,7 +31,14 @@ class Scheme extends Component {
 
           {this.props.sections.map((s, index) => {
             return (
-              <Accordion key={index} type = 'PROGRESSION' removeSection = {()=>this.props.removeSection(s.id)}>
+              <Accordion key={s.id}
+                type = 'PROGRESSION'
+                index = {index + 1}
+                removeSection = {()=>this.props.removeSection(s.id)}
+                cloneSection = {()=>this.props.cloneSection(s.id)}
+                moveSectionUp = {()=>this.props.moveSection(s.id,'UP')}
+                moveSectionDown = {()=>this.props.moveSection(s.id,'DOWN')}
+                >
                 <Section section = {s} setPattern={this.props.setPattern}/>
               </Accordion>
             )
@@ -66,7 +75,9 @@ const mapDispatchToProps = (dispatch) => {
     setPattern: (sectionId, patternId, hand) => dispatch(setPattern(sectionId, patternId, hand)),
     addSection: () => { dispatch(addSection()) },
     removeAll: () => { dispatch(removeAll()) },
-    removeSection: (id) => { dispatch(removeSection(id)) }
+    moveSection: (id, direction) => { dispatch(moveSection(id, direction)) },
+    cloneSection: (id) => { dispatch(cloneSection(id)) },
+    removeSection: (id) => { dispatch(removeSection(id)) },
   }
 }
 

@@ -11,14 +11,15 @@ class SheetContainer extends Component {
         <div className = {this.props.isOutdated ? 'blur': ''}>
           <Sheet shouldUpdate = {this.props.isOutdated} />
         </div>
-        {this.props.isOutdated && <button className='btn-update' onClick={this.props.update}> UPDATE </button>}
+        {this.props.isOutdated && <button className='btn-update' onClick={this.props.update}/>}
       </div>
     );
   }
 }
 
 SheetContainer.propTypes = {
-
+  isOutdated: PropTypes.bool,
+  update: PropTypes.func
 };
 
 const mapStateToProps = (state) => {

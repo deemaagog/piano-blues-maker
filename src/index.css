@@ -1,6 +1,14 @@
 @import '~react-select/dist/react-select.css';
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~rc-slider/assets/index.css';
+/* @import './theme.css'; */
+
+/* $primary-color: #333; */
+:root {
+  --main-color: #115372;
+}
+
+/* .myfill { fill:red } */
 
 body {
   margin: 0;
@@ -10,6 +18,7 @@ body {
   font-size: 14px;
   line-height: 1.5;
   /* box-sizing: border-box; */
+  overflow: hidden;
 }
 
 
@@ -23,7 +32,7 @@ body {
 }
 
 .header {
-  background: #093255;
+  background: var(--main-color);
   /* padding: 0 50px; */
   height: 64px;
   /* line-height: 64px; */ 
@@ -33,6 +42,7 @@ body {
   z-index: 300;
   position: fixed;
   width: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .header-panel {
@@ -53,16 +63,22 @@ body {
 
 .scheme-wrapper {
    min-height: calc(100vh - 64px);
-   /* width: 350px; */
+   height: calc(100vh - 64px);
+   overflow-y: auto;
    flex: 0 0 350px;
    border-right: 1px solid #b1bac2;
-   background: #f6f6f6;
+   background: #f3f2ea;
    padding: 15px;
    box-sizing: border-box;
 }
 
 .scheme {
-  margin-top: 15px
+  margin-top: 35px
+}
+
+.scheme-btn-group{
+  display: flex;
+  justify-content: space-between
 }
 
 .scheme-button {
@@ -71,17 +87,19 @@ body {
   font-size: 14px;
   border-radius: 4px;
   height: 32px;
-  background-color: #fff;
-  border-color: #093255;
+  background-color: #b0d7da;
+  /* border-color: #b0d7da; */
   touch-action: manipulation;
-  border: 1px solid;
+  /* border: 1px solid; */
   white-space: nowrap;
   user-select: none;
+  width: 47.5%;
+  border: solid #a3bfc1 1px;
+  text-decoration: none;
 }
 
-.scheme-button:hover, .scheme-button:focus {
-  color: #40a9ff;
-  border-color: #40a9ff;
+.scheme-button:hover {
+  background-color: #a2cbcc;
 }
 
 .logo-wrapper {
@@ -92,7 +110,7 @@ body {
 }
 
 .logo {
-  background: transparent url(./images/logo.svg) no-repeat center center;
+  background: transparent url(./images/logo_pbm.png) no-repeat center center;
   background-size: 100% auto;
   height: 100%;
 }
@@ -100,6 +118,9 @@ body {
 
 .sheet{
   /* overflow-x: hidden; */
+  height: calc(100vh - 64px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
   
 #settings{
@@ -108,7 +129,7 @@ body {
   z-index: 100;
   width: 350px;
   overflow: auto;
-  background: #093255;
+  background: var(--main-color);
   color: #F2EFF6;
   top: 0;
   height: 100%;
@@ -153,8 +174,8 @@ button:focus {outline:0;}
 
 .settings-header {
   padding: 20px 20px;
-  background: #568ab4;
-  color: #fff;
+  background: #b8cddc;
+  color: #000;
   position: relative;
   margin-top: 64px;
   text-transform: uppercase;
@@ -181,14 +202,20 @@ button:focus {outline:0;}
 
 .section {
   /* display: flex; */
-  background-color: #fafafa;
+  background-color: #c9d7de;
   border-radius: 4px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid #b8c6d0;
   /* border-bottom: 0; */
   line-height: 22px;
   /* padding: 12px 0 12px 20px; */
   color: rgba(0, 0, 0, 0.85);
   /* cursor: pointer; */
+  margin-top: 5px
+}
+
+.section:hover {
+  background-color: #b6c9d4;
+  /* border-color: #b0d7da; */
 }
 
 .section-type {
@@ -207,13 +234,18 @@ button:focus {outline:0;}
   cursor: pointer;
 }
 
+.btn-section{
+  margin-left: 4px;
+  color: dimgray;
+}
+
 .section-details {
   /* display: flex; */
-  background-color: #ffffff;
+  background-color: #c9d7de;
   /* border-radius: 4px; */
   /* border: 1px solid #d9d9d9; */
   /* border-bottom: 0; */
-  border-top: 1px solid #d9d9d9;
+  border-top: 1px solid #9dafbb;
   line-height: 22px;
   padding: 12px 20px 12px 20px;
   color: rgba(0, 0, 0, 0.85);
@@ -256,6 +288,10 @@ i.section-closed:before {
   height: 46px;
 } */
 
+.Select-control {
+  border: 1px solid #9dafbb;
+}  
+
 
 .swing-feel {
   vertical-align: middle;
@@ -267,21 +303,23 @@ i.section-closed:before {
 }
 
 .btn-update {
-  position: absolute;
-  /* top: 500px; */
-  /* left: 500px; */
+  position: fixed;
   z-index: 100;
   top:calc(50% - 30px);
-  left:calc(50% - 80px + 350px/2);
+  left:calc(50% - 30px + 350px/2);
   height:60px;
-  width:160px;
+  width:60px;
   color: #ffffff;
-  background-color: #093255;
+  background-color: var(--main-color);
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
-  border-color: #093255;
+  border-color: var(--main-color);
   border: 0px solid;
+  background-Image: url(./images/refresh.svg);
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center
 }
 
 /* .select-key .Select-placeholder {

@@ -84,7 +84,7 @@ class Player {
   }
 
 
-  parceVoice(voice) {
+  parceVoice(voice,symbol, vInd, bInd, pInd, sInd) {
     const notesDurationDenominators = {};
     let offset = 0;
     this.beatCounter = 0;
@@ -103,7 +103,7 @@ class Player {
     }
 
     voice.notes.forEach((note, index) => {
-
+      const noteId = `${sInd}-${pInd}-${bInd}-${symbol}-${vInd}-${index}`;
       const vexDuration = note.duration.toLowerCase();
       const isRest = vexDuration.indexOf('r') !== -1;
 
@@ -120,7 +120,7 @@ class Player {
         if (!notesToSwing[beat]) {
           notesToSwing[beat] = [];
         }
-        notesToSwing[beat].push({ id: note.id })
+        notesToSwing[beat].push({ id: noteId })
       }
 
       this.beatCounter = this.beatCounter + normalDuration;
@@ -131,7 +131,7 @@ class Player {
         this.events.push(
           {
             type: 'noteStart',
-            id: note.id,
+            id: noteId,
             note: midi(key.replace('/', '').replace('n', ''))+ this.keyOffset,
             time: (this.currentTime + offset),
             duration,
@@ -213,16 +213,16 @@ class Player {
     this.swingExtraDuration = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
 
 
-    sections.forEach((section) => {
+    sections.forEach((section,sInd) => {
       if (section !== null) {
-        section.phrases.forEach((phrase) => {
-          phrase.bars.forEach((bar) => {
-            bar.trebleVoices.forEach((voice) => {
-              this.parceVoice(voice);
+        section.phrases.forEach((phrase, pInd) => {
+          phrase.bars.forEach((bar,bInd) => {
+            bar.trebleVoices.forEach((voice, vInd) => {
+              this.parceVoice(voice,'t', vInd, bInd, pInd, sInd);
             });
 
-            bar.bassVoices.forEach((voice) => {
-              this.parceVoice(voice);
+            bar.bassVoices.forEach((voice, vInd) => {
+              this.parceVoice(voice,'b', vInd, bInd, pInd, sInd);
             });
             this.currentTime += this.nBeats * this.timeDenominator;
           });

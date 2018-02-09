@@ -10,9 +10,10 @@ function generateId() {
 class Sheet extends Component {
 
   state = {windowWidth: window.innerWidth};
+  //state = {windowWidth: document.body.clientWidth};
 
   drawSheet = () => {
-    // console.log('drawing');
+    //console.log(this.sheetContainer.clientWidth);
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
@@ -38,6 +39,7 @@ class Sheet extends Component {
 
   updateDimensions = () => {
     this.setState({windowWidth:window.innerWidth});
+    //this.setState({windowWidth:document.body.clientWidth});
   }
 
 

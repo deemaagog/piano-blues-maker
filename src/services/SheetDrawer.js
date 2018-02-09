@@ -1,5 +1,6 @@
 import Vex from 'vexflow'
 import { Distance, Interval } from 'tonal'
+import {keysAccidentals,keysOffsets, accidentalOffsets} from './constants'
 
 const VF = Vex.Flow;
 
@@ -14,160 +15,7 @@ const PADDING_LEFT = 50;
 const EXTRA_SPACE = 20;
 const COEFFICIENT = 1;
 
-const keysOffsets = {
-  'C': 0,
-  'Db': 1,
-  'D': 2,
-  'Eb': 3,
-  'E': 4,
-  'F': 5,
-  'Gb': -6,
-  'G': -5,
-  'Ab': -4,
-  'A': -3,
-  'Bb': -2,
-  'B': -1
-}
-
-
-const keysAccidentals = {
-  'C': [],
-  'Db': ['Bb', 'Eb', 'Ab', 'Db', 'Gb'],
-  'D': ['F#', 'C#'],
-  'Eb': ['Bb', 'Eb', 'Ab'],
-  'E': ['F#', 'C#', 'G#', 'D#'],
-  'F': ['Bb'],
-  'Gb': ['Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'],
-  'G': ['F#'],
-  'Ab': ['Bb', 'Eb', 'Ab', 'Db'],
-  'A': ['F#', 'C#', 'G#'],
-  'Bb': ['Bb', 'Eb'],
-  'B': ['F#', 'C#', 'G#', 'D#', 'A#']
-}
-
-// const keysToStepsMap = {
-//   'Cb' : '7',
-//   'C' : '1',
-//   'C#' : '1+',
-//   'Dbb' : '1',
-//   'Db' : '2-',
-//   'D' : '2',
-//   'D#' : '2+',
-//   'Dx' : '3',
-//   'Ebb' : '2',
-//   'Eb' : '3-',
-//   'E' : '3',
-//   'E#' : '4',
-//   'Fb' : '3',
-//   'F' : '4',
-//   'F#' : '4+',
-//   'Fx' : '5',
-//   'Gbb' : '4',
-//   'Gb' : '5-',
-//   'G' : '5',
-//   'G#' : '5+',
-//   'Gx' : '6',
-//   'Abb' : '5',
-//   'Ab' : '6-',
-//   'A' : '6',
-//   'A#' : '6+',
-//   'Ax' : '7',
-//   'Bbb' : '6',
-//   'Bb' : '7-',
-//   'B' : '7',
-//   'B#' : '1',
-// }
-
-// const scalesSteps = {
-//   'C': {
-//     '1':'C',
-//     '1+':'C#',
-//     '2-':'Db',
-//     '2':'D',
-//     '2+':'D#',
-//     '3-':'Eb',
-//     '3':'E',
-//     '4':'F',
-//     '4+':'F#',
-//     '5-':'Gb',
-//     '5':'G',
-//     '5+':'G#',
-//     '6-':'Ab',
-//     '6':'A',
-//     '6+':'A#',
-//     '7-':'Bb',
-//     '7':'B'
-//   },
-//   'B': {
-//     '1':'B',
-//     '1+':'C#',
-//     '2-':'Db',
-//     '2':'D',
-//     '2+':'D#',
-//     '3-':'Eb',
-//     '3':'E',
-//     '4':'F',
-//     '4+':'F#',
-//     '5-':'Gb',
-//     '5':'G',
-//     '5+':'G#',
-//     '6-':'Ab',
-//     '6':'A',
-//     '6+':'A#',
-//     '7-':'Bb',
-//     '7':'B'
-//   },
-//   'Eb': {
-//     '1':'Eb',
-//     '1+':'En',
-//     '2-':'En',
-//     '2':'F',
-//     '2+':'F#',
-//     '3-':'Gb',
-//     '3':'G',
-//     '4':'Ab',
-//     '4+':'An',
-//     '5-':'An',
-//     '5':'Bb',
-//     '5+':'Bn',
-//     '6-':'Bn',
-//     '6':'C',
-//     '6+':'C#',
-//     '7-':'Db',
-//     '7':'D'
-//   },
-//   'G': {
-//     '1':'G',
-//     '1+':'G#',
-//     '2-':'Ab',
-//     '2':'A',
-//     '2+':'A#',
-//     '3-':'Bb',
-//     '3':'B',
-//     '4':'C',
-//     '4+':'C#',
-//     '5-':'Db',
-//     '5':'D',
-//     '5+':'D#',
-//     '6-':'Eb',
-//     '6':'E',
-//     '6+':'F',
-//     '7-':'F',
-//     '7':'F#'
-//   },
-// }
-
-
-
-// const accindentalsOffsets = {
-//   '2':'x', '1':'#', '0':'n', '-1':'b', '-2':'bb'
-// }
-
-function transpose(key, signature) {
-  //const step = keysToStepsMap[`${key.name.toUpperCase()}${key.acc}`];
-  //return scalesSteps[signature][step];
-
-}
+const SHEET_MIN_WIDTH = 600;
 
 
 function disributeValue(arr, value, precision) {
@@ -187,7 +35,7 @@ class SheetDrawer {
   constructor(container, sections, { width, signature }) {
     this.sheetContainer = container;
     this.sections = sections;
-    this.svgWidth = width - SCHEME_WIDTH
+    this.svgWidth = Math.max(width - SCHEME_WIDTH,SHEET_MIN_WIDTH);
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
     this.voicesBeams = [];
     this.voicesTuplets = [];
@@ -269,17 +117,29 @@ class SheetDrawer {
 
       const { keys, duration, ...options } = note;
 
+      //вспомогательный массив для хранения знаков альтерации,для последующего staveNote.addAccidental 
+      const noteKeysAccidentals = [];
+
       const trasposedKeys = keys.map(key => {
 
+        // не транспонировать паузы
+        // todo: транспонировать если несколько голосов
         if (duration.charAt(duration.length - 1) === 'r') {
-          // не транспонировать паузы
-          // to do: транспонировать если несколько голосов
           return key
         }
-        const [keyName, octave] = key.split("/");
+        //парсим текущую ноту (key)
+        const [keyNameWithAcc, octave] = key.split("/");
+        const keyName = keyNameWithAcc.slice(0,1)
+        const accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
 
+        const isNatural = (accidental === 'n');
+
+        if (accidental) {
+          this.originalAccidentals[keyName+octave] = accidental; 
+        }
+        
         // todo: check if is natural!!!
-        const transposedKey = Distance.transpose(keyName + octave, Interval.fromSemitones(this.keyOffset));
+        const transposedKey = Distance.transpose(keyName+(isNatural?'':accidental) + octave, Interval.fromSemitones(this.keyOffset));
 
         const length = transposedKey.length;
 
@@ -291,14 +151,14 @@ class SheetDrawer {
 
         let vexKey = trKeyNameWithAcc;
 
-        if (this.keyAccidentals.indexOf(trKeyNameWithAcc) > -1) {
+        if (this.keyAccidentals[trKeyName] && this.keyAccidentals[trKeyName][trAccidental]) {
           //есть знак при ключе
           vexKey = trKeyName;
         } else { 
-          this.accidentals.push(trKeyNameWithAcc);
+          //this.accidentals.push(trKeyNameWithAcc);
         }
 
-        if (!trAccidental && (this.keyAccidentals.indexOf(trKeyName+'#') > -1 || this.keyAccidentals.indexOf(trKeyName+'b') > -1)) {
+        if (!trAccidental && this.keyAccidentals[trKeyName]) {
           //если знак при ключе, но надо сыграть без знака, то бекар 
           vexKey = vexKey + 'n';
         }
@@ -378,7 +238,9 @@ class SheetDrawer {
         phrase.bars.forEach((bar, bInd) => {
 
           // массив для хранения случайных знаков для текущего такта
-          this.accidentals = [];
+          this.accidentals = {};
+          // массив для хранения случайных знаков для текущего такта в оригинальной тональности C
+          this.originalAccidentals = {};
 
           const isLastBar = (bInd === barsLength - 1) && isLastPhrase && isLastSection;
           const trebleStaveVoices = bar.trebleVoices.map((voice, vInd) => {

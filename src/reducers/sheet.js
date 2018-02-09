@@ -19,7 +19,11 @@ export default function sheet(state = initialState, action) {
     case 'SET_KEY':
       return { ...state, ...{ isOutdated : true }}
     case 'REMOVE_ALL':
-      return { ...state, ...{ isOutdated : true }}  
+      return { ...state, ...{ isOutdated : false }}
+    case 'CLONE_SECTION':
+      return { ...state, ...{ isOutdated : true }}
+    case 'MOVE_SECTION':
+      return { ...state, ...{ isOutdated : true }}      
     default:
       return state
   }
