@@ -1,6 +1,6 @@
 import Vex from 'vexflow'
 import { Distance, Interval } from 'tonal'
-import {keysAccidentals,keysOffsets, accidentalOffsets} from './constants'
+import { keysAccidentals, keysOffsets, accidentalOffsets } from './constants'
 
 const VF = Vex.Flow;
 
@@ -35,7 +35,7 @@ class SheetDrawer {
   constructor(container, sections, { width, signature }) {
     this.sheetContainer = container;
     this.sections = sections;
-    this.svgWidth = Math.max(width - SCHEME_WIDTH,SHEET_MIN_WIDTH);
+    this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH);
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
     this.voicesBeams = [];
     this.voicesTuplets = [];
@@ -64,14 +64,21 @@ class SheetDrawer {
       const trebleStave = new VF.Stave(barOffset, PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES, barWidth);
       const bassStave = new VF.Stave(barOffset, PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_STAVES, barWidth);
 
+      //grand stave group
+      // const group = this.context.openGroup(b.sectionId);
+      // this.context.rect(barOffset, PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES + 40, barWidth, SPACE_BETWEEN_STAVES + 50 * 2 - 60, { stroke: 'none', fill: "rgba(124,240,10,0.1)" });
+      // this.context.closeGroup();
 
-      // console.log(`drawing stave, width: ${b.barWidth}`);
       barOffset += barWidth;
 
       if (index === 0) {
         trebleStave.addClef("treble").addTimeSignature("4/4").addKeySignature(this.signature);
         bassStave.addClef("bass").addTimeSignature("4/4").addKeySignature(this.signature);
-        //trebleStave.setMeasure(5);
+      }
+
+      if (b.text) {
+        // trebleStave.setText(b.text[0], VF.Modifier.Position.ABOVE, { shift_y: 0, justification: VF.TextNote.Justification.LEFT });
+        trebleStave.setSection(b.text[0], 0);
       }
 
       const lineLeft = new VF.StaveConnector(trebleStave, bassStave).setType(1);
@@ -82,6 +89,9 @@ class SheetDrawer {
 
       lineLeft.setContext(this.context).draw();
       lineRight.setContext(this.context).draw();
+
+
+
 
 
       var startX = Math.max(trebleStave.getNoteStartX(), bassStave.getNoteStartX());
@@ -113,14 +123,14 @@ class SheetDrawer {
       resolution: VF.RESOLUTION
     });
 
-    const vexNotes = voice.notes.map((note, nInd) => {
+    const vexNotes = voice.notes.map(function (note, nInd) {
 
       const { keys, duration, ...options } = note;
 
       //вспомогательный массив для хранения знаков альтерации,для последующего staveNote.addAccidental 
       const noteKeysAccidentals = [];
 
-      const trasposedKeys = keys.map(key => {
+      const trasposedKeys = keys.map(function (key) {
 
         // не транспонировать паузы
         // todo: транспонировать если несколько голосов
@@ -129,32 +139,32 @@ class SheetDrawer {
         }
         //парсим текущую ноту (key)
         const [keyNameWithAcc, octave] = key.split("/");
-        const keyName = keyNameWithAcc.slice(0,1)
+        const keyName = keyNameWithAcc.slice(0, 1)
         const accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
 
         const isNatural = (accidental === 'n');
 
         if (accidental) {
-          this.originalAccidentals[keyName+octave] = accidental; 
+          this.originalAccidentals[keyName + octave] = accidental;
         }
-        
+
         // todo: check if is natural!!!
-        const transposedKey = Distance.transpose(keyName+(isNatural?'':accidental) + octave, Interval.fromSemitones(this.keyOffset));
+        const transposedKey = Distance.transpose(keyName + (isNatural ? '' : accidental) + octave, Interval.fromSemitones(this.keyOffset));
 
         const length = transposedKey.length;
 
         //Note.fromMidi(61, true) // => "C#4"//
         // todo: use note-parser?
         const trKeyNameWithAcc = transposedKey.substr(0, length - 1);
-        const trKeyName = trKeyNameWithAcc.slice(0,1)
+        const trKeyName = trKeyNameWithAcc.slice(0, 1)
         const trAccidental = trKeyNameWithAcc.slice(1, (trKeyNameWithAcc.length + 1) || 9e9);
 
         let vexKey = trKeyNameWithAcc;
 
-        if (this.keyAccidentals[trKeyName] && this.keyAccidentals[trKeyName][trAccidental]) {
+        if (this.keyAccidentals[trKeyName] && this.keyAccidentals[trKeyName] === trAccidental) {
           //есть знак при ключе
           vexKey = trKeyName;
-        } else { 
+        } else {
           //this.accidentals.push(trKeyNameWithAcc);
         }
 
@@ -165,9 +175,13 @@ class SheetDrawer {
 
         const trOctave = transposedKey.substr(length - 1);
         return vexKey + '/' + trOctave;
-      })
+      }.bind(this))
 
-      const staveNote = new VF.StaveNote({ keys: trasposedKeys,duration ,...options });
+      const staveNote = new VF.StaveNote({ keys: trasposedKeys, duration, ...options });
+
+      if (options.dots) {
+        staveNote.addDotToAll();
+      }
 
       trasposedKeys.forEach(function (key, i) {
         const keyValue = key.split("/")[0];
@@ -181,7 +195,7 @@ class SheetDrawer {
       staveNote.setAttribute('id', `${sInd}-${pInd}-${bInd}-${symbol}-${vInd}-${nInd}`);
 
       return staveNote;
-    });
+    }.bind(this));
 
     if (voice.beams) {
       voice.beams.forEach(beam => {
@@ -242,6 +256,7 @@ class SheetDrawer {
           // массив для хранения случайных знаков для текущего такта в оригинальной тональности C
           this.originalAccidentals = {};
 
+          const isFirstSectionBar = (pInd === 0 & bInd === 0);
           const isLastBar = (bInd === barsLength - 1) && isLastPhrase && isLastSection;
           const trebleStaveVoices = bar.trebleVoices.map((voice, vInd) => {
             return this.buildVoice(voice, 't', vInd, bInd, pInd, sInd);
@@ -283,7 +298,9 @@ class SheetDrawer {
               formatter,
               trebleStaveVoices,
               bassStaveVoices,
-              isLastBar
+              isLastBar,
+              text: isFirstSectionBar ? section.type : '',
+              sectionId: section.id
             });
             widthArray.push(barWidth);
           } else {
@@ -302,7 +319,9 @@ class SheetDrawer {
               formatter,
               trebleStaveVoices,
               bassStaveVoices,
-              isLastBar
+              isLastBar,
+              text: isFirstSectionBar ? section.type : '',
+              sectionId: section.id
             });
           }
         });

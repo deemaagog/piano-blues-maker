@@ -14,7 +14,7 @@ class Accordion extends Component {
     return (
       <div className='section' >
 
-        <div className='section-header'>
+        <div className='section-header' >
           <div className='section-type' onClick={this.open}>
             <i className={this.state.isOpened ? 'section-opened' : 'section-closed'} />
             {`${this.props.type} ${this.props.index}`}

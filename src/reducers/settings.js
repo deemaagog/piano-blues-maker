@@ -1,5 +1,5 @@
 const initialState = {
-    tempo: 70,
+    tempo: 80,
     swing: true,
     key: 'C'
 }

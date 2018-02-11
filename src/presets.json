@@ -2,6 +2,7 @@
   "intros": [
     {
       "id": 0,
+      "type": "INTRO",
       "description": "Descending diminished chords",
       "phrases": [
         {
@@ -172,6 +173,7 @@
   "endings": [
     {
       "id": 100,
+      "type": "ENDING",
       "description": "Descending dominant ninth chords",
       "phrases": [
         {
@@ -213,6 +215,77 @@
                     "first_indices": [0, 1],
                     "last_indices": [0, 1]
                     }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "type": "ENDING",
+      "description": "Unknown",
+      "phrases": [
+        {
+          "id": "",
+          "type": "",
+          "bars": [
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["e/4"], "duration": "8"},
+                    { "keys": ["c/4"], "duration": "8"},
+                    { "keys": ["e/4"], "duration": "8"},
+                    { "keys": ["f/4"], "duration": "8"},
+                    { "keys": ["c/4"], "duration": "8"},
+                    { "keys": ["f/4"], "duration": "8"},
+                    { "keys": ["f#/4"], "duration": "8"},
+                    { "keys": ["c/4"], "duration": "8"},
+                    { "keys": ["f#/4"], "duration": "8"},
+                    { "keys": ["g/4"], "duration": "q"}
+                  ],
+                  "beams": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 },
+                    { "from": 6, "to": 9 }
+                  ],
+                  "tuplets": [
+                    { "from": 0, "to": 3 },
+                    { "from": 3, "to": 6 },
+                    { "from": 6, "to": 9 }
+                  ]
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["Bb/2","Bb/3"], "duration": "q", "clef": "bass", "stem": "up" },
+                    { "keys": ["A/2","A/3"], "duration": "q", "clef": "bass", "stem": "up" },
+                    { "keys": ["Ab/2","Ab/3"], "duration": "q", "clef": "bass", "stem": "up" },
+                    { "keys": ["G/2","G/3"], "duration": "q", "clef": "bass", "stem": "up" }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "",
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/3","Db/4","F/4","G/4","Bb/4"], "duration": "q"},
+                    { "keys": ["g/3","Bb/3","d/4","e/4","a/4"], "duration": "h", "dots":1}
+                  ]
+                }
+              ],
+              "bassVoices": [
+                {
+                  "notes": [
+                    { "keys": ["Db/2","Db/3"], "duration": "q", "clef": "bass", "stem": "up" },
+                    { "keys": ["C/2","C/3"], "duration": "h", "clef": "bass", "stem": "up", "dots":1}
                   ]
                 }
               ]

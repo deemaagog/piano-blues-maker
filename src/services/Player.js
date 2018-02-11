@@ -109,6 +109,10 @@ class Player {
 
       let normalDuration = durations[isRest ? vexDuration.replace('r', '') : vexDuration];
 
+      if (note.dots) {
+        normalDuration = normalDuration * 1.5;
+      }
+
       let duration = normalDuration * this.timeDenominator;
       if (notesDurationDenominators[index]) {
         duration = duration * notesDurationDenominators[index]

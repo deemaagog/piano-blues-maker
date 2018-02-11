@@ -1,14 +1,22 @@
 import presets from '../presets'
 
-const initialState = [];
+const initialState = [createSection(true)];
 
 function generateId() {
   return Math.random().toString(36).substr(2, 9);
 }
 
-function createNewSection() {
-  const { phrases: lhPhrases, ...leftHand } = presets.leftHandPatterns[0];
-  const { phrases: rhPhrases, ...rightHand } = presets.rightHandPatterns[0];
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function createSection(random = false) {
+
+  const lhPatternId = random ? getRandomInt(1,presets.leftHandPatterns.length): 0;
+  const rhPatternId = random ? getRandomInt(1,presets.rightHandPatterns.length): 0;
+
+  const { phrases: lhPhrases, ...leftHand } = presets.leftHandPatterns[lhPatternId];
+  const { phrases: rhPhrases, ...rightHand } = presets.rightHandPatterns[rhPatternId];
 
   lhPhrases.forEach((lhPhrase, phraseIndex) => {
     lhPhrase.bars.forEach((bar, barIndex) => {
@@ -73,7 +81,7 @@ export default function sections(state = initialState, action) {
 
       return newSections;
     case 'ADD_SECTION':
-      return [...state, createNewSection()]
+      return [...state, createSection()]
     case 'CLONE_SECTION':
 
       const index = state.findIndex(s => s.id === action.id);

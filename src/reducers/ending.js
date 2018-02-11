@@ -1,6 +1,6 @@
 import { endings } from '../presets'
 
-const initialState = null;
+const initialState = endings[0];
 
 export default function intro(state = initialState, action) {
     switch (action.type) {
