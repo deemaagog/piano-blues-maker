@@ -10,9 +10,9 @@ class Section extends Component {
 
   render() {
     return (
-      <div>
-        <div className = "handGroup">Right hand:</div><RightHandSection pattern={this.props.section.rightHand} setPattern={this.setPattern} />
-        <div className = "handGroup">Left hand:</div><LeftHandSection pattern={this.props.section.leftHand} setPattern={this.setPattern} />
+      <div className = "handGroup">
+        <div >Right hand:</div><RightHandSection pattern={this.props.section.rightHand} setPattern={this.setPattern} />
+        <div >Left hand:</div><LeftHandSection pattern={this.props.section.leftHand} setPattern={this.setPattern} />
       </div>
     );
   }

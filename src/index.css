@@ -264,6 +264,7 @@ button:focus {outline:0;}
 .handGroup{
   background-color: #afbecc;
   text-align: center;
+  border-radius: 4px;
 }    
 
 i.section-opened:before {

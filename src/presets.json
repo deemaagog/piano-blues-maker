@@ -20,7 +20,7 @@
                     { "keys": ["E/4", "G/4"], "duration": "8" },
                     { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["Eb/4", "Gb/4"], "duration": "8" },
+                    { "keys": ["E/4", "G/4"], "duration": "8" },
                     { "keys": ["d/4", "f/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
                     { "keys": ["d/4", "f/4"], "duration": "8" }
@@ -58,7 +58,7 @@
                     { "keys": ["C/4", "E/4"], "duration": "8" },
                     { "keys": ["C/4", "Eb/4"], "duration": "8" },
                     { "keys": ["C/5"], "duration": "8" },
-                    { "keys": ["C/4", "Eb/4"], "duration": "8" },
+                    { "keys": ["C/4", "E/4"], "duration": "8" },
                     { "keys": ["b/3", "d/4"], "duration": "h" }
                   ],
                   "tuplets": [
@@ -98,9 +98,22 @@
               "trebleVoices": [
                 {
                   "notes": [
-                    { "keys": [{"name": "B", "oct": 4, "acc":""}], "duration": "qr" },
-                    { "keys": [{"name": "E", "oct": 4, "acc":""}, {"name": "G", "oct": 4, "acc":""}], "duration": "8" },
-                    { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
+                    { 
+                      "keys": [
+                      {"name": "B", "oct": 4, "acc":""}
+                      ],
+                      "duration": "qr" },
+                    { 
+                      "keys": [
+                      {"name": "E", "oct": 4, "acc":""},
+                      {"name": "G", "oct": 4, "acc":""}
+                      ], 
+                      "duration": "8" },
+                    { 
+                      "keys": [
+                      {"name": "C", "oct": 5, "acc":""}
+                      ], 
+                      "duration": "8" },
                     { "keys": [{"name": "E", "oct": 4, "acc":""}, {"name": "G", "oct": 4, "acc":""}], "duration": "8" },
                     { "keys": [{"name": "E", "oct": 4, "acc":"b"}, {"name": "G", "oct": 4, "acc":"b"}], "duration": "8" },
                     { "keys": [{"name": "C", "oct": 5, "acc":""}], "duration": "8" },
@@ -195,7 +208,8 @@
                     "from": 1,
                     "to": 2,
                     "first_indices": [0, 1, 2],
-                    "last_indices": [0, 1, 2]
+                    "last_indices": [0, 1, 2],
+                    "stem":"down"
                     }
                   ]
                 }
@@ -1479,6 +1493,437 @@
                     { "keys": ["B/4"], "duration": "qr", "stem": "up" }
                   ],
                   "tuplets": []
+                }
+              ]
+            }
+          ]
+        }
+      ]  
+    },
+    {
+      "id": 302,
+      "description": "Ties test",
+      "phrases": [
+        {
+          "id": "",
+          "type": "I-I-I-I",
+          "bars": [
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 2,
+                    "to": 3,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 5,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "IV-IV-I-I",
+          "bars": [
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["f/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["Eb/4","g/4","c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["E/4","g/4","c/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["f/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["Eb/4","g/4","c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["E/4","g/4","c/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["g/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "",
+          "type": "V-V-I-I",
+          "bars": [
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["g/4","b/4","e/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["g/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["g/4","b/4","e/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "8", "stem": "up" },
+                    { "keys": ["f/4","a/4","d/5"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4"], "duration": "8", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    {
+                      "from": 6,
+                      "to": null,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    },
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    { "keys": ["c/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "8r", "stem": "up" },
+                    { "keys": ["C/4","E/4","a/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["Bb/3","D/4","g/4"], "duration": "8", "stem": "up" },
+                    { "keys": ["B/3","D/4","g/4"], "duration": "q", "stem": "up" },
+                    { "keys": ["B/4"], "duration": "qr", "stem": "up" }
+                  ],
+                  "ties": [
+                    {
+                    "from": 3,
+                    "to": 4,
+                    "first_indices": [0, 1, 2],
+                    "last_indices": [0, 1, 2]
+                    },
+                    
+                    {
+                      "from": null,
+                      "to": 0,
+                      "first_indices": [0],
+                      "last_indices": [0]
+                    }
+                  ]
                 }
               ]
             }

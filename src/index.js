@@ -14,4 +14,9 @@ ReactDOM.render(
     <App />
   </Provider>
   , document.getElementById('root'));
+
+  // инициализация приложения: загрузка пресетов, сэмплов и т.д.
+  // store.dispatch(initApp({
+  // }));
+
 registerServiceWorker()

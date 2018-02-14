@@ -1,6 +1,5 @@
 import Vex from 'vexflow'
-import { Distance, Interval } from 'tonal'
-import { keysAccidentals, keysOffsets, accidentalOffsets } from './constants'
+import Transposer from './Transposer'
 
 const VF = Vex.Flow;
 
@@ -37,15 +36,18 @@ class SheetDrawer {
     this.sections = sections;
     this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH);
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
+    
     this.voicesBeams = [];
     this.voicesTuplets = [];
     this.voicesTies = [];
+    
+    this.openedTies = {};
+    
     this.width = width;
     this.signature = signature;
     // this.rowsCounter = 0;
 
-    this.keyOffset = keysOffsets[signature];
-    this.keyAccidentals = keysAccidentals[signature];
+    this.transposer = new Transposer(signature);
   }
 
 
@@ -130,51 +132,15 @@ class SheetDrawer {
       //вспомогательный массив для хранения знаков альтерации,для последующего staveNote.addAccidental 
       const noteKeysAccidentals = [];
 
-      const trasposedKeys = keys.map(function (key) {
+      const notesKeysPitch = [];
 
-        // не транспонировать паузы
-        // todo: транспонировать если несколько голосов
-        if (duration.charAt(duration.length - 1) === 'r') {
-          return key
-        }
-        //парсим текущую ноту (key)
-        const [keyNameWithAcc, octave] = key.split("/");
-        const keyName = keyNameWithAcc.slice(0, 1)
-        const accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
+      const trasposedKeys = keys.map(function (key, keyIndex) {
 
-        const isNatural = (accidental === 'n');
+       const {vexKey, vexAccidental} = this.transposer.transpose(key,duration); 
+       
+       noteKeysAccidentals[keyIndex] = vexAccidental;
+       return  vexKey;
 
-        if (accidental) {
-          this.originalAccidentals[keyName + octave] = accidental;
-        }
-
-        // todo: check if is natural!!!
-        const transposedKey = Distance.transpose(keyName + (isNatural ? '' : accidental) + octave, Interval.fromSemitones(this.keyOffset));
-
-        const length = transposedKey.length;
-
-        //Note.fromMidi(61, true) // => "C#4"//
-        // todo: use note-parser?
-        const trKeyNameWithAcc = transposedKey.substr(0, length - 1);
-        const trKeyName = trKeyNameWithAcc.slice(0, 1)
-        const trAccidental = trKeyNameWithAcc.slice(1, (trKeyNameWithAcc.length + 1) || 9e9);
-
-        let vexKey = trKeyNameWithAcc;
-
-        if (this.keyAccidentals[trKeyName] && this.keyAccidentals[trKeyName] === trAccidental) {
-          //есть знак при ключе
-          vexKey = trKeyName;
-        } else {
-          //this.accidentals.push(trKeyNameWithAcc);
-        }
-
-        if (!trAccidental && this.keyAccidentals[trKeyName]) {
-          //если знак при ключе, но надо сыграть без знака, то бекар 
-          vexKey = vexKey + 'n';
-        }
-
-        const trOctave = transposedKey.substr(length - 1);
-        return vexKey + '/' + trOctave;
       }.bind(this))
 
       const staveNote = new VF.StaveNote({ keys: trasposedKeys, duration, ...options });
@@ -183,12 +149,9 @@ class SheetDrawer {
         staveNote.addDotToAll();
       }
 
-      trasposedKeys.forEach(function (key, i) {
-        const keyValue = key.split("/")[0];
-        const accidental = keyValue.slice(1, (keyValue.length + 1) || 9e9);
-
-        if (accidental.length > 0) {
-          staveNote.addAccidental(i, new VF.Accidental(accidental));
+      noteKeysAccidentals.forEach(function (acc, i) {
+        if (acc) {
+          staveNote.addAccidental(i, new VF.Accidental(acc));
         }
       });
 
@@ -251,10 +214,7 @@ class SheetDrawer {
         const barsLength = phrase.bars.length;
         phrase.bars.forEach((bar, bInd) => {
 
-          // массив для хранения случайных знаков для текущего такта
-          this.accidentals = {};
-          // массив для хранения случайных знаков для текущего такта в оригинальной тональности C
-          this.originalAccidentals = {};
+          this.transposer.resetAccidentals();
 
           const isFirstSectionBar = (pInd === 0 & bInd === 0);
           const isLastBar = (bInd === barsLength - 1) && isLastPhrase && isLastSection;
