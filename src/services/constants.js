@@ -13,6 +13,15 @@ export const keysOffsets = {
     'B': -1
   }
 
+export  const durations = {
+    '32': 0.125,
+    '16': 0.25,
+    '8': 0.5,
+    'q': 1,
+    'h': 2,
+    'w': 4
+  };
+
   // export  const keysAccidentals = {
   //   'C': [],
   //   'Db': ['Bb', 'Eb', 'Ab', 'Db', 'Gb'],

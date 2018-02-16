@@ -32,65 +32,73 @@ class Transposer {
     // не транспонировать паузы
     // todo: транспонировать если несколько голосов
     if (duration.charAt(duration.length - 1) === 'r') {
-      return { vexKey: key }
+      return  {trStep:key.step,trAccidental:key.acc||"",trOctave:key.oct}
     }
+
+    let {step, oct:octave, acc:accidental} = key;
     //парсим текущую ноту (key)
-    const [keyNameWithAcc, octave] = key.split("/");
-    const keyName = keyNameWithAcc.slice(0, 1)
-    let accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
+    // const [keyNameWithAcc, octave] = key.split("/");
+    // const keyName = keyNameWithAcc.slice(0, 1)
+    // let accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
 
     const isNatural = (accidental === 'n');
 
 
     if (accidental) {
-      this.originalAccidentals[keyName + octave] = accidental;
+      this.originalAccidentals[step + octave] = accidental;
     }
 
     // при проигрывании
     let removeAccidental = false;
-    if (!accidental && this.originalAccidentals[keyName + octave]) {
-      accidental = this.originalAccidentals[keyName + octave];
+    if (!accidental && this.originalAccidentals[step + octave]) {
+      accidental = this.originalAccidentals[step + octave];
       removeAccidental = true;
     }
 
     // todo: check if is natural!!!
-    const transposedKey = Distance.transpose(keyName + (isNatural ? '' : accidental) + octave, Interval.fromSemitones(this.keyOffset));
+    const transposedKey = Distance.transpose(step + (isNatural ? '' : accidental||'') + octave, Interval.fromSemitones(this.keyOffset));
 
     const length = transposedKey.length;
 
     //Note.fromMidi(61, true) // => "C#4"//
     // todo: use note-parser?
-    const trKeyNameWithAcc = transposedKey.substr(0, length - 1);
-    const trKeyName = trKeyNameWithAcc.slice(0, 1)
-    const trAccidental = trKeyNameWithAcc.slice(1, (trKeyNameWithAcc.length + 1) || 9e9);
+    const trStepAcc = transposedKey.substr(0, length - 1);
+    const trStep = trStepAcc.slice(0, 1)
+    const trAccidental = trStepAcc.slice(1, (trStepAcc.length + 1) || 9e9)||'';
     const trOctave = transposedKey.substr(length - 1);
 
-    let vexKey = trKeyNameWithAcc;
-    let vexAccidental = trAccidental;
+    // let vexKey = trKeyNameWithAcc;
+    // let vexAccidental = trAccidental;
 
-    if (this.keyAccidentals[trKeyName] && this.keyAccidentals[trKeyName] === trAccidental && this.accidentals[trKeyName + trOctave] !== 'n') {
+    const trKey = {trStep,trAccidental,trOctave, trPitch:`${trStep}${trAccidental}${trOctave}`};
+
+    if (this.keyAccidentals[trStep] && this.keyAccidentals[trStep] === trAccidental && this.accidentals[trStep + trOctave] !== 'n') {
       //есть знак при ключе и ранее он не был отменен
-      vexKey = trKeyName;
-      vexAccidental = undefined;
+      trKey.trAccidental = '';
+      // vexKey = trKeyName;
+      // vexAccidental = undefined;
     }
 
     if (trAccidental) {
-      this.accidentals[trKeyName + trOctave] = trAccidental;
+      this.accidentals[trStep + trOctave] = trAccidental;
     }
 
-    if (!trAccidental && (this.keyAccidentals[trKeyName] || isNatural)) {
+    if (!trAccidental && (this.keyAccidentals[trStep] || isNatural)) {
       //если знак при ключе, но надо сыграть без знака или ранее была отмена, то бекар 
-      vexKey = vexKey + 'n';
-      this.accidentals[trKeyName + trOctave] = 'n';
-      vexAccidental = 'n';
+      //vexKey = vexKey + 'n';
+      this.accidentals[trStep + trOctave] = 'n';
+      //vexAccidental = 'n';
+      trKey.trAccidental = 'n';
     }
 
     if (removeAccidental) {
-      vexKey = trKeyName;
-      vexAccidental = undefined;
+      // vexKey = trStep;
+      // vexAccidental = undefined;
+      trKey.trAccidental = '';
     }
 
-    return { vexKey: vexKey + '/' + trOctave, vexAccidental: vexAccidental|| undefined }
+    //return { vexKey: vexKey + '/' + trOctave, vexAccidental: vexAccidental|| undefined }
+    return trKey
   }
 }
 

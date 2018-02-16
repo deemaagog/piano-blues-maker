@@ -1,50 +1,9 @@
 import SoundFont from 'soundfont-player'
-import {midi} from 'note-parser'
+import { midi } from 'note-parser'
+import Transposer from './Transposer'
+import { durations } from './constants'
 
-// TODO:
-// ties, ties across bars
-// grace notes
-// dots
-// swing feel
 
-const durations = {
-  '32': 0.125,
-  '16': 0.25,
-  '8': 0.5,
-  'q': 1,
-  'h': 2,
-  'w': 4
-};
-
-const keysOffset = {
-  'C': 0,
-  'Db': 1,
-  'D': 2,
-  'Eb': 3,
-  'E': 4,
-  'F': 5,
-  'Gb': -6,
-  'G': -5,
-  'Ab': -4,
-  'A': -3,
-  'Bb': -2,
-  'B': -1
-}
-
-const keysAccidentals = {
-  'C': [],
-  'Db': ['Bb','Eb','Ab','Db','Gb'],
-  'D': ['F#','C#'],
-  'Eb': ['Bb','Eb','Ab'],
-  'E': ['F#','C#','G#','D#'],
-  'F': ['Bb','Eb','Ab','Db','Gb'],
-  'Gb': ['Bb','Eb','Ab','Db','Gb','Cb'],
-  'G': ['F#'],
-  'Ab': ['Bb','Eb','Ab','Db','Gb'],
-  'A': ['F#','C#','G#'],
-  'Bb': ['Bb','Eb'],
-  'B': ['F#','C#','G#','D#','A#']  
-}
 
 class Player {
   constructor() {
@@ -85,7 +44,7 @@ class Player {
   }
 
 
-  parceVoice(voice,symbol, vInd, bInd, pInd, sInd) {
+  parceVoice(voice, symbol, vInd, bInd, pInd, sInd) {
     const notesDurationDenominators = {};
     let offset = 0;
     this.beatCounter = 0;
@@ -105,7 +64,7 @@ class Player {
 
     voice.notes.forEach((note, index) => {
       const noteId = `${sInd}-${pInd}-${bInd}-${symbol}-${vInd}-${index}`;
-      const vexDuration = note.duration.toLowerCase();
+      const vexDuration = note.dur.toLowerCase();
       const isRest = vexDuration.indexOf('r') !== -1;
 
       let normalDuration = durations[isRest ? vexDuration.replace('r', '') : vexDuration];
@@ -130,21 +89,37 @@ class Player {
 
       this.beatCounter = this.beatCounter + normalDuration;
 
-
-      //if (!isRest) {
       note.keys.forEach((key) => {
-        this.events.push(
-          {
-            type: 'noteStart',
-            id: noteId,
-            note: midi(key.replace('/', '').replace('n', ''))+ this.keyOffset,
-            time: (this.currentTime + offset),
-            duration,
-            isRest
-          }
-        )
+
+        const { trPitch: pitch } = this.transposer.transpose(key, note.dur);
+
+        const event = {
+          id: noteId,
+          note: pitch,
+          time: (this.currentTime + offset),
+          duration,
+          isRest,
+          gain: symbol === 't' ? 3 : 2
+        }
+
+        if (key.ties) {
+          key.ties.forEach(function (t, i) {
+            if (t.type === 'start') {
+              this.ties[pitch] = event
+            } else {
+              if (this.ties[pitch]) {
+                this.ties[pitch].duration = this.ties[pitch].duration + duration
+                delete this.ties[pitch];
+                return
+              }
+            }
+          }.bind(this))
+        }
+
+        this.events.push(event)
       });
-      //}
+
+
       offset = offset + duration;
     });
 
@@ -164,7 +139,6 @@ class Player {
         }
       })
     }
-
   };
 
   play() {
@@ -206,7 +180,7 @@ class Player {
 
     this.follow = follow;
 
-    this.keyOffset = keysOffset[key];
+    this.transposer = new Transposer(key);
 
     this.events = [];
     this.curEventIndex = 0;
@@ -217,17 +191,21 @@ class Player {
     this.swing = swing;
     this.swingExtraDuration = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
 
+    //ties
+    this.ties = {};
 
-    sections.forEach((section,sInd) => {
+
+    sections.forEach((section, sInd) => {
       if (section !== null) {
         section.phrases.forEach((phrase, pInd) => {
-          phrase.bars.forEach((bar,bInd) => {
+          phrase.bars.forEach((bar, bInd) => {
+            this.transposer.resetAccidentals();
             bar.trebleVoices.forEach((voice, vInd) => {
-              this.parceVoice(voice,'t', vInd, bInd, pInd, sInd);
+              this.parceVoice(voice, 't', vInd, bInd, pInd, sInd);
             });
 
             bar.bassVoices.forEach((voice, vInd) => {
-              this.parceVoice(voice,'b', vInd, bInd, pInd, sInd);
+              this.parceVoice(voice, 'b', vInd, bInd, pInd, sInd);
             });
             this.currentTime += this.nBeats * this.timeDenominator;
           });

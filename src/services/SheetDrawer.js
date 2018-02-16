@@ -36,13 +36,17 @@ class SheetDrawer {
     this.sections = sections;
     this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH);
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
-    
+
     this.voicesBeams = [];
     this.voicesTuplets = [];
     this.voicesTies = [];
-    
+
     this.openedTies = {};
-    
+    this.ties = [];
+
+    this.rowFirstBars = [];
+    this.rowLastBars = [];
+
     this.width = width;
     this.signature = signature;
     // this.rowsCounter = 0;
@@ -52,6 +56,9 @@ class SheetDrawer {
 
 
   drawGrandStaveRow(currentRowBars, widthArray, rowsCounter, widthRest = 0) {
+
+    this.rowFirstBars.push(currentRowBars[0].barId);
+    this.rowLastBars.push(currentRowBars[currentRowBars.length - 1].barId);
 
     let barOffset = PADDING_LEFT;
 
@@ -119,7 +126,7 @@ class SheetDrawer {
 
   buildVoice(voice, symbol, vInd, bInd, pInd, sInd) {
 
-    var vexVoice = new VF.Voice({
+    const vexVoice = new VF.Voice({
       num_beats: 4,
       beat_value: 4,
       resolution: VF.RESOLUTION
@@ -127,19 +134,48 @@ class SheetDrawer {
 
     const vexNotes = voice.notes.map(function (note, nInd) {
 
-      const { keys, duration, ...options } = note;
+      const { keys, dur: duration, grace, ...options } = note;
 
-      //вспомогательный массив для хранения знаков альтерации,для последующего staveNote.addAccidental 
       const noteKeysAccidentals = [];
 
-      const notesKeysPitch = [];
+      const noteTies = [];
 
-      const trasposedKeys = keys.map(function (key, keyIndex) {
+      let graceNotes = [];
 
-       const {vexKey, vexAccidental} = this.transposer.transpose(key,duration); 
-       
-       noteKeysAccidentals[keyIndex] = vexAccidental;
-       return  vexKey;
+      if (grace) {
+        graceNotes = grace.notes.map((gn, gInd) => {
+          const noteGraceAccidentals = [];
+          const { keys, dur: duration, ...options } = gn;
+
+          const gnTrasposedKeys = gn.keys.map(function ({ ...key }, keyIndex) {
+            const { trStep, trAccidental, trOctave } = this.transposer.transpose(key, duration);
+            noteGraceAccidentals[keyIndex] = trAccidental;
+            return `${trStep}${trAccidental || ''}/${trOctave}`
+          }.bind(this))
+
+          const graceNote = new VF.GraceNote({ keys: gnTrasposedKeys, duration, ...options });
+          graceNote.setAttribute('id', `${sInd}-${pInd}-${bInd}-${symbol}-${vInd}-${nInd}-${gInd}`);
+
+          noteGraceAccidentals.forEach(function (acc, i) {
+            if (acc) {
+              graceNote.addAccidental(i, new VF.Accidental(acc));
+            }
+          });
+          return graceNote
+        })
+      }
+
+      const trasposedKeys = keys.map(function ({ ties, ...key }, keyIndex) {
+
+        const { trStep, trAccidental, trOctave, trPitch: pitch } = this.transposer.transpose(key, duration);
+
+        noteKeysAccidentals[keyIndex] = trAccidental;
+
+        if (ties) {
+          noteTies[keyIndex] = { pitch, ties };
+        }
+
+        return `${trStep}${trAccidental || ''}/${trOctave}`
 
       }.bind(this))
 
@@ -149,11 +185,32 @@ class SheetDrawer {
         staveNote.addDotToAll();
       }
 
+      if (grace) {
+        staveNote.addModifier(0, new Vex.Flow.GraceNoteGroup(graceNotes));
+      }
+
       noteKeysAccidentals.forEach(function (acc, i) {
         if (acc) {
           staveNote.addAccidental(i, new VF.Accidental(acc));
         }
       });
+
+      noteTies.forEach(function (nt, i) {
+        if (nt) {
+          const { pitch, ties } = nt;
+          ties.forEach(function (t) {
+            if (t.type === 'start') {
+              this.openedTies[pitch] = { first: { staveNote, i, barId: `${sInd}-${pInd}-${bInd}` }, stem: t.stem || 'UP' }
+            } else {
+              if (this.openedTies[pitch]) {
+                this.ties.push({ last: { staveNote, i, barId: `${sInd}-${pInd}-${bInd}` }, ...this.openedTies[pitch] });
+                delete this.openedTies[pitch];
+              }
+            }
+          }.bind(this))
+
+        }
+      }.bind(this))
 
       staveNote.setAttribute('id', `${sInd}-${pInd}-${bInd}-${symbol}-${vInd}-${nInd}`);
 
@@ -177,12 +234,7 @@ class SheetDrawer {
       })
     }
 
-    if (voice.ties) {
-      voice.ties.forEach(tie => {
-        const { from, to, ...options } = tie;
-        this.voicesTies.push(new VF.StaveTie({ first_note: vexNotes[from], last_note: vexNotes[to], ...options }));
-      })
-    }
+
 
     vexVoice.addTickables(vexNotes);
     return vexVoice
@@ -260,7 +312,8 @@ class SheetDrawer {
               bassStaveVoices,
               isLastBar,
               text: isFirstSectionBar ? section.type : '',
-              sectionId: section.id
+              sectionId: section.id,
+              barId: `${sInd}-${pInd}-${bInd}`
             });
             widthArray.push(barWidth);
           } else {
@@ -281,14 +334,17 @@ class SheetDrawer {
               bassStaveVoices,
               isLastBar,
               text: isFirstSectionBar ? section.type : '',
-              sectionId: section.id
+              sectionId: section.id,
+              barId: `${sInd}-${pInd}-${bInd}`
             });
           }
         });
       });
       //};
     });
-    this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
+    if (currentRowBars.length) {
+      this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
+    }
 
     renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
 
@@ -300,10 +356,16 @@ class SheetDrawer {
       tuplet.setContext(this.context).draw();
     });
 
-    this.voicesTies.forEach((tie) => {
-      tie.setContext(this.context).draw();
-    });
 
+    this.ties.forEach(t => {
+      if (this.rowFirstBars.indexOf(t.last.barId) > -1 && this.rowLastBars.indexOf(t.first.barId) > -1 && t.first.barId !== t.last.barId) {
+        new VF.StaveTie({ first_note: t.first.staveNote, last_note: null, first_indices: [t.first.i] }).setDirection(VF.Stem[t.stem]).setContext(this.context).draw();
+        new VF.StaveTie({ first_note: null, last_note: t.last.staveNote, last_indices: [t.last.i] }).setDirection(VF.Stem[t.stem]).setContext(this.context).draw();
+      } else {
+        const tie = new VF.StaveTie({ first_note: t.first.staveNote, last_note: t.last.staveNote, first_indices: [t.first.i], last_indices: [t.last.i] }).setDirection(VF.Stem[t.stem]);
+        tie.setContext(this.context).draw();
+      }
+    })
 
     // console.log("Calculating min width: " + (calcTime) + " milliseconds.")
 
