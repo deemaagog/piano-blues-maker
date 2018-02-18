@@ -3047,7 +3047,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3190,7 +3200,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3333,7 +3353,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3476,7 +3506,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3626,7 +3666,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3769,7 +3819,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -3912,7 +3972,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4055,7 +4125,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4203,7 +4283,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4345,7 +4435,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4488,7 +4588,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4631,7 +4741,17 @@
                           ]
                         }
                       ],
-                      "dur": "q",
+                      "dur": "8",
+                      "stem": "up"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r",
                       "stem": "up"
                     },
                     {
@@ -4660,7 +4780,6 @@
           "type": "I-I-I-I",
           "bars": [
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
@@ -4706,7 +4825,133 @@
                       "keys": [
                         {
                           "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
                           "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4,
+                          "acc": "b"
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "E",
+                                "oct": 4
+                                
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "B",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "trebleVoices": [
+                {
+                  "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
                         },
                         {
                           "step": "A",
@@ -4784,7 +5029,6 @@
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
@@ -4830,7 +5074,8 @@
                       "keys": [
                         {
                           "step": "F",
-                          "oct": 4
+                          "oct": 4,
+                          "acc":"n"
                         },
                         {
                           "step": "A",
@@ -4908,7 +5153,6 @@
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
@@ -4954,7 +5198,8 @@
                       "keys": [
                         {
                           "step": "F",
-                          "oct": 4
+                          "oct": 4,
+                          "acc":"n"
                         },
                         {
                           "step": "A",
@@ -5012,11 +5257,20 @@
                     {
                       "keys": [
                         {
-                          "step": "B",
+                          "step": "C",
                           "oct": 4
                         }
                       ],
-                      "dur": "8r"
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "D",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     },
                     {
                       "keys": [
@@ -5027,129 +5281,29 @@
                       ],
                       "dur": "8"
                     }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "",
-              "trebleVoices": [
-                {
-                  "notes": [
+                  ],
+                  "tuplets": [
                     {
-                      "keys": [
-                        {
-                          "step": "G",
-                          "oct": 4
-                        },
-                        {
-                          "step": "B",
-                          "oct": 4,
-                          "acc": "b"
-                        }
-                      ],
-                      "dur": "8",
-                      "grace": {
-                        "notes": [
-                          {
-                            "keys": [
-                              {
-                                "step": "F",
-                                "oct": 4,
-                                "acc": "#"
-                              }
-                            ],
-                            "dur": "8",
-                            "slash": true
-                          }
-                        ]
-                      }
+                      "from": 6,
+                      "to": 9
+                    }
+                  ],
+                  "beams": [
+                    {
+                      "from": 0,
+                      "to": 2
                     },
                     {
-                      "keys": [
-                        {
-                          "step": "C",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8"
+                      "from": 2,
+                      "to": 4
                     },
                     {
-                      "keys": [
-                        {
-                          "step": "F",
-                          "oct": 4
-                        },
-                        {
-                          "step": "A",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8"
+                      "from": 4,
+                      "to": 6
                     },
                     {
-                      "keys": [
-                        {
-                          "step": "C",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8"
-                    },
-                    {
-                      "keys": [
-                        {
-                          "step": "E",
-                          "oct": 4
-                        },
-                        {
-                          "step": "G",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8",
-                      "grace": {
-                        "notes": [
-                          {
-                            "keys": [
-                              {
-                                "step": "d",
-                                "oct": 4,
-                                "acc": "#"
-                              }
-                            ],
-                            "dur": "8",
-                            "slash": true
-                          }
-                        ]
-                      }
-                    },
-                    {
-                      "keys": [
-                        {
-                          "step": "C",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8"
-                    },
-                    {
-                      "keys": [
-                        {
-                          "step": "B",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8r"
-                    },
-                    {
-                      "keys": [
-                        {
-                          "step": "C",
-                          "oct": 4
-                        }
-                      ],
-                      "dur": "8"
+                      "from": 6,
+                      "to": 9
                     }
                   ]
                 }
@@ -5162,10 +5316,107 @@
           "type": "IV-IV-I-I",
           "bars": [
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4,
+                          "acc": "b"
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "d",
+                                "oct": 4
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
                     {
                       "keys": [
                         {
@@ -5173,17 +5424,123 @@
                           "oct": 4
                         }
                       ],
-                      "dur": "wr"
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4,
+                          "acc": "b"
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "d",
+                                "oct": 4
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
                     {
                       "keys": [
                         {
@@ -5191,17 +5548,123 @@
                           "oct": 4
                         }
                       ],
-                      "dur": "wr"
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "d",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
                     {
                       "keys": [
                         {
@@ -5209,17 +5672,123 @@
                           "oct": 4
                         }
                       ],
-                      "dur": "wr"
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "d",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
                     {
                       "keys": [
                         {
@@ -5227,7 +5796,16 @@
                           "oct": 4
                         }
                       ],
-                      "dur": "wr"
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     }
                   ]
                 }
@@ -5240,7 +5818,6 @@
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
@@ -5258,7 +5835,6 @@
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
@@ -5276,10 +5852,107 @@
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [
+                    {
+                      "keys": [
+                        {
+                          "step": "G",
+                          "oct": 4
+                        },
+                        {
+                          "step": "B",
+                          "oct": 4,
+                          "acc": "b"
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "F",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "acc":"n"
+                        },
+                        {
+                          "step": "A",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "E",
+                          "oct": 4
+                        },
+                        {
+                          "step": "G",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8",
+                      "grace": {
+                        "notes": [
+                          {
+                            "keys": [
+                              {
+                                "step": "d",
+                                "oct": 4,
+                                "acc": "#"
+                              }
+                            ],
+                            "dur": "8",
+                            "slash": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
+                    },
                     {
                       "keys": [
                         {
@@ -5287,14 +5960,22 @@
                           "oct": 4
                         }
                       ],
-                      "dur": "wr"
+                      "dur": "8r"
+                    },
+                    {
+                      "keys": [
+                        {
+                          "step": "C",
+                          "oct": 4
+                        }
+                      ],
+                      "dur": "8"
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "",
               "trebleVoices": [
                 {
                   "notes": [

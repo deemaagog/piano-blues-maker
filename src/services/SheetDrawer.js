@@ -147,7 +147,7 @@ class SheetDrawer {
           const noteGraceAccidentals = [];
           const { keys, dur: duration, ...options } = gn;
 
-          const gnTrasposedKeys = gn.keys.map(function ({ ...key }, keyIndex) {
+          const gnTrasposedKeys = keys.map(function ({ ...key }, keyIndex) {
             const { trStep, trAccidental, trOctave } = this.transposer.transpose(key, duration);
             noteGraceAccidentals[keyIndex] = trAccidental;
             return `${trStep}${trAccidental || ''}/${trOctave}`
@@ -186,7 +186,9 @@ class SheetDrawer {
       }
 
       if (grace) {
-        staveNote.addModifier(0, new Vex.Flow.GraceNoteGroup(graceNotes));
+        const gnGroup = new Vex.Flow.GraceNoteGroup(graceNotes);
+        //gnGroup.setXShift(10)
+        staveNote.addModifier(0, gnGroup);
       }
 
       noteKeysAccidentals.forEach(function (acc, i) {

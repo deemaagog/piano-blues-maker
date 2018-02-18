@@ -1,5 +1,5 @@
 import SoundFont from 'soundfont-player'
-import { midi } from 'note-parser'
+//import { midi } from 'note-parser'
 import Transposer from './Transposer'
 import { durations } from './constants'
 
@@ -87,9 +87,31 @@ class Player {
         notesToSwing[beat].push({ id: noteId })
       }
 
+      // форшлаги, создать events  и привязать к event первой клавиши ноты
+      const graceNotes = [];
+      if (note.grace) {
+        note.grace.notes.forEach((gn, gInd) => {
+          const { keys, dur: duration} = gn;
+
+          keys.forEach(function (key, keyIndex) {
+            const { trPitch: pitch } = this.transposer.transpose(key, duration);
+            //пока все форшлаги играть как 64
+            graceNotes.push( {
+              id: `${noteId}-${gInd}`,
+              note: pitch,
+              time: (this.currentTime + offset),
+              duration: durations["64"] * this.timeDenominator,
+              isRest: false,
+              gain: symbol === 't' ? 3 : 2,
+              gInd
+            })
+          }.bind(this))
+        })
+      }
+
       this.beatCounter = this.beatCounter + normalDuration;
 
-      note.keys.forEach((key) => {
+      note.keys.forEach((key, keyIndex) => {
 
         const { trPitch: pitch } = this.transposer.transpose(key, note.dur);
 
@@ -102,15 +124,19 @@ class Player {
           gain: symbol === 't' ? 3 : 2
         }
 
+        // привяжем все форшлаги к событию первой ноты 
+        if (keyIndex === 0 && graceNotes.length) {
+          this.graceNotesEvents.push({event, graceNotes})
+        }
+
         if (key.ties) {
           key.ties.forEach(function (t, i) {
             if (t.type === 'start') {
-              this.ties[pitch] = event
+              this.openedTies[pitch] = event
             } else {
-              if (this.ties[pitch]) {
-                this.ties[pitch].duration = this.ties[pitch].duration + duration
-                delete this.ties[pitch];
-                return
+              if (this.openedTies[pitch]) {
+                this.ties.push({start:this.openedTies[pitch], stop:event})
+                delete this.openedTies[pitch];
               }
             }
           }.bind(this))
@@ -144,11 +170,11 @@ class Player {
   play() {
 
     const curEvent = this.events[this.curEventIndex];
-    if (!curEvent.isRest) {
+    if (!curEvent.isRest && curEvent.duration) {
       this.instrument.play(curEvent.note, curEvent.time, curEvent);
     }
 
-    if (this.follow && curEvent.id) {
+    if (this.follow && curEvent.id && curEvent.duration) {
       const el = document.getElementById(`vf-${curEvent.id}`);
       if (el !== null) {
         // window.scrollBy({ 
@@ -192,7 +218,11 @@ class Player {
     this.swingExtraDuration = (this.timeDenominator * 2 / 3) - (this.timeDenominator / 2);
 
     //ties
-    this.ties = {};
+    this.openedTies = {};
+    this.ties = [];
+
+    //grace notes
+    this.graceNotesEvents = [];
 
 
     sections.forEach((section, sInd) => {
@@ -212,6 +242,21 @@ class Player {
         });
       }
     });
+
+    this.ties.forEach(tie => {
+      tie.start.duration = tie.start.duration + tie.stop.duration
+      tie.stop.duration = 0;
+    })
+
+    this.graceNotesEvents.forEach(e => {
+      let eventTime = e.event.time;
+      const gnEvents = e.graceNotes.reverse().map(gn => {
+        eventTime = eventTime - gn.duration;
+        //немного увеличим длительность чтобы придать грязного звучания
+        return {...gn, time: eventTime, duration: gn.duration * 8}
+      }) 
+      this.events.push(...gnEvents)
+    })
 
     this.events.sort(function (a, b) {
       return a.time - b.time

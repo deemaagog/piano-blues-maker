@@ -14,6 +14,7 @@ export const keysOffsets = {
   }
 
 export  const durations = {
+    '64': 0.0625,
     '32': 0.125,
     '16': 0.25,
     '8': 0.5,
