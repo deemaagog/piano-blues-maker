@@ -23,20 +23,7 @@ export  const durations = {
     'w': 4
   };
 
-  // export  const keysAccidentals = {
-  //   'C': [],
-  //   'Db': ['Bb', 'Eb', 'Ab', 'Db', 'Gb'],
-  //   'D': ['F#', 'C#'],
-  //   'Eb': ['Bb', 'Eb', 'Ab'],
-  //   'E': ['F#', 'C#', 'G#', 'D#'],
-  //   'F': ['Bb'],
-  //   'Gb': ['Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'],
-  //   'G': ['F#'],
-  //   'Ab': ['Bb', 'Eb', 'Ab', 'Db'],
-  //   'A': ['F#', 'C#', 'G#'],
-  //   'Bb': ['Bb', 'Eb'],
-  //   'B': ['F#', 'C#', 'G#', 'D#', 'A#']
-  // }  
+  
 
   export  const keysAccidentals = {
     'C': {},

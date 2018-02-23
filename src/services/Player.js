@@ -1,14 +1,10 @@
 import SoundFont from 'soundfont-player'
-//import { midi } from 'note-parser'
 import Transposer from './Transposer'
 import { durations } from './constants'
-
-
 
 class Player {
   constructor() {
     // q = 1 = 60bpm
-    // bar = 4
     this.nBeats = 4;
   }
 
@@ -33,10 +29,7 @@ class Player {
       release: 1
     }).then((instrument) => {
       this.instrument = instrument;
-      //setTimeout(() => {
       callback();
-      //}, 2000)
-
     }).catch(function (err) {
       console.log('err', err)
     })
@@ -76,6 +69,7 @@ class Player {
       let duration = normalDuration * this.timeDenominator;
       if (notesDurationDenominators[index]) {
         duration = duration * notesDurationDenominators[index]
+        normalDuration = normalDuration * notesDurationDenominators[index]
       }
 
       // swing feel
@@ -253,7 +247,7 @@ class Player {
       const gnEvents = e.graceNotes.reverse().map(gn => {
         eventTime = eventTime - gn.duration;
         //немного увеличим длительность чтобы придать грязного звучания
-        return {...gn, time: eventTime, duration: gn.duration * 8}
+        return {...gn, time: eventTime, duration: gn.duration * 4}
       }) 
       this.events.push(...gnEvents)
     })

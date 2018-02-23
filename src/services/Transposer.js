@@ -1,15 +1,6 @@
 import { Distance, Interval } from 'tonal'
 import { keysAccidentals, keysOffsets } from './constants'
 
-//АЛГОРИТМ ТРАНСПОНИРОВАНИЯ
-// 1) Парсим оригинальную ноту на состоавляющие: name: E , accidenal: b, octave: 4
-// 2) определяем, является accidental бекаром (отменой знака)
-// 3) добавляем в this.originalAccidentals accidental , если он есть . Вместе с октавой
-// 4) транспонируем ноту используя tonal. Сделать собственную функцию транспонирования. Парсим результат
-// 5) Проверяем новую ноту
-// Если есть accidental и он есть в ключе, то убираем accidental
-
-
 //TODO: rewrite transpose function
 // посмотреть music.js vexflow
 
@@ -36,10 +27,6 @@ class Transposer {
     }
 
     let {step, oct:octave, acc:accidental} = key;
-    //парсим текущую ноту (key)
-    // const [keyNameWithAcc, octave] = key.split("/");
-    // const keyName = keyNameWithAcc.slice(0, 1)
-    // let accidental = keyNameWithAcc.slice(1, (keyNameWithAcc.length + 1) || 9e9);
 
     const isNatural = (accidental === 'n');
 
@@ -50,7 +37,7 @@ class Transposer {
 
     // при проигрывании
     let removeAccidental = false;
-    if (!accidental && this.originalAccidentals[step + octave]) {
+    if (!accidental && this.originalAccidentals[step + octave] && this.originalAccidentals[step + octave] !=='n') {
       accidental = this.originalAccidentals[step + octave];
       removeAccidental = true;
     }
@@ -67,16 +54,11 @@ class Transposer {
     const trAccidental = trStepAcc.slice(1, (trStepAcc.length + 1) || 9e9)||'';
     const trOctave = transposedKey.substr(length - 1);
 
-    // let vexKey = trKeyNameWithAcc;
-    // let vexAccidental = trAccidental;
-
     const trKey = {trStep,trAccidental,trOctave, trPitch:`${trStep}${trAccidental}${trOctave}`};
 
     if (this.keyAccidentals[trStep] && this.keyAccidentals[trStep] === trAccidental && this.accidentals[trStep + trOctave] !== 'n') {
       //есть знак при ключе и ранее он не был отменен
       trKey.trAccidental = '';
-      // vexKey = trKeyName;
-      // vexAccidental = undefined;
     }
 
     if (trAccidental) {
@@ -85,19 +67,14 @@ class Transposer {
 
     if (!trAccidental && (this.keyAccidentals[trStep] || isNatural)) {
       //если знак при ключе, но надо сыграть без знака или ранее была отмена, то бекар 
-      //vexKey = vexKey + 'n';
       this.accidentals[trStep + trOctave] = 'n';
-      //vexAccidental = 'n';
       trKey.trAccidental = 'n';
     }
 
     if (removeAccidental) {
-      // vexKey = trStep;
-      // vexAccidental = undefined;
       trKey.trAccidental = '';
     }
 
-    //return { vexKey: vexKey + '/' + trOctave, vexAccidental: vexAccidental|| undefined }
     return trKey
   }
 }

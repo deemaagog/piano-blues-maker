@@ -23,6 +23,7 @@ class RightHandsection extends Component {
                 onChange={this.handleChange}
                 options={patterns}
                 clearable = {false}
+                searchable={false}
             />
         );
     }
