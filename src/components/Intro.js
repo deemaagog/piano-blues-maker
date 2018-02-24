@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import presets from '../presets.json'
 
 import Select from 'react-select';
@@ -33,5 +33,10 @@ class Intro extends Component {
     );
   }
 }
+
+Intro.propTypes = {
+  introOnChange: PropTypes.func,
+  intro: PropTypes.object
+};
 
 export default Intro;

@@ -1,11 +1,11 @@
 {
   "name": "piano-blues-maker",
-  "version": "0.1.0",
-  "private": true,
+  "homepage": "https://deemaagog.github.io/piano-blues-maker",
+  "version": "0.4.0",
+  "private": false,
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
-    "note-parser": "^2.0.1",
     "rc-slider": "^8.5.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -15,7 +15,6 @@
     "react-switch": "^2.3.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0",
     "soundfont-player": "^0.10.6",
     "tonal": "^1.1.3",
     "vexflow": "^1.2.84"
@@ -24,9 +23,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "enzyme": "^3.3.0"
+    "enzyme": "^3.3.0",
+    "gh-pages": "^1.1.0"
   }
 }

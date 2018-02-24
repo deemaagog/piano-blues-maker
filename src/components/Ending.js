@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import presets from '../presets.json'
 
 import Select from 'react-select';
@@ -31,5 +31,10 @@ class Ending extends Component {
     );
   }
 }
+
+Ending.propTypes = {
+  introOnChange: PropTypes.func,
+  intro: PropTypes.object
+};
 
 export default Ending;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import LeftHandSection from './LeftHandSection'
 import RightHandSection from './RightHandSection'
 
@@ -17,5 +18,11 @@ class Section extends Component {
     );
   }
 }
+
+Section.propTypes = {
+  setPattern: PropTypes.func,
+  rightHand: PropTypes.object,
+  leftHand: PropTypes.object,
+};
 
 export default Section;

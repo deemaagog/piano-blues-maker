@@ -1,11 +1,11 @@
-export const keysOffsets = {
+export const keysShifts = {
     'C': 0,
     'Db': 1,
     'D': 2,
     'Eb': 3,
     'E': 4,
     'F': 5,
-    'Gb': -6,
+    'Gb': 6,
     'G': -5,
     'Ab': -4,
     'A': -3,
@@ -39,7 +39,3 @@ export  const durations = {
     'Bb': {'B':'b','E':'b'},
     'B': {'F':'#', 'C':'#', 'G':'#', 'D':'#', 'A':'#'}
   }  
-
-  export const accidentalOffsets = {
-    'bb':-2,'b':-1,'n':0,'#':1,'x':2
-  }

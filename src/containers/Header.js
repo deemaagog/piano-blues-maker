@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Settings from '../containers/Settings'
 import {play, stop} from '../actions/player'
 import {connect} from 'react-redux'
@@ -43,8 +44,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-// Header.propTypes = {
-
-// };
+Header.propTypes = {
+  play: PropTypes.func,
+  stop: PropTypes.func,
+  isPlaying: PropTypes.bool,
+  isLoading: PropTypes.bool
+};
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

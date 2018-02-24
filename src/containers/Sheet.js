@@ -10,10 +10,8 @@ function generateId() {
 class Sheet extends Component {
 
   state = {windowWidth: window.innerWidth};
-  //state = {windowWidth: document.body.clientWidth};
 
   drawSheet = () => {
-    //console.log(this.sheetContainer.clientWidth);
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
@@ -39,7 +37,6 @@ class Sheet extends Component {
 
   updateDimensions = () => {
     this.setState({windowWidth:window.innerWidth});
-    //this.setState({windowWidth:document.body.clientWidth});
   }
 
 
@@ -60,7 +57,9 @@ class Sheet extends Component {
 Sheet.propTypes = {
   sections: PropTypes.array,
   signature: PropTypes.string,
-  width: PropTypes.number
+  width: PropTypes.number,
+  intro: PropTypes.object,
+  ending: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

@@ -1,13 +1,15 @@
 import { Distance, Interval } from 'tonal'
-import { keysAccidentals, keysOffsets } from './constants'
+import { keysAccidentals, keysShifts } from './constants'
 
 //TODO: rewrite transpose function
 // посмотреть music.js vexflow
+//Note.fromMidi(61, true) // => "C#4"//
+//note-parser
 
 class Transposer {
   constructor(signature) {
     this.keyAccidentals = keysAccidentals[signature];
-    this.keyOffset = keysOffsets[signature];
+    this.keyShift = keysShifts[signature];
 
     this.accidentals = {};
     this.originalAccidentals = {};
@@ -42,13 +44,11 @@ class Transposer {
       removeAccidental = true;
     }
 
-    // todo: check if is natural!!!
-    const transposedKey = Distance.transpose(step + (isNatural ? '' : accidental||'') + octave, Interval.fromSemitones(this.keyOffset));
+    const transposedKey = Distance.transpose(step + (isNatural ? '' : accidental||'') + octave, Interval.fromSemitones(this.keyShift));
 
     const length = transposedKey.length;
 
-    //Note.fromMidi(61, true) // => "C#4"//
-    // todo: use note-parser?
+    
     const trStepAcc = transposedKey.substr(0, length - 1);
     const trStep = trStepAcc.slice(0, 1)
     const trAccidental = trStepAcc.slice(1, (trStepAcc.length + 1) || 9e9)||'';

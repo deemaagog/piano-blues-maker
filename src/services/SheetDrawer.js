@@ -7,14 +7,13 @@ const SCHEME_WIDTH = 350;
 const SPACE_BETWEEN_STAVES = 120;
 const SPACE_BETWEEN_GRAND_STAVES = 260;
 const BAR_MIN_WIDTH = 100;
-const ROW_FIRST_BAR_ADDITIONAL_WIDTH = 100;
-const LAST_BAR_ADDITIONAL_WIDTH = 15;
 const PADDING_TOP = 50;
 const PADDING_LEFT = 50;
-const EXTRA_SPACE = 20;
 const COEFFICIENT = 1;
 
 const SHEET_MIN_WIDTH = 600;
+const FIRST_NOTE_SPACE = 10;
+const LAST_NOTE_SPACE = 10;
 
 
 function disributeValue(arr, value, precision) {
@@ -37,9 +36,8 @@ class SheetDrawer {
     this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH);
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
 
-    this.voicesBeams = [];
-    this.voicesTuplets = [];
-    this.voicesTies = [];
+    this.beams = [];
+    this.tuplets = [];
 
     this.openedTies = {};
     this.ties = [];
@@ -70,8 +68,16 @@ class SheetDrawer {
 
       const barWidth = b.barWidth + (widthRest !== 0 ? widthRestArray[index] : 0)
 
-      const trebleStave = new VF.Stave(barOffset, PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES, barWidth);
-      const bassStave = new VF.Stave(barOffset, PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_STAVES, barWidth);
+      const trebleStave = b.tStave;
+      const bassStave = b.bStave;
+
+      trebleStave.setX(barOffset);
+      bassStave.setX(barOffset);
+      trebleStave.setY(PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES);
+      bassStave.setY(PADDING_TOP + rowsCounter * SPACE_BETWEEN_GRAND_STAVES + SPACE_BETWEEN_STAVES);
+
+      trebleStave.setWidth(barWidth);
+      bassStave.setWidth(barWidth);
 
       //grand stave group
       // const group = this.context.openGroup(b.sectionId);
@@ -79,11 +85,6 @@ class SheetDrawer {
       // this.context.closeGroup();
 
       barOffset += barWidth;
-
-      if (index === 0) {
-        trebleStave.addClef("treble").addTimeSignature("4/4").addKeySignature(this.signature);
-        bassStave.addClef("bass").addTimeSignature("4/4").addKeySignature(this.signature);
-      }
 
       if (b.text) {
         // trebleStave.setText(b.text[0], VF.Modifier.Position.ABOVE, { shift_y: 0, justification: VF.TextNote.Justification.LEFT });
@@ -99,28 +100,13 @@ class SheetDrawer {
       lineLeft.setContext(this.context).draw();
       lineRight.setContext(this.context).draw();
 
-
-
-
-
-      var startX = Math.max(trebleStave.getNoteStartX(), bassStave.getNoteStartX());
-      trebleStave.setNoteStartX(startX);
-      bassStave.setNoteStartX(startX);
-
-      b.formatter.format(b.trebleStaveVoices.concat(b.bassStaveVoices), barWidth
-        + (index === 0 ? ROW_FIRST_BAR_ADDITIONAL_WIDTH / 3 : 0)  // ??? временно, переделать
-        - (startX - 0)
-        - EXTRA_SPACE
-        // - (b.isLastBar ? LAST_BAR_ADDITIONAL_WIDTH:0)
-      );
+      b.formatter.format(b.trebleStaveVoices.concat(b.bassStaveVoices), b.minTotalWidth + (widthRest !== 0 ? widthRestArray[index] : 0));
 
       // Render voices
       b.trebleStaveVoices.forEach(function (v) { v.draw(this.context, trebleStave); }.bind(this));
       b.bassStaveVoices.forEach(function (v) { v.draw(this.context, bassStave); }.bind(this));
 
-
     });
-
   }
 
 
@@ -222,21 +208,19 @@ class SheetDrawer {
     if (voice.beams) {
       voice.beams.forEach(beam => {
         const { from, to } = beam;
-        this.voicesBeams.push(new VF.Beam(vexNotes.slice(from, to)));
+        this.beams.push(new VF.Beam(vexNotes.slice(from, to)));
       })
     } else {
       const autoBeams = VF.Beam.generateBeams(vexNotes);
-      this.voicesBeams.push(...autoBeams);
+      this.beams.push(...autoBeams);
     }
 
     if (voice.tuplets) {
       voice.tuplets.forEach(tuplet => {
         const { from, to, ...options } = tuplet;
-        this.voicesTuplets.push(new VF.Tuplet(vexNotes.slice(from, to), options));
+        this.tuplets.push(new VF.Tuplet(vexNotes.slice(from, to), options));
       })
     }
-
-
 
     vexVoice.addTickables(vexNotes);
     return vexVoice
@@ -247,8 +231,6 @@ class SheetDrawer {
 
     const renderer = new VF.Renderer(this.sheetContainer, VF.Renderer.Backends.SVG);
 
-    // Configure the rendering context. 
-    //renderer.resize(sheetWidth, 1000);
     this.context = renderer.getContext();
     this.context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -256,13 +238,12 @@ class SheetDrawer {
     let currentWidth = 0;
     const currentRowBars = [];
     const widthArray = [];
+    let firstRow = true;
 
-    // let  calcTime = 0;
     const sectionsLength = this.sections.length;
     this.sections.forEach((section, sInd) => {
       const isLastSection = sInd === sectionsLength - 1;
       const phrasesLength = section.phrases.length;
-      //if (section !== null) {
       section.phrases.forEach((phrase, pInd) => {
         const isLastPhrase = pInd === phrasesLength - 1;
         const barsLength = phrase.bars.length;
@@ -283,32 +264,38 @@ class SheetDrawer {
 
           const formatter = new VF.Formatter();
 
-          formatter.joinVoices(trebleStaveVoices);
-          formatter.joinVoices(bassStaveVoices);
+          formatter.joinVoices(trebleStaveVoices).joinVoices(bassStaveVoices);
 
           const allVoicesTogether = trebleStaveVoices.concat(bassStaveVoices);
 
-          // let t0 = performance.now(); //!!!!!!
-          const minTotalWidth = Math.ceil(formatter.preCalculateMinTotalWidth(allVoicesTogether) * COEFFICIENT);
-          // let t1 = performance.now();//!!!!!!!
-          //console.log("Calculating min width: " + (t1 - t0) + " milliseconds.")
-          // calcTime =+ (t1 - t0);
+          const minTotalWidth = Math.ceil(Math.max(formatter.preCalculateMinTotalWidth(allVoicesTogether),BAR_MIN_WIDTH) * COEFFICIENT);
 
-          const barWidth = Math.max(minTotalWidth, BAR_MIN_WIDTH)
-            + EXTRA_SPACE
-            + (currentRowBars.length !== 0 ? 0 : ROW_FIRST_BAR_ADDITIONAL_WIDTH)
-            + (isLastBar ? LAST_BAR_ADDITIONAL_WIDTH : 0);
-          // + (40);
+          // добавим нотные станы, пока с 0 координатами
+          const tStave = new VF.Stave(0, 0);
+          const bStave = new VF.Stave(0, 0);
 
+          // Add a clef and time signature.
+          if (firstRow) {
+            tStave.addClef("treble").addTimeSignature("4/4").addKeySignature(this.signature);
+            bStave.addClef("bass").addTimeSignature("4/4").addKeySignature(this.signature);
+            firstRow = false;
+          }
 
+          const startX = Math.max(tStave.getNoteStartX(), bStave.getNoteStartX());
+          tStave.setNoteStartX(startX);
+          bStave.setNoteStartX(startX);
 
+          const barWidth = minTotalWidth + (startX - 0) + FIRST_NOTE_SPACE + LAST_NOTE_SPACE;
 
           if (currentWidth + barWidth < this.sheetWidth) {
-            // console.log(barWidth);
             currentWidth += barWidth;
+            
             currentRowBars.push({
               bar,
               barWidth,
+              minTotalWidth,
+              tStave,
+              bStave,
               formatter,
               trebleStaveVoices,
               bassStaveVoices,
@@ -323,14 +310,29 @@ class SheetDrawer {
             // draw current row and begin new row 
             const widthRest = this.sheetWidth - currentWidth;
             this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter, widthRest);
+            //newRow = true;
+
+            tStave.addClef("treble").addTimeSignature("4/4").addKeySignature(this.signature);
+            bStave.addClef("bass").addTimeSignature("4/4").addKeySignature(this.signature);
+  
+            const startX = Math.max(tStave.getNoteStartX(), bStave.getNoteStartX());
+            tStave.setNoteStartX(startX);
+            bStave.setNoteStartX(startX);
+  
+            const barWidth = minTotalWidth + (startX - 0) + FIRST_NOTE_SPACE + LAST_NOTE_SPACE;
+
+
             rowsCounter++;
-            currentWidth = barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH;
+            currentWidth = barWidth;
             currentRowBars.length = 0;
             widthArray.length = 0;
-            widthArray.push(barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH);
+            widthArray.push(barWidth);
             currentRowBars.push({
               bar,
-              barWidth: barWidth + ROW_FIRST_BAR_ADDITIONAL_WIDTH,
+              barWidth: barWidth,
+              minTotalWidth,
+              tStave,
+              bStave,
               formatter,
               trebleStaveVoices,
               bassStaveVoices,
@@ -342,7 +344,6 @@ class SheetDrawer {
           }
         });
       });
-      //};
     });
     if (currentRowBars.length) {
       this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
@@ -350,14 +351,13 @@ class SheetDrawer {
 
     renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
 
-    this.voicesBeams.forEach((b) => {
+    this.beams.forEach((b) => {
       b.setContext(this.context).draw()
     });
 
-    this.voicesTuplets.forEach((tuplet) => {
+    this.tuplets.forEach((tuplet) => {
       tuplet.setContext(this.context).draw();
     });
-
 
     this.ties.forEach(t => {
       if (this.rowFirstBars.indexOf(t.last.barId) > -1 && this.rowLastBars.indexOf(t.first.barId) > -1 && t.first.barId !== t.last.barId) {
@@ -368,11 +368,7 @@ class SheetDrawer {
         tie.setContext(this.context).draw();
       }
     })
-
-    // console.log("Calculating min width: " + (calcTime) + " milliseconds.")
-
   }
-
 }
 
 export default SheetDrawer

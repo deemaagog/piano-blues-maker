@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Accordion extends Component {
 
@@ -41,5 +42,13 @@ class Accordion extends Component {
 Accordion.defaultProps = {
   index: ''
 }
+
+Accordion.propTypes = {
+  cloneSection: PropTypes.func,
+  moveSectionUp: PropTypes.func,
+  moveSectionDown: PropTypes.func,
+  removeSection: PropTypes.func,
+  type: PropTypes.string
+};
 
 export default Accordion;

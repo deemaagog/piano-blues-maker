@@ -7,10 +7,9 @@ import { setEnding } from '../actions/ending'
 import { setPattern, addSection, removeAll, removeSection, cloneSection, moveSection} from '../actions/sections'
 
 import Accordion from './Accordion'
-import Intro from './Intro'
-import Ending from './Ending'
-
-import Section from './Section'
+import Intro from '../components/Intro'
+import Ending from '../components/Ending'
+import Section from '../components/Section'
 
 
 class Scheme extends Component {

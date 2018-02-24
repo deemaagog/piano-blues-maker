@@ -129,7 +129,11 @@ const mapDispatchToProps = (dispatch) => {
 
 Settings.propTypes = {
     signature: PropTypes.string,
-    swing: PropTypes.bool
+    swing: PropTypes.bool,
+    tempo: PropTypes.number,
+    tempoOnChange: PropTypes.func,
+    keyOnChange: PropTypes.func,
+    toggleSwing: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Settings);
