@@ -1,6 +1,10 @@
 {
   "name": "piano-blues-maker",
   "homepage": "https://deemaagog.github.io/piano-blues-maker",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/deemaagog/piano-blues-maker.git"
+  },
   "version": "0.4.0",
   "private": false,
   "dependencies": {
