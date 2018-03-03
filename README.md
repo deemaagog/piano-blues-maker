@@ -1,6 +1,6 @@
 # PIANO-BLUES-MAKER
 
-Blues, unlike other musical forms has a clear structure. The main building block is "blues progression". There are many kinds of blues progressions in piano blues world, but the most common is one called "12 bar progression" with the following scheme:
+Blues, unlike other musical forms has a clear structure. The main building block is "blues progression". There are many kinds of blues progressions in piano blues world, but the most common is one called "12 bar progression" with the following scheme:<br/>
 I-I-I-I<br/>
 IV-IV-I-I<br/>
 V-IV-I-V<br/>
