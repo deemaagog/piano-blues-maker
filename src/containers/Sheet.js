@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SheetDrawer from '../services/SheetDrawer';
+import {generateId} from '../helpers'
 import { connect } from 'react-redux'
-
-function generateId() {
-  return Math.random().toString(36).substr(2, 9);
-}
 
 class Sheet extends Component {
 
@@ -15,7 +12,7 @@ class Sheet extends Component {
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
-      {width: this.state.windowWidth, signature:this.props.signature}   
+      {width: this.state.windowWidth, signature:this.props.signature,scale: this.props.scale}   
     ).draw();
   }  
 
@@ -57,6 +54,7 @@ class Sheet extends Component {
 Sheet.propTypes = {
   sections: PropTypes.array,
   signature: PropTypes.string,
+  scale: PropTypes.number,
   width: PropTypes.number,
   intro: PropTypes.object,
   ending: PropTypes.object,
@@ -65,6 +63,7 @@ Sheet.propTypes = {
 const mapStateToProps = (state) => {
   return {
       signature: state.settings.key,
+      scale: state.settings.scale,
       intro: state.intro,
       sections: state.sections,
       ending: state.ending

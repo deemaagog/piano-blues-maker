@@ -17,3 +17,10 @@ export const toggleSwing = () => {
     type: 'TOGGLE_SWING'
   }
 }    
+
+export const setScale = (value) => {
+  return {
+    type: 'SET_SCALE',
+    scale: value
+  }
+}

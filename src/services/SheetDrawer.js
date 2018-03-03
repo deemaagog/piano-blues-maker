@@ -30,10 +30,11 @@ function disributeValue(arr, value, precision) {
 }
 
 class SheetDrawer {
-  constructor(container, sections, { width, signature }) {
+  constructor(container, sections, { width, signature, scale }) {
     this.sheetContainer = container;
     this.sections = sections;
-    this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH);
+    this.scale = scale / 100;
+    this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH) / this.scale;
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
 
     this.beams = [];
@@ -47,6 +48,7 @@ class SheetDrawer {
 
     this.width = width;
     this.signature = signature;
+
     // this.rowsCounter = 0;
 
     this.transposer = new Transposer(signature);
@@ -268,7 +270,7 @@ class SheetDrawer {
 
           const allVoicesTogether = trebleStaveVoices.concat(bassStaveVoices);
 
-          const minTotalWidth = Math.ceil(Math.max(formatter.preCalculateMinTotalWidth(allVoicesTogether),BAR_MIN_WIDTH) * COEFFICIENT);
+          const minTotalWidth = Math.ceil(Math.max(formatter.preCalculateMinTotalWidth(allVoicesTogether), BAR_MIN_WIDTH) * COEFFICIENT);
 
           // добавим нотные станы, пока с 0 координатами
           const tStave = new VF.Stave(0, 0);
@@ -289,7 +291,7 @@ class SheetDrawer {
 
           if (currentWidth + barWidth < this.sheetWidth) {
             currentWidth += barWidth;
-            
+
             currentRowBars.push({
               bar,
               barWidth,
@@ -314,11 +316,11 @@ class SheetDrawer {
 
             tStave.addClef("treble").addTimeSignature("4/4").addKeySignature(this.signature);
             bStave.addClef("bass").addTimeSignature("4/4").addKeySignature(this.signature);
-  
+
             const startX = Math.max(tStave.getNoteStartX(), bStave.getNoteStartX());
             tStave.setNoteStartX(startX);
             bStave.setNoteStartX(startX);
-  
+
             const barWidth = minTotalWidth + (startX - 0) + FIRST_NOTE_SPACE + LAST_NOTE_SPACE;
 
 
@@ -349,7 +351,7 @@ class SheetDrawer {
       this.drawGrandStaveRow(currentRowBars, widthArray, rowsCounter);
     }
 
-    renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
+
 
     this.beams.forEach((b) => {
       b.setContext(this.context).draw()
@@ -368,6 +370,11 @@ class SheetDrawer {
         tie.setContext(this.context).draw();
       }
     })
+
+    renderer.resize(this.svgWidth, PADDING_TOP + (SPACE_BETWEEN_GRAND_STAVES) * (rowsCounter + 1));
+    if (this.scale !== 1) {
+      this.context.scale(this.scale, this.scale)
+    }
   }
 }
 

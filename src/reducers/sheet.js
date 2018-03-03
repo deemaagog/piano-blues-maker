@@ -5,25 +5,27 @@ const initialState = {
 export default function sheet(state = initialState, action) {
   switch (action.type) {
     case 'UPDATE_SHEET':
-      return { ...state, ...{ isOutdated : false }}
+      return {isOutdated : false }
     case 'SET_INTRO':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
     case 'SET_ENDING':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
     case 'SET_PATTERN':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
     case 'ADD_SECTION':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
     case 'REMOVE_SECTION':
-      return { ...state, ...{ isOutdated : true }}  
+      return {isOutdated : true }  
     case 'SET_KEY':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
+    case 'SET_SCALE':
+      return {isOutdated : false }  
     case 'REMOVE_ALL':
-      return { ...state, ...{ isOutdated : false }}
+      return {isOutdated : false }
     case 'CLONE_SECTION':
-      return { ...state, ...{ isOutdated : true }}
+      return {isOutdated : true }
     case 'MOVE_SECTION':
-      return { ...state, ...{ isOutdated : true }}      
+      return {isOutdated : true }      
     default:
       return state
   }

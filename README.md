@@ -11,7 +11,7 @@ A typical blues consists of several progressions and you can add them as many as
 
 ## Features
 
-* Automatic generation of musical notation
+* Automatic generation of responsive and scalable  musical notation
 * Playback with tempo tuning
 * Key transposition 
 * Swinging eighth notes

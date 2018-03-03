@@ -8,7 +8,7 @@
         {
           "bars": [
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -209,7 +209,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -1728,11 +1728,11 @@
       "description": "Classic",
       "phrases": [
         {
-          "id": "",
+          
           "type": "",
           "bars": [
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -1930,7 +1930,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -2043,11 +2043,11 @@
       "description": "Blank",
       "phrases": [
         {
-          "id": "",
+          
           "type": "I-I-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2066,7 +2066,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2085,7 +2085,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2104,7 +2104,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2125,11 +2125,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "IV-IV-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2148,7 +2148,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2167,7 +2167,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2186,7 +2186,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2207,11 +2207,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2231,7 +2231,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2251,7 +2251,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2271,7 +2271,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2575,7 +2575,7 @@
           "type": "IV-IV-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -2849,7 +2849,7 @@
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -4053,7 +4053,7 @@
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -5319,7 +5319,7 @@
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -5722,11 +5722,11 @@
       "description": "Basic (5th & 6th intervals)",
       "phrases": [
         {
-          "id": "",
+          
           "type": "I-I-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -5855,7 +5855,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -5984,7 +5984,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6113,7 +6113,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6244,11 +6244,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "IV-IV-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6377,7 +6377,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6506,7 +6506,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6635,7 +6635,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6766,11 +6766,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -6899,7 +6899,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -7028,7 +7028,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -7157,7 +7157,7 @@
               ]
             },
             {
-              "id": "",
+              
               "bassVoices": [
                 {
                   "notes": [
@@ -7294,13 +7294,14 @@
     {
       "id": 300,
       "description": "Blank",
+      "demo": true,
       "phrases": [
         {
-          "id": "",
+          
           "type": "I-I-I-I",
           "bars": [
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7318,7 +7319,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7336,7 +7337,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7354,7 +7355,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7374,11 +7375,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "IV-IV-I-I",
           "bars": [
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7396,7 +7397,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7414,7 +7415,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7432,7 +7433,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7452,11 +7453,11 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "V-V-I-I",
           "bars": [
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7474,7 +7475,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7492,7 +7493,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7510,7 +7511,7 @@
               ]
             },
             {
-              "id": "",
+              
               "trebleVoices": [
                 {
                   "notes": [
@@ -7533,6 +7534,7 @@
     },
     {
       "id": 301,
+      "demo": true,
       "description": "Boogie style (chords)",
       "phrases": [
         {
@@ -8473,12 +8475,9 @@
                     },
                     {
                       "keys": [
+                        
                         {
-                          "step": "F",
-                          "oct": 4
-                        },
-                        {
-                          "step": "F",
+                          "step": "C",
                           "oct": 5
                         }
                       ],
@@ -8488,12 +8487,16 @@
                     {
                       "keys": [
                         {
-                          "step": "F",
+                          "step": "E",
+                          "oct": 4
+                        },
+                        {
+                          "step": "A",
                           "oct": 4,
                           "acc": "#"
                         },
                         {
-                          "step": "F",
+                          "step": "C",
                           "oct": 5,
                           "acc": "#"
                         }
@@ -8503,6 +8506,15 @@
                     },
                     {
                       "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "ties": [
+                            {
+                              "type": "start"
+                            }
+                          ]
+                        },
                         {
                           "step": "G",
                           "oct": 4,
@@ -8517,34 +8529,37 @@
                           "oct": 4,
                           "ties": [
                             {
-                              "type": "start"
+                              "type": "start",
+                              "stem": "DOWN"
                             }
                           ]
                         },
                         {
-                          "step": "F",
+                          "step": "D",
                           "oct": 5,
                           "ties": [
                             {
-                              "type": "start"
-                            }
-                          ]
-                        },
-                        {
-                          "step": "G",
-                          "oct": 5,
-                          "ties": [
-                            {
-                              "type": "start"
+                              "type": "start",
+                              "stem": "DOWN"
                             }
                           ]
                         }
+                        
                       ],
                       "dur": "8",
                       "stem": "up"
                     },
                     {
                       "keys": [
+                        {
+                          "step": "F",
+                          "oct": 4,
+                          "ties": [
+                            {
+                              "type": "stop"
+                            }
+                          ]
+                        },
                         {
                           "step": "G",
                           "oct": 4,
@@ -8564,16 +8579,7 @@
                           ]
                         },
                         {
-                          "step": "F",
-                          "oct": 5,
-                          "ties": [
-                            {
-                              "type": "stop"
-                            }
-                          ]
-                        },
-                        {
-                          "step": "G",
+                          "step": "D",
                           "oct": 5,
                           "ties": [
                             {
@@ -8613,12 +8619,13 @@
         }
       ]
     },
+    
     {
-      "id": 302,
+      "id": 305,
       "description": "Guitar style",
       "phrases": [
         {
-          "id": "",
+          
           "type": "I-I-I-I",
           "bars": [
             {
@@ -9222,7 +9229,7 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "IV-IV-I-I",
           "bars": [
             {
@@ -9841,7 +9848,7 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "V-V-I-I",
           "bars": [
             {
@@ -10445,7 +10452,7 @@
       ]
     },
     {
-      "id": 303,
+      "id": 307,
       "description": "Lonely avenue",
       "phrases": [
         {
@@ -11067,7 +11074,7 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "IV-IV-I-I",
           "bars": [
             {
@@ -11669,7 +11676,7 @@
           ]
         },
         {
-          "id": "",
+          
           "type": "V-V-I-I",
           "bars": [
             {

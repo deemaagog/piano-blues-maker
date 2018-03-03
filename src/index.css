@@ -3,8 +3,10 @@
 @import '~rc-slider/assets/index.css';
 
 :root {
-  --main-color: #115372;
+  --main-color: #0d4063;
+  
 }
+/* --main-color: #115372; */
 
 
 body {

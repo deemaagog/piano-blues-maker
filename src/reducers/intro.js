@@ -1,6 +1,8 @@
 import { intros } from '../presets'
 
-const initialState = intros[0];
+import { getRandomInt } from '../helpers'
+
+const initialState = intros[getRandomInt(0,intros.length)];
 
 export default function intro(state = initialState, action) {
   switch (action.type) {

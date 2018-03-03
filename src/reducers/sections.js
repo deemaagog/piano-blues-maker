@@ -1,22 +1,17 @@
 import presets from '../presets'
+import {generateId,getRandomInt} from '../helpers'
 
 const initialState = [createSection(true)];
 
-function generateId() {
-  return Math.random().toString(36).substr(2, 9);
-}
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
 function createSection(random = false) {
 
-  const lhPatternId = random ? getRandomInt(1,presets.leftHandPatterns.length): 0;
-  const rhPatternId = random ? getRandomInt(1,presets.rightHandPatterns.length): 0;
+  const rightHandDemoPatterns = presets.rightHandPatterns.filter(p => p.demo);
 
-  const { phrases: lhPhrases, ...leftHand } = presets.leftHandPatterns[lhPatternId];
-  const { phrases: rhPhrases, ...rightHand } = presets.rightHandPatterns[rhPatternId];
+  const lhPatternInd = random ? getRandomInt(1,presets.leftHandPatterns.length): 0;
+  const rhPatternInd = random ? getRandomInt(1,rightHandDemoPatterns.length) : 0;
+
+  const { phrases: lhPhrases, ...leftHand } = presets.leftHandPatterns[lhPatternInd];
+  const { phrases: rhPhrases, ...rightHand } = rightHandDemoPatterns[rhPatternInd];
 
   lhPhrases.forEach((lhPhrase, phraseIndex) => {
     lhPhrase.bars.forEach((bar, barIndex) => {
@@ -39,9 +34,6 @@ export default function sections(state = initialState, action) {
       const { hand, patternId, sectionId } = action;
       const voicesObjectName = (hand === 'left' ? 'bassVoices' : 'trebleVoices');
       const { phrases, ...patternObject } = presets[`${hand}HandPatterns`].find((pattern) => { return pattern.id === patternId });
-
-      // generate Ids for all notes
-      //const phrases = generateIds(patternPhrases, sectionId, voicesObjectName);
 
       const newSections = state.map(section => {
         if (section.id === sectionId) {
@@ -74,7 +66,7 @@ export default function sections(state = initialState, action) {
           //return {...bar, ...{trebleVoices:trebleVoicesCopy},...{bassVoices:bassVoicesCopy}}
           return {...bar, trebleVoices:[...bar.trebleVoices], bassVoices:[...bar.bassVoices]}
         })
-        return { ...phrase, ...{ bars: barsCopy } }
+        return { ...phrase, bars: barsCopy }
       })
 
       const newSection = { id: generateId(), leftHand:{...leftHand}, rightHand:{...rightHand}, ...{ phrases: phrasesCopy } }

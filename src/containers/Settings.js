@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 
-import { toggleSwing, setKey, setTempo } from '../actions/settings'
+import { toggleSwing, setKey, setTempo, setScale } from '../actions/settings'
 
 import Switch from "react-switch";
 import Slider from 'rc-slider';
@@ -31,6 +31,10 @@ class Settings extends Component {
 
     tempoOnChange = (value) => {
         this.props.tempoOnChange(value);
+    }
+
+    scaleOnChange = (value) => {
+        this.props.scaleOnChange(value);
     }
 
     render() {
@@ -99,17 +103,38 @@ class Settings extends Component {
                     />
 
                 </div>
+
+                <div className='setting-item'>
+                    <div className='setting-label'>
+                        Sheet scale 
+                    </div>
+                    <div className='setting-value'>
+                        <Slider
+                            value={this.props.scale}
+                            min={80}
+                            max={100}
+                            onChange={this.scaleOnChange}
+                            trackStyle={{ backgroundColor: '#b2b0b0' }}
+                            handleStyle={{
+                                borderColor: '#eaecef',
+                                backgroundColor: '#eaecef',
+                            }}
+                            railStyle={{ backgroundColor: '#b2b0b0' }}
+                        />
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const {key, tempo, swing} = state.settings; 
+    const {key, tempo, swing , scale} = state.settings; 
     return {
         signature: key,
         tempo: tempo,
-        swing: swing
+        swing: swing,
+        scale: scale
     }
 }
 
@@ -121,6 +146,9 @@ const mapDispatchToProps = (dispatch) => {
         keyOnChange: (value) => {
             dispatch(setKey(value))
         },
+        scaleOnChange: (value) => {
+            dispatch(setScale(value))
+        },
         toggleSwing: () => {
             dispatch(toggleSwing())
         }
@@ -131,8 +159,10 @@ Settings.propTypes = {
     signature: PropTypes.string,
     swing: PropTypes.bool,
     tempo: PropTypes.number,
+    scale: PropTypes.number,
     tempoOnChange: PropTypes.func,
     keyOnChange: PropTypes.func,
+    scaleOnChange: PropTypes.func,
     toggleSwing: PropTypes.func
 };
 
