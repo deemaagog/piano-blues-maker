@@ -1,9 +1,20 @@
 # PIANO-BLUES-MAKER
 
-Blues, in contrast to other musical forms has a clear structure (schema). This application is a piano blues builder by classical scheme called "12 bar progression":
-I-I-I-I
-IV-IV-I-I
-V-IV-I-V
+Blues, unlike other musical forms has a clear structure. The main building block is "blues progression". There are many kinds of blues progressions in piano blues world, but the most common is one called "12 bar progression" with the following scheme:
+I-I-I-I<br/>
+IV-IV-I-I<br/>
+V-IV-I-V<br/>
+
+Cuttently only this type of blues progression is supported.
+
+A typical blues consists of several progressions and you can add them as many as you want. For each you can set right and left hand patterns independently. Optionally, you can specify blues intro end ending. 
+
+## Features
+
+* Automatic generation of musical notation
+* Playback with tempo tuning
+* Key transposition 
+* Swinging eighth notes
 
 ## Built With
 
