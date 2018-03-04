@@ -69,7 +69,7 @@ export default function sections(state = initialState, action) {
         return { ...phrase, bars: barsCopy }
       })
 
-      const newSection = { id: generateId(), leftHand:{...leftHand}, rightHand:{...rightHand}, ...{ phrases: phrasesCopy } }
+      const newSection = { id: generateId(), type: 'PROGRESSION', leftHand:{...leftHand}, rightHand:{...rightHand}, ...{ phrases: phrasesCopy } }
       const sectionsClone = [...state];
 
       sectionsClone.splice(index + 1, 0, newSection);

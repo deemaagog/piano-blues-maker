@@ -25,6 +25,7 @@ A typical blues consists of several progressions and you can add them as many as
 
 ## Todos
 
+* Add more patterns
 * Add backend. Implement uploading and sharing users' own presets
 * Implement various blues schemas
 * Pick up measures for hand patterns

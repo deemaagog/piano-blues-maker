@@ -8516,15 +8516,6 @@
                           ]
                         },
                         {
-                          "step": "G",
-                          "oct": 4,
-                          "ties": [
-                            {
-                              "type": "start"
-                            }
-                          ]
-                        },
-                        {
                           "step": "B",
                           "oct": 4,
                           "ties": [
@@ -8553,15 +8544,6 @@
                       "keys": [
                         {
                           "step": "F",
-                          "oct": 4,
-                          "ties": [
-                            {
-                              "type": "stop"
-                            }
-                          ]
-                        },
-                        {
-                          "step": "G",
                           "oct": 4,
                           "ties": [
                             {
