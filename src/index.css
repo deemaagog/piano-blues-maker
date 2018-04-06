@@ -2,10 +2,10 @@
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~rc-slider/assets/index.css';
 
-:root {
+/* :root {
   --main-color: #0d4063;
   
-}
+} */
 /* --main-color: #115372; */
 
 
@@ -31,7 +31,7 @@ body {
 }
 
 .header {
-  background: var(--main-color);
+  background: #0d4063;
   /* padding: 0 50px; */
   height: 64px;
   /* line-height: 64px; */ 
@@ -127,7 +127,7 @@ body {
   z-index: 100;
   width: 350px;
   overflow: auto;
-  background: var(--main-color);
+  background: #0d4063;
   color: #F2EFF6;
   top: 0;
   height: 100%;
@@ -309,11 +309,11 @@ i.section-closed:before {
   height:60px;
   width:60px;
   color: #ffffff;
-  background-color: var(--main-color);
+  background-color: #0d4063;
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
-  border-color: var(--main-color);
+  border-color: #0d4063;
   border: 0px solid;
   background-Image: url(./images/refresh.svg);
   background-repeat: no-repeat;
